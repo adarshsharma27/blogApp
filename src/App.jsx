@@ -8,6 +8,7 @@ import AddBlog from "./components/AddBlog";
 import Home from "./components/Home";
 import BlogDetail from "./components/BlogDetail";
 import AboutUs from "./components/AboutUs";
+import {ToastContainer} from "react-toastify";
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const addDarkMode = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/addblog/:id" element={<BlogDetail />} />
         <Route path="/aboutus" element={<AboutUs />} />
       </Routes>
+      <ToastContainer />
       <Footer />
     </>
   );

@@ -1,7 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { account } from "../config";
 
 const Header = ({ addDarkMode, darkMode }) => {
+    const  LogOut =async()=>{
+      await account.deleteSession('current');
+      navigate("/login")
+    }
   return (
     <>
       <header className="text-gray-600 font-montserrat bg-gray-100 dark:bg-slate-700">
@@ -36,6 +41,13 @@ const Header = ({ addDarkMode, darkMode }) => {
               className="mr-5 hover:text-gray-900 dark:text-white"
             >
               Login
+            </NavLink>
+            <NavLink
+              to="/login"
+              className="mr-5 hover:text-gray-900 dark:text-white"
+              onClick={LogOut}
+            >
+              LoginOut
             </NavLink>
           </nav>
           <button
