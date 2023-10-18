@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import { databases, Query } from "../config";
 
-const FeaturedBlog = () => {
+const TrendingBlog = () => {
   const [blogs, setBlogs] = useState();
   useEffect(() => {
     const getBlogs = async () => {
@@ -10,7 +10,7 @@ const FeaturedBlog = () => {
         const promise = await databases.listDocuments(
           "652eb22b3816222d0ab0",
           "652eb23e85ff23c6fa5b",
-          [Query.equal("category", "featured")]
+          [Query.equal("category", "trending")]
         );
         setBlogs(promise?.documents);
         console.log(promise?.documents);
@@ -29,7 +29,7 @@ const FeaturedBlog = () => {
             </div>
             <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
               <h1 className="sm:w-2/5 text-gray-900 font-medium font-montserrat text-2xl mb-2 sm:mb-0">
-                Featured Blog
+                TrendingBlog
               </h1>
               <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">
                 Street art subway tile salvia four dollar toast bitters selfies
@@ -57,4 +57,4 @@ const FeaturedBlog = () => {
   );
 };
 
-export default FeaturedBlog;
+export default TrendingBlog;
