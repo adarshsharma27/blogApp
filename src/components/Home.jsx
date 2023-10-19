@@ -2,6 +2,7 @@ import React from "react";
 import FeaturedBlog from "./FeaturedBlog";
 import Hero from "./Hero";
 import TrendingBlog from "./TrendingBlog";
+import AllStories from "./AllStories";
 
 const Home = () => {
   return (
@@ -9,7 +10,7 @@ const Home = () => {
       <Hero />
       <FeaturedBlog />
       <TrendingBlog />
-      <FeaturedBlog />
+      <AllStories />
     </>
   );
 };

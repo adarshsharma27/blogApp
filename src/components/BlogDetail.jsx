@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { databases } from "../config";
 
 const BlogDetail = () => {
+  const [blog, setBlog] = useState();
+  const {id} =useParams()
+  console.log(id)
+  useEffect(() => {
+    const getBlog = async () => {
+      try {
+        const resp = await databases.getDocument(
+          "652eb22b3816222d0ab0",
+          "652eb23e85ff23c6fa5b",
+           id
+        );
+        setBlog(resp);
+        console.log(resp)
+      } catch (error) {
+      }
+    };
+    getBlog();
+  }, []);
   return (
     <>
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
@@ -12,17 +32,10 @@ const BlogDetail = () => {
           />
           <div className="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
             <h1 className="font-montserrat sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-              Knausgaard typewriter readymade marfa
+             {blog?.title}
             </h1>
             <p className="mb-8 leading-relaxed">
-              Kickstarter biodiesel roof party wayfarers cold-pressed. Palo
-              santo live-edge tumeric scenester copper mug flexitarian. Prism
-              vice offal plaid everyday carry. Gluten-free chia VHS squid
-              listicle artisan.
-            </p>
-
-            <p className="text-sm mt-2 text-gray-500 mb-8 w-full">
-              Neutra shabby chic ramps, viral fixie.
+              {blog?.description}
             </p>
           </div>
         </div>
