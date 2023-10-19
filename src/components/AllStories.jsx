@@ -45,6 +45,7 @@ const AllStories = () => {
                   category={category}
                   description={description}
                   $id={$id}
+                  key={$id}
                 />
               );
             })}

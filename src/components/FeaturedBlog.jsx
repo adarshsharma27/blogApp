@@ -13,7 +13,6 @@ const FeaturedBlog = () => {
           [Query.equal("category", "featured")]
         );
         setBlogs(promise?.documents);
-        console.log(promise?.documents);
       } catch (error) {
       }
     };
@@ -47,6 +46,7 @@ const FeaturedBlog = () => {
                   category={category}
                   description={description}
                   $id={$id}
+                  key={$id}
                 />
               );
             })}

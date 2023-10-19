@@ -13,7 +13,6 @@ const TrendingBlog = () => {
           [Query.equal("category", "trending")]
         );
         setBlogs(promise?.documents);
-        console.log(promise?.documents);
       } catch (error) {
       }
     };
@@ -47,6 +46,7 @@ const TrendingBlog = () => {
                   category={category}
                   description={description}
                   $id={$id}
+                  key={$id}
                 />
               );
             })}
