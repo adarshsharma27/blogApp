@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const BlogCard = ({ title, category, description, $id }) => {
+const BlogCard = ({ title, category, description, $id,imageUrl }) => {
   return (
     <>
       <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
@@ -9,7 +9,7 @@ const BlogCard = ({ title, category, description, $id }) => {
           <img
             alt="content"
             className="object-cover object-center h-full w-full"
-            src="https://dummyimage.com/1203x503"
+            src={imageUrl ? imageUrl : "https://dummyimage.com/1203x503"}
           />
         </div>
         <h2 className="text-xl font-medium font-montserrat text-gray-900 mt-5">

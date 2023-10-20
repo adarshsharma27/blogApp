@@ -1,34 +1,52 @@
-import React ,{useId, useState} from "react";
-import { databases ,ID} from "../config";
+import React, { useId, useState } from "react";
+import { databases, ID, storage } from "../config";
 import { useNavigate } from "react-router-dom";
 
 const AddBlog = () => {
-  const uId=useId();
-  const navigate =useNavigate()
-  const [blog,setBlog]=useState({
-    
-  })
-  const blogHandle =(e)=>{
-    setBlog({...blog,[e.target.name]:e.target.value})
-  }
-  const addBlog=async(e)=>{
-     databases.createDocument(
-      '652eb22b3816222d0ab0',
-      '652eb23e85ff23c6fa5b',
+  const uId = useId();
+  const navigate = useNavigate();
+  const [blog, setBlog] = useState({});
+  const [imageUrl, setImageUrl] = useState("");
+  const blogHandle = (e) => {
+    setBlog({ ...blog, [e.target.name]: e.target.value, imageUrl });
+  };
+  const addBlog = async (e) => {
+    databases.createDocument(
+      "652eb22b3816222d0ab0",
+      "652eb23e85ff23c6fa5b",
       ID.unique(),
       blog
-       
-      
-  );
-  navigate("/")
-  }
+    );
+    navigate("/");
+  };
+  const handleImage = (e) => {
+    const image = e.target.files[0];
+    const promise = storage.createFile(
+      "653022b9b06e66621238",
+      ID.unique(),
+      image
+    );
+    promise.then(
+      function (response) {
+        const fileId = response.$id;
+        if (fileId) {
+          debugger;
+          const imgUrl = storage.getFilePreview("653022b9b06e66621238", fileId);
+          if (imgUrl) setImageUrl(imgUrl?.href);
+        }
+      },
+      function (error) {
+        console.log(error); // Failure
+      }
+    );
+  };
   return (
     <>
       <section className="text-gray-600 font-montserrat relative dark:bg-slate-700">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-2xl font-medium font-montserrat mb-4 text-gray-900">
-            Create Blog
+              Create Blog
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
               Freely Create Blog!!!!
@@ -38,7 +56,10 @@ const AddBlog = () => {
             <div className="flex flex-wrap -m-2">
               <div className="p-2 w-full">
                 <div className="relative">
-                  <label htmlFor={uId} className="leading-7 text-sm text-gray-600">
+                  <label
+                    htmlFor={uId}
+                    className="leading-7 text-sm text-gray-600"
+                  >
                     Name
                   </label>
                   <input
@@ -54,15 +75,18 @@ const AddBlog = () => {
               </div>
               <div className="p-2 w-full">
                 <div className="relative">
-                <label
+                  <label
                     htmlFor={uId}
                     className="leading-7 text-sm text-gray-600"
                   >
                     Category
                   </label>
-                  <select  id={uId}  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  <select
+                    id={uId}
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     name="category"
-                    onChange={blogHandle}>
+                    onChange={blogHandle}
+                  >
                     <option value="">Select Category</option>
                     <option value="trending">Trending</option>
                     <option value="featured">Featured</option>
@@ -75,10 +99,29 @@ const AddBlog = () => {
                     htmlFor={uId}
                     className="leading-7 text-sm text-gray-600"
                   >
+                    Name
+                  </label>
+                  <input
+                    type="file"
+                    id={uId}
+                    name="file"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    placeholder="Please Enter Title"
+                    // value={}
+                    onChange={handleImage}
+                  />
+                </div>
+              </div>
+              <div className="p-2 w-full">
+                <div className="relative">
+                  <label
+                    htmlFor={uId}
+                    className="leading-7 text-sm text-gray-600"
+                  >
                     Message
                   </label>
                   <textarea
-                   id={uId}
+                    id={uId}
                     name="description"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     data-gramm="false"
@@ -89,8 +132,12 @@ const AddBlog = () => {
                   ></textarea>
                 </div>
               </div>
+
               <div className="p-2 w-full">
-                <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"  onClick={addBlog}>
+                <button
+                  className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  onClick={addBlog}
+                >
                   Create Blog
                 </button>
               </div>
