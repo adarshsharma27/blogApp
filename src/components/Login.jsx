@@ -1,17 +1,21 @@
 import React, { useState, useId } from "react";
 import { useNavigate } from "react-router-dom";
 import { account } from "../config";
-import { toast} from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { logIn } from "../features/blogsSlice";
 const Login = () => {
   const uId = useId();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const[nameErr,setNameErr]=useState("")
+  const [nameErr, setNameErr] = useState("");
+  const dispatch = useDispatch();
   const Login = async () => {
-    await account.createEmailSession(email, password);
-   toast.success("LoggedIn Successfully", {
+    const userData = await account.createEmailSession(email, password);
+    dispatch(logIn(userData));
+    toast.success("LoggedIn Successfully", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -19,12 +23,10 @@ const Login = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-
-});
+    });
     setEmail("");
     setPassword("");
     navigate("/addblog");
-    
   };
   return (
     <>
@@ -71,7 +73,8 @@ const Login = () => {
               />
             </div>
             <button
-              className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg disabled:opacity-75 disabled:cursor-not-allowed" disabled={!email || !password}
+              className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg disabled:opacity-75 disabled:cursor-not-allowed"
+              disabled={!email || !password}
               onClick={Login}
             >
               Login

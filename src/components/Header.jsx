@@ -1,12 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { account } from "../config";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../features/blogsSlice";
 
 const Header = ({ addDarkMode, darkMode }) => {
-    const  LogOut =async()=>{
-      await account.deleteSession('current');
-      navigate("/login")
-    }
+  const dispatch = useDispatch();
+  const LogOut = async () => {
+    await account.deleteSession("current");
+    dispatch(logOut(null));
+    navigate("/login");
+  };
+  const user = useSelector((state) => state.blogsReducer?.userData);
+  console.log(user);
   return (
     <>
       <header className="text-gray-600 font-montserrat bg-gray-100 dark:bg-slate-700">
@@ -30,28 +36,41 @@ const Header = ({ addDarkMode, darkMode }) => {
             >
               About Us
             </NavLink>
-            <NavLink
-              to="/signUp"
-              className="mr-5 hover:text-gray-900 dark:text-white"
-            >
-              SignUp
-            </NavLink>
-            <NavLink
-              to="/login"
-              className="mr-5 hover:text-gray-900 dark:text-white"
-            >
-              Login
-            </NavLink>
-            <NavLink
-              to="/login"
-              className="mr-5 hover:text-gray-900 dark:text-white"
-              onClick={LogOut}
-            >
-              LoginOut
-            </NavLink>
+            {user ? (
+              <>
+                <NavLink
+                  to="/login"
+                  className="mr-5 hover:text-gray-900 dark:text-white"
+                  onClick={LogOut}
+                >
+                  LogOut
+                </NavLink>
+                <NavLink to="/addblog" className="lg:mr-5 md:mr-0 mt-2 md:mt-0">
+                  <div className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full text-center font-bold">
+                    {user?.providerUid?.slice(0, 1)?.toUpperCase()}
+                  </div>
+                </NavLink>
+              </>
+            ) : (
+              <>
+                <NavLink
+                  to="/signUp"
+                  className="mr-5 hover:text-gray-900 dark:text-white"
+                >
+                  SignUp
+                </NavLink>
+
+                <NavLink
+                  to="/login"
+                  className="mr-5 hover:text-gray-900 dark:text-white"
+                >
+                  Login
+                </NavLink>
+              </>
+            )}
           </nav>
           <button
-            className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none text-base mt-4 md:mt-0"
+            className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none text-base mt-2 md:mt-0"
             onClick={() => {
               addDarkMode();
             }}
