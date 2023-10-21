@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import { databases} from "../config";
+import conf from "../conf/conf";
 
 const AllStories = () => {
   const [blogs, setBlogs] = useState();
@@ -8,8 +9,8 @@ const AllStories = () => {
     const getBlogs = async () => {
       try {
         const resp = await databases.listDocuments(
-          "652eb22b3816222d0ab0",
-          "652eb23e85ff23c6fa5b",
+          conf.databaseId,
+          conf.collectionId,
         );
         setBlogs(resp?.documents);
       } catch (error) {

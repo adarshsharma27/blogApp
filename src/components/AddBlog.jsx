@@ -1,6 +1,7 @@
 import React, { useId, useState } from "react";
 import { databases, ID, storage } from "../config";
 import { useNavigate } from "react-router-dom";
+import conf from "../conf/conf";
 
 const AddBlog = () => {
   const uId = useId();
@@ -12,8 +13,8 @@ const AddBlog = () => {
   };
   const addBlog = async (e) => {
     databases.createDocument(
-      "652eb22b3816222d0ab0",
-      "652eb23e85ff23c6fa5b",
+      conf.databaseId,
+      conf.collectionId,
       ID.unique(),
       blog
     );
@@ -22,7 +23,7 @@ const AddBlog = () => {
   const handleImage = (e) => {
     const image = e.target.files[0];
     const promise = storage.createFile(
-      "653022b9b06e66621238",
+      conf.bucketId,
       ID.unique(),
       image
     );

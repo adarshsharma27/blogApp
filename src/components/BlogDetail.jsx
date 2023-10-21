@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { databases } from "../config";
+import conf from "../conf/conf";
 
 const BlogDetail = () => {
   const [blog, setBlog] = useState();
@@ -10,8 +11,8 @@ const BlogDetail = () => {
     const getBlog = async () => {
       try {
         const resp = await databases.getDocument(
-          "652eb22b3816222d0ab0",
-          "652eb23e85ff23c6fa5b",
+          conf.databaseId,
+          conf.collectionId,
            id
         );
         setBlog(resp);
