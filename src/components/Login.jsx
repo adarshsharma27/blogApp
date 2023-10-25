@@ -2,7 +2,6 @@ import React, { useState, useId } from "react";
 import { useNavigate } from "react-router-dom";
 import { account } from "../config";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { logIn } from "../features/blogsSlice";
 const Login = () => {

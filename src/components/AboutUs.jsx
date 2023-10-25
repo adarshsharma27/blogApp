@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <>
       <Hero />
-      <section className="text-gray-600 body-font dark:bg-slate-700">
+      <section className="text-gray-600 font-montserrat dark:bg-slate-700">
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
             <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4 dark:text-white">
@@ -147,7 +147,7 @@ const AboutUs = () => {
           </button>
         </div>
       </section>
-      <section className="text-gray-600 body-font dark:bg-slate-700">
+      <section className="text-gray-600 font-montserrat dark:bg-slate-700">
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
           <div className="flex flex-wrap w-full">
             <div className="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">

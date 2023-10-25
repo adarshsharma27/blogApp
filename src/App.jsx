@@ -9,6 +9,8 @@ import Home from "./components/Home";
 import BlogDetail from "./components/BlogDetail";
 import AboutUs from "./components/AboutUs";
 import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import BookMarkBlog from "./components/BookMarkBlog";
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const addDarkMode = () => {
@@ -27,8 +29,9 @@ const App = () => {
         <Route path="/addblog" element={<AddBlog />} />
         <Route path="/addblog/:id" element={<BlogDetail />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/bookmark" element={<BookMarkBlog />} />
       </Routes>
-      <ToastContainer />
+      <ToastContainer  bodyClassName="font-montserrat font-bold"/>
       <Footer />
     </>
   );
