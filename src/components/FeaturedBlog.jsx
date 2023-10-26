@@ -18,7 +18,7 @@ const FeaturedBlog = () => {
       }
     };
     getBlogs();
-  }, []);
+  }, [blogs]);
   return (
     <>
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">

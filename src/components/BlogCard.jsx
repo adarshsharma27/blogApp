@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
-import { LuBookmarkPlus, LuBookmarkMinus } from "react-icons/lu";
+import { LuBookmarkPlus, LuBookmarkMinus, LuTrash2 } from "react-icons/lu";
 import { databases, ID } from "../config";
 import conf from "../conf/conf";
 import { toast } from "react-toastify";
@@ -57,6 +57,25 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
     } catch (error) {}
     navigate("/bookmark");
   };
+  const deleteBlog = async () => {
+    try {
+      await databases.deleteDocument(
+        conf.databaseId,
+      conf.collectionId,
+        $id
+      );
+      toast.success("Blog Removed Successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch (error) {}
+    navigate("/");
+  };
   return (
     <>
       <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
@@ -101,6 +120,10 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
               onClick={() => addBookMark()}
             />
           )}
+          <LuTrash2
+              className="text-2xl hover:text-red-400 hover:cursor-pointer"
+              onClick={() => deleteBlog()}
+            />
         </div>
       </div>
     </>
