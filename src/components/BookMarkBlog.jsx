@@ -36,7 +36,7 @@ const BookMarkBlog = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
+          <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 gap-4">
             {blogs?.map((blog) => {
               const { title, category, description, $id, imageUrl } = blog;
               return (

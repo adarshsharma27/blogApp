@@ -78,7 +78,7 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
   };
   return (
     <>
-      <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
+      <div className="p-4 md:w-1/3 sm:mb-0 mb-6 shadow-lg break-words">
         <div className="rounded-lg h-64 overflow-hidden">
           <img
             alt="content"
@@ -86,11 +86,11 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
             src={imageUrl ? imageUrl : "https://dummyimage.com/1203x503"}
           />
         </div>
-        <h2 className="text-xl font-medium font-montserrat text-gray-900 mt-5">
+        <h2 className="text-xl font-bold font-montserrat text-gray-900 mt-5">
           {title}
         </h2>
-        <p className="text-small leading-relaxed mt-2">{category}</p>
-        <p className="text-base leading-relaxed mt-2">{description}</p>
+        <p className="text-lg font-semibold leading-relaxed mt-2">{category}</p>
+        <p className="text-base leading-relaxed mt-2">{description?.slice(0,200)}...</p>
         <NavLink
           to={`/addblog/${$id}`}
           className="text-indigo-500 inline-flex items-center mt-3"
