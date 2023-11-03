@@ -78,7 +78,7 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
   };
   return (
     <>
-      <div className="p-4 md:w-1/3 sm:mb-0 mb-6 shadow-lg break-words">
+      <div className="p-4 sm:mb-0 mb-6 shadow-xl break-words">
         <div className="rounded-lg h-64 overflow-hidden">
           <img
             alt="content"
@@ -93,9 +93,9 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
         <p className="text-base leading-relaxed mt-2">{description?.slice(0,200)}...</p>
         <NavLink
           to={`/addblog/${$id}`}
-          className="text-indigo-500 inline-flex items-center mt-3"
+          className="text-purple-500 inline-flex items-center py-3  font-semibold underline underline-offset-2 "
         >
-          Learn More
+          Read More
           <svg
             fill="none"
             stroke="currentColor"
@@ -108,20 +108,20 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </NavLink>
-        <div>
+        <div className="flex flex-wrap gap-3 justify-end">
           {bookmark ? (
             <LuBookmarkMinus
-              className="text-2xl hover:text-green-600 hover:cursor-pointer"
+              className="text-3xl hover:text-green-600 hover:cursor-pointer"
               onClick={() => removeBookMark()}
             />
           ) : (
             <LuBookmarkPlus
-              className="text-2xl hover:text-green-600 hover:cursor-pointer"
+              className="text-3xl hover:text-green-600 hover:cursor-pointer"
               onClick={() => addBookMark()}
             />
           )}
           <LuTrash2
-              className="text-2xl hover:text-red-400 hover:cursor-pointer"
+              className="text-3xl hover:text-red-400 hover:cursor-pointer"
               onClick={() => deleteBlog()}
             />
         </div>

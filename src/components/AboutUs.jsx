@@ -4,7 +4,14 @@ import Hero from "./Hero";
 const AboutUs = () => {
   return (
     <>
-      <Hero />
+      <Hero
+        title="Before they sold out"
+        imageUrl="../images/about.svg"
+        description=" Copper mug try-hard pitchfork pour-over freegan heirloom neutra
+              air plant cold-pressed tacos poke beard tote bag. Heirloom echo
+              park mlkshk tote bag selvage hot chicken authentic tumeric
+              truffaut hexagon try-hard chambray."
+      />
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
@@ -17,12 +24,12 @@ const AboutUs = () => {
               mi pug.
             </p>
             <div className="flex mt-6 justify-center">
-              <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+              <div className="w-16 h-1 rounded-full bg-purple-500 inline-flex"></div>
             </div>
           </div>
           <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
+              <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-purple-100 text-purple-500 mb-5 flex-shrink-0">
                 <svg
                   fill="none"
                   stroke="currentColor"
@@ -44,7 +51,7 @@ const AboutUs = () => {
                   taxidermy. Gastropub indxgo juice poutine, ramps microdosing
                   banh mi pug VHS try-hard.
                 </p>
-                <a className="mt-3 text-indigo-500 inline-flex items-center">
+                <a className="mt-3 text-purple-500 inline-flex items-center">
                   Learn More
                   <svg
                     fill="none"
@@ -61,7 +68,7 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
+              <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-purple-100 text-purple-500 mb-5 flex-shrink-0">
                 <svg
                   fill="none"
                   stroke="currentColor"
@@ -85,7 +92,7 @@ const AboutUs = () => {
                   taxidermy. Gastropub indxgo juice poutine, ramps microdosing
                   banh mi pug VHS try-hard.
                 </p>
-                <a className="mt-3 text-indigo-500 inline-flex items-center">
+                <a className="mt-3 text-purple-500 inline-flex items-center">
                   Learn More
                   <svg
                     fill="none"
@@ -102,7 +109,7 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-              <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
+              <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-purple-100 text-purple-500 mb-5 flex-shrink-0">
                 <svg
                   fill="none"
                   stroke="currentColor"
@@ -125,7 +132,7 @@ const AboutUs = () => {
                   taxidermy. Gastropub indxgo juice poutine, ramps microdosing
                   banh mi pug VHS try-hard.
                 </p>
-                <a className="mt-3 text-indigo-500 inline-flex items-center">
+                <a className="mt-3 text-purple-500 inline-flex items-center">
                   Learn More
                   <svg
                     fill="none"
@@ -142,8 +149,8 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-          <button className="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-            Button
+          <button className="flex mx-auto mt-16 text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg">
+         Home
           </button>
         </div>
       </section>
@@ -155,7 +162,7 @@ const AboutUs = () => {
                 <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
                   <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                 </div>
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500 inline-flex items-center justify-center text-white relative z-10">
                   <svg
                     fill="none"
                     stroke="currentColor"
@@ -182,7 +189,7 @@ const AboutUs = () => {
                 <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
                   <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                 </div>
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500 inline-flex items-center justify-center text-white relative z-10">
                   <svg
                     fill="none"
                     stroke="currentColor"
@@ -209,7 +216,7 @@ const AboutUs = () => {
                 <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
                   <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                 </div>
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500 inline-flex items-center justify-center text-white relative z-10">
                   <svg
                     fill="none"
                     stroke="currentColor"
@@ -237,7 +244,7 @@ const AboutUs = () => {
                 <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
                   <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                 </div>
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500 inline-flex items-center justify-center text-white relative z-10">
                   <svg
                     fill="none"
                     stroke="currentColor"
@@ -262,7 +269,7 @@ const AboutUs = () => {
                 </div>
               </div>
               <div className="flex relative">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500 inline-flex items-center justify-center text-white relative z-10">
                   <svg
                     fill="none"
                     stroke="currentColor"
@@ -289,7 +296,7 @@ const AboutUs = () => {
             </div>
             <img
               className="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12"
-              src="https://dummyimage.com/1200x500"
+              src="../images/about2.svg"
               alt="step"
             />
           </div>

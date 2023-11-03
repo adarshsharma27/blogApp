@@ -26,13 +26,13 @@ const Header = ({ addDarkMode, darkMode }) => {
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <NavLink
               to="/"
-              className="mr-5 hover:text-gray-900 dark:text-white"
+              className="mr-5 hover:text-gray-900 dark:text-white  font-semibold"
             >
               Home
             </NavLink>
             <NavLink
               to="/aboutus"
-              className="mr-5 hover:text-gray-900 dark:text-white"
+              className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
             >
               About Us
             </NavLink>
@@ -40,13 +40,13 @@ const Header = ({ addDarkMode, darkMode }) => {
               <>
                 <NavLink
                   to="/login"
-                  className="mr-5 hover:text-gray-900 dark:text-white"
+                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                   onClick={LogOut}
                 >
                   LogOut
                 </NavLink>
                 <NavLink to="/addblog" className="lg:mr-5 md:mr-0 mt-2 md:mt-0">
-                  <div className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full text-center font-bold">
+                  <div className="w-10 h-10 text-white p-2 bg-purple-500 rounded-full text-center font-bold">
                     {user?.providerUid?.slice(0, 1)?.toUpperCase()}
                   </div>
                 </NavLink>
@@ -55,14 +55,14 @@ const Header = ({ addDarkMode, darkMode }) => {
               <>
                 <NavLink
                   to="/signUp"
-                  className="mr-5 hover:text-gray-900 dark:text-white"
+                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                 >
                   SignUp
                 </NavLink>
 
                 <NavLink
                   to="/login"
-                  className="mr-5 hover:text-gray-900 dark:text-white"
+                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                 >
                   Login
                 </NavLink>
