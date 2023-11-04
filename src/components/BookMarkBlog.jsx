@@ -26,7 +26,7 @@ const BookMarkBlog = () => {
               <div className="w-24 h-full bg-purple-500"></div>
             </div>
             <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-              <h1 className="sm:w-2/5 text-gray-900 font-medium font-montserrat text-2xl mb-2 sm:mb-0">
+              <h1 className="sm:w-2/5 text-gray-900 font-bold font-montserrat text-3xl mb-2 sm:mb-0">
                 Featured Blog
               </h1>
               <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">

@@ -39,11 +39,11 @@ const Login = () => {
             />
           </div>
           <div className="lg:w-3/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-            <h2 className="text-gray-900 text-lg font-medium font-montserrat mb-5">
+            <h2 className="text-gray-900 text-2xl font-semibold font-montserrat mb-5">
               Login
             </h2>
             <div className="relative mb-4">
-              <label htmlFor={uId} className="leading-7 text-sm text-gray-600">
+              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600">
                 Email
               </label>
               <input
@@ -57,7 +57,7 @@ const Login = () => {
               />
             </div>
             <div className="relative mb-4">
-              <label htmlFor={uId} className="leading-7 text-sm text-gray-600">
+              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600">
                 Password
               </label>
               <input

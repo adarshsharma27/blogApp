@@ -38,13 +38,13 @@ const SignUp = () => {
             />
           </div>
           <div className="lg:w-3/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-            <h2 className="text-gray-900 text-lg font-medium font-montserrat mb-5">
+            <h2 className="text-gray-900 text-2xl font-semibold font-montserrat mb-5">
               Sign Up
             </h2>
             <div className="relative mb-4">
               <label
                 htmlFor={uId}
-                className="leading-7 text-sm text-gray-600"
+                className="leading-7 text-base font-semibold text-gray-600"
               >
                 Full Name
               </label>
@@ -58,7 +58,7 @@ const SignUp = () => {
               />
             </div>
             <div className="relative mb-4">
-              <label htmlFor={uId} className="leading-7 text-sm text-gray-600">
+              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600">
                 Email
               </label>
               <input
@@ -71,7 +71,7 @@ const SignUp = () => {
               />
             </div>
             <div className="relative mb-4">
-              <label htmlFor={uId} className="leading-7 text-sm text-gray-600">
+              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600">
                 Password
               </label>
               <input
@@ -83,7 +83,7 @@ const SignUp = () => {
 
               />
             </div>
-            <button className="text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg disabled:opacity-75 disabled:cursor-not-allowed" onClick={SignUp} disabled={!name || !email || !password}>
+            <button className="text-white font-semibold bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg disabled:opacity-75 disabled:cursor-not-allowed" onClick={SignUp} disabled={!name || !email || !password}>
               SignUp
             </button>
            

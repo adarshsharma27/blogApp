@@ -46,7 +46,7 @@ const AddBlog = () => {
       <section className="text-gray-600 font-montserrat relative dark:bg-slate-700">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
-            <h1 className="sm:text-3xl text-2xl font-medium font-montserrat mb-4 text-gray-900">
+            <h1 className="sm:text-3xl text-3xl font-semibold font-montserrat mb-4 text-gray-900">
               Create Blog
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
