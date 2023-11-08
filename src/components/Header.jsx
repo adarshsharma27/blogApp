@@ -12,7 +12,6 @@ const Header = ({ addDarkMode, darkMode }) => {
     navigate("/login");
   };
   const user = useSelector((state) => state.blogsReducer?.userData);
-  console.log(user);
   return (
     <>
       <header className="text-gray-600 font-montserrat bg-gray-100 dark:bg-slate-700">
@@ -24,12 +23,13 @@ const Header = ({ addDarkMode, darkMode }) => {
             <span className="ml-3 text-xl">DesiBlogs</span>
           </NavLink>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <NavLink
+            { user && <NavLink
               to="/"
               className="mr-5 hover:text-gray-900 dark:text-white  font-semibold"
             >
               Home
             </NavLink>
+            }
             <NavLink
               to="/aboutus"
               className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
