@@ -23,7 +23,7 @@ const App = () => {
   const user = useSelector((state) => state.blogsReducer?.userData);
   return (
     <>
-      <Header addDarkMode={addDarkMode} darkMode={darkMode} />\
+      <Header addDarkMode={addDarkMode} darkMode={darkMode} />
       <Routes>
         <Route element={<ProtectedRoutes isAuthenticated={user} />}>
           <Route path="/" element={<Home />} />
