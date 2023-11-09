@@ -86,11 +86,11 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
             src={imageUrl ? imageUrl : "https://dummyimage.com/1203x503"}
           />
         </div>
-        <h2 className="text-xl font-bold font-montserrat text-gray-900 mt-5">
+        <h2 className="text-xl font-bold font-montserrat text-gray-900 mt-5 dark:text-white capitalize">
           {title}
         </h2>
-        <p className="text-lg font-semibold leading-relaxed mt-2">{category}</p>
-        <p className="text-base leading-relaxed mt-2">{description?.slice(0,200)}...</p>
+        <p className="text-lg font-semibold leading-relaxed mt-2 dark:text-gray-300 capitalize">{category}</p>
+        <p className="text-base leading-relaxed mt-2 dark:text-gray-400 capitalize">{description?.slice(0,200)}...</p>
         <NavLink
           to={`/addblog/${$id}`}
           className="text-purple-500 inline-flex items-center py-3  font-semibold underline underline-offset-2 "
@@ -111,17 +111,17 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
         <div className="flex flex-wrap gap-3 justify-end">
           {bookmark ? (
             <LuBookmarkMinus
-              className="text-3xl hover:text-green-600 hover:cursor-pointer"
+              className="text-3xl hover:text-green-600 hover:cursor-pointer dark:text-white"
               onClick={() => removeBookMark()}
             />
           ) : (
             <LuBookmarkPlus
-              className="text-3xl hover:text-green-600 hover:cursor-pointer"
+              className="text-3xl hover:text-green-600 hover:cursor-pointer dark:text-white"
               onClick={() => addBookMark()}
             />
           )}
           <LuTrash2
-              className="text-3xl hover:text-red-400 hover:cursor-pointer"
+              className="text-3xl hover:text-red-400 hover:cursor-pointer dark:text-white"
               onClick={() => deleteBlog()}
             />
         </div>

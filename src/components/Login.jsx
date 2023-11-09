@@ -38,33 +38,33 @@ const Login = () => {
               src="../images/login.svg"
             />
           </div>
-          <div className="lg:w-3/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-            <h2 className="text-gray-900 text-2xl font-semibold font-montserrat mb-5">
+          <div className="lg:w-3/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 dark:bg-slate-700 dark:shadow-2xl">
+            <h2 className="text-gray-900 text-2xl font-semibold font-montserrat mb-5 dark:text-white">
               Login
             </h2>
             <div className="relative mb-4">
-              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600">
+              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600 dark:text-gray-200">
                 Email
               </label>
               <input
                 type="email"
                 id={uId}
                 name="email"
-                className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                 placeholder="Please Enter Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="relative mb-4">
-              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600">
+              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600 dark:text-gray-200">
                 Password
               </label>
               <input
                 type="password"
                 id={uId}
                 name="password"
-                className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                 placeholder="Please Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

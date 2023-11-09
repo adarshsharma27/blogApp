@@ -18,7 +18,7 @@ const AboutUs = () => {
             <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4 dark:text-white">
               Raw Denim Heirloom Man Braid
             </h1>
-            <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">
+            <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500">
               Blue bottle crucifix vinyl post-ironic four dollar toast vegan
               taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh
               mi pug.
@@ -46,25 +46,11 @@ const AboutUs = () => {
                 <h2 className="text-gray-900 text-lg title-font font-medium mb-3 dark:text-white">
                   Shooting Stars
                 </h2>
-                <p className="leading-relaxed text-base">
+                <p className="leading-relaxed text-base  dark:text-gray-400">
                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                   taxidermy. Gastropub indxgo juice poutine, ramps microdosing
                   banh mi pug VHS try-hard.
                 </p>
-                <a className="mt-3 text-purple-500 inline-flex items-center">
-                  Learn More
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
               </div>
             </div>
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
@@ -87,25 +73,11 @@ const AboutUs = () => {
                 <h2 className="text-gray-900 text-lg title-font font-medium mb-3 dark:text-white">
                   The Catalyzer
                 </h2>
-                <p className="leading-relaxed text-base">
+                <p className="leading-relaxed text-base  dark:text-gray-400">
                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                   taxidermy. Gastropub indxgo juice poutine, ramps microdosing
                   banh mi pug VHS try-hard.
                 </p>
-                <a className="mt-3 text-purple-500 inline-flex items-center">
-                  Learn More
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
               </div>
             </div>
             <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
@@ -124,33 +96,19 @@ const AboutUs = () => {
                 </svg>
               </div>
               <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3">
+                <h2 className="text-gray-900 text-lg title-font font-medium mb-3  dark:text-gray-400">
                   Neptune
                 </h2>
-                <p className="leading-relaxed text-base">
+                <p className="leading-relaxed text-base  dark:text-gray-400">
                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                   taxidermy. Gastropub indxgo juice poutine, ramps microdosing
                   banh mi pug VHS try-hard.
                 </p>
-                <a className="mt-3 text-purple-500 inline-flex items-center">
-                  Learn More
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
               </div>
             </div>
           </div>
           <button className="flex mx-auto mt-16 text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg">
-         Home
+            Home
           </button>
         </div>
       </section>
@@ -176,10 +134,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
+                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
                     STEP 1
                   </h2>
-                  <p className="leading-relaxed">
+                  <p className="leading-relaxed  dark:text-gray-400">
                     VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
                     Kinfolk bespoke try-hard cliche palo santo offal.
                   </p>
@@ -203,10 +161,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
+                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white ">
                     STEP 2
                   </h2>
-                  <p className="leading-relaxed">
+                  <p className="leading-relaxed  dark:text-gray-400">
                     Vice migas literally kitsch +1 pok pok. Truffaut hot chicken
                     slow-carb health goth, vape typewriter.
                   </p>
@@ -231,10 +189,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
+                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
                     STEP 3
                   </h2>
-                  <p className="leading-relaxed">
+                  <p className="leading-relaxed  dark:text-gray-400">
                     Coloring book nar whal glossier master cleanse umami. Salvia
                     +1 master cleanse blog taiyaki.
                   </p>
@@ -259,10 +217,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
+                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
                     STEP 4
                   </h2>
-                  <p className="leading-relaxed">
+                  <p className="leading-relaxed  dark:text-gray-400">
                     VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
                     Kinfolk bespoke try-hard cliche palo santo offal.
                   </p>
@@ -284,10 +242,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
+                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
                     FINISH
                   </h2>
-                  <p className="leading-relaxed">
+                  <p className="leading-relaxed  dark:text-gray-400">
                     Pitchfork ugh tattooed scenester echo park gastropub
                     whatever cold-pressed retro.
                   </p>
