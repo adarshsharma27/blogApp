@@ -2,15 +2,19 @@ import React, { useId, useState } from "react";
 import { databases, ID, storage } from "../config";
 import { useNavigate } from "react-router-dom";
 import conf from "../conf/conf";
+import { useSelector } from "react-redux";
 
 const AddBlog = () => {
   const uId = useId();
   const navigate = useNavigate();
   const [blog, setBlog] = useState({});
   const [imageUrl, setImageUrl] = useState("");
+  const[createDisable,setCreateDisable]=useState(true)
+  const {userId} = useSelector((state) => state.blogsReducer?.userData);
   const blogHandle = (e) => {
-    setBlog({ ...blog, [e.target.name]: e.target.value, imageUrl });
+    setBlog({ ...blog, [e.target.name]: e.target.value,imageUrl,userId});
   };
+  
   const addBlog = async (e) => {
     databases.createDocument(
       conf.databaseId,
@@ -31,9 +35,12 @@ const AddBlog = () => {
       function (response) {
         const fileId = response.$id;
         if (fileId) {
-          debugger;
           const imgUrl = storage.getFilePreview("653022b9b06e66621238", fileId);
-          if (imgUrl) setImageUrl(imgUrl?.href);
+          if (imgUrl?.href){
+           setImageUrl(imgUrl?.href);
+           setCreateDisable(false)
+          }
+            
         }
       },
       function (error) {
@@ -138,6 +145,7 @@ const AddBlog = () => {
                 <button
                   className="flex mx-auto text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg"
                   onClick={addBlog}
+                  disabled={createDisable}
                 >
                   Create Blog
                 </button>

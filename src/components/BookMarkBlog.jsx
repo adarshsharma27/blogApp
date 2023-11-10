@@ -38,7 +38,7 @@ const BookMarkBlog = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {blogs?.map((blog) => {
-              const { title, category, description, $id, imageUrl } = blog;
+              const { title, category, description, $id, imageUrl ,userId} = blog;
               return (
                 <BlogCard
                   title={title}
@@ -47,6 +47,7 @@ const BookMarkBlog = () => {
                   $id={$id}
                   key={$id}
                   imageUrl={imageUrl}
+                  user_Id={userId}
                 />
               );
             })}

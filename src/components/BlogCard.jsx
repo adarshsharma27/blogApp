@@ -4,11 +4,14 @@ import { LuBookmarkPlus, LuBookmarkMinus, LuTrash2 } from "react-icons/lu";
 import { databases, ID } from "../config";
 import conf from "../conf/conf";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const BlogCard = ({ title, category, description, $id, imageUrl }) => {
+const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
   const pageUrl = useLocation();
   const [bookmark, setBookMark] = useState();
-
+  const {userId} = useSelector((state) => state.blogsReducer?.userData);
+  console.log(user_Id,"1");
+  console.log(userId,"2");
   useEffect(() => {
     if (pageUrl?.pathname === "/bookmark") setBookMark(true);
     else setBookMark(false);
@@ -108,23 +111,31 @@ const BlogCard = ({ title, category, description, $id, imageUrl }) => {
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </NavLink>
+        
         <div className="flex flex-wrap gap-3 justify-end">
-          {bookmark ? (
+          {bookmark || userId==user_Id ? (
             <LuBookmarkMinus
               className="text-3xl hover:text-green-600 hover:cursor-pointer dark:text-white"
               onClick={() => removeBookMark()}
             />
           ) : (
-            <LuBookmarkPlus
+            userId==user_Id && <LuBookmarkPlus
               className="text-3xl hover:text-green-600 hover:cursor-pointer dark:text-white"
               onClick={() => addBookMark()}
             />
           )}
+          {
+            userId==user_Id &&
           <LuTrash2
               className="text-3xl hover:text-red-400 hover:cursor-pointer dark:text-white"
               onClick={() => deleteBlog()}
             />
+          }
         </div>
+        
+         
+        
+       
       </div>
     </>
   );
