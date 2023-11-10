@@ -12,27 +12,39 @@ const Login = () => {
   const [nameErr, setNameErr] = useState("");
   const dispatch = useDispatch();
   const Login = async () => {
-    const userData = await account.createEmailSession(email, password);
-    dispatch(logIn(userData));
-    toast.success("LoggedIn Successfully", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-    setEmail("");
-    setPassword("");
-    navigate("/addblog");
+    try {
+      const userData = await account.createEmailSession(email, password);
+      dispatch(logIn(userData));
+      toast.success("LoggedIn Successfully", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setEmail("");
+      setPassword("");
+      navigate("/addblog");
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
   return (
     <>
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
         <div className="container px-5 py-16 mx-auto flex flex-wrap items-center">
           <div className="lg:w-2/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-          <img
+            <img
               className="object-cover object-center rounded"
               alt="hero"
               src="../images/login.svg"
@@ -43,7 +55,10 @@ const Login = () => {
               Login
             </h2>
             <div className="relative mb-4">
-              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600 dark:text-gray-200">
+              <label
+                htmlFor={uId}
+                className="leading-7 text-base font-semibold text-gray-600 dark:text-gray-200"
+              >
                 Email
               </label>
               <input
@@ -57,7 +72,10 @@ const Login = () => {
               />
             </div>
             <div className="relative mb-4">
-              <label htmlFor={uId} className="leading-7 text-base font-semibold text-gray-600 dark:text-gray-200">
+              <label
+                htmlFor={uId}
+                className="leading-7 text-base font-semibold text-gray-600 dark:text-gray-200"
+              >
                 Password
               </label>
               <input

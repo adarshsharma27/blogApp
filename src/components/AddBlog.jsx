@@ -9,38 +9,45 @@ const AddBlog = () => {
   const navigate = useNavigate();
   const [blog, setBlog] = useState({});
   const [imageUrl, setImageUrl] = useState("");
-  const[createDisable,setCreateDisable]=useState(true)
-  const {userId} = useSelector((state) => state.blogsReducer?.userData);
+  const [createDisable, setCreateDisable] = useState(true);
+  const { userId } = useSelector((state) => state.blogsReducer?.userData);
   const blogHandle = (e) => {
-    setBlog({ ...blog, [e.target.name]: e.target.value,imageUrl,userId});
+    setBlog({ ...blog, [e.target.name]: e.target.value, imageUrl, userId });
   };
-  
+
   const addBlog = async (e) => {
-    databases.createDocument(
-      conf.databaseId,
-      conf.collectionId,
-      ID.unique(),
-      blog
-    );
-    navigate("/");
+    try {
+      await databases.createDocument(
+        conf.databaseId,
+        conf.collectionId,
+        ID.unique(),
+        blog
+      );
+      navigate("/");
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
   const handleImage = (e) => {
     const image = e.target.files[0];
-    const promise = storage.createFile(
-      conf.bucketId,
-      ID.unique(),
-      image
-    );
+    const promise = storage.createFile(conf.bucketId, ID.unique(), image);
     promise.then(
       function (response) {
         const fileId = response.$id;
         if (fileId) {
           const imgUrl = storage.getFilePreview("653022b9b06e66621238", fileId);
-          if (imgUrl?.href){
-           setImageUrl(imgUrl?.href);
-           setCreateDisable(false)
+          if (imgUrl?.href) {
+            setImageUrl(imgUrl?.href);
+            setCreateDisable(false);
           }
-            
         }
       },
       function (error) {
@@ -56,7 +63,7 @@ const AddBlog = () => {
             <h1 className="sm:text-3xl text-3xl font-bold font-montserrat mb-4 text-gray-900 dark:text-white">
               Create Blog!!!
             </h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base  dark:text-gray-400">
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-base  dark:text-gray-400">
               Freely Create Blog!!!!
             </p>
           </div>
