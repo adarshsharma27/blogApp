@@ -11,7 +11,7 @@ const Header = ({ addDarkMode, darkMode }) => {
     dispatch(logOut(null));
     navigate("/login");
   };
-  const user = useSelector((state) => state.blogsReducer?.userData);
+  const user = useSelector((state) => state.persistedReducer?.userData);
   return (
     <>
       <header className="text-gray-600 font-montserrat bg-gray-100 dark:bg-slate-700">

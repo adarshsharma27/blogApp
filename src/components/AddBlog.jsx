@@ -10,7 +10,7 @@ const AddBlog = () => {
   const [blog, setBlog] = useState({});
   const [imageUrl, setImageUrl] = useState("");
   const [createDisable, setCreateDisable] = useState(true);
-  const { userId } = useSelector((state) => state.blogsReducer?.userData);
+  const { userId } = useSelector((state) => state.persistedReducer?.userData);
   const blogHandle = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value, imageUrl, userId });
   };

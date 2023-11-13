@@ -20,7 +20,7 @@ const App = () => {
     darkmode.classList.toggle("dark");
     setDarkMode(!darkMode);
   };
-  const user = useSelector((state) => state.blogsReducer?.userData);
+  const user = useSelector((state) => state.persistedReducer?.userData);
   return (
     <>
       <Header addDarkMode={addDarkMode} darkMode={darkMode} />

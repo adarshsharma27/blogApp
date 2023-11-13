@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
   const pageUrl = useLocation();
   const [bookmark, setBookMark] = useState();
-  const {userId} = useSelector((state) => state.blogsReducer?.userData);
+  const {userId} = useSelector((state) => state.persistedReducer?.userData);
   console.log(user_Id,"1");
   console.log(userId,"2");
   useEffect(() => {

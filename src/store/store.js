@@ -1,5 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import blogsReducer from "../features/blogsSlice"
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+};
+const persistedReducer = persistReducer(persistConfig, blogsReducer);
 export const store = configureStore({
-  reducer: {blogsReducer}
+  reducer: {persistedReducer}
 })
