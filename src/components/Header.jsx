@@ -38,6 +38,18 @@ const Header = ({ addDarkMode, darkMode }) => {
             </NavLink>
             {user ? (
               <>
+              <NavLink
+                  to="/addblog"
+                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
+                >
+                  AddBlog
+                </NavLink>
+                <NavLink
+                  to="/bookmark"
+                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
+                >
+                  BookMarks
+                </NavLink>
                 <NavLink
                   to="/login"
                   className="mr-5 hover:text-gray-900 dark:text-white font-semibold"

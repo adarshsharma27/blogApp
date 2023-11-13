@@ -10,8 +10,6 @@ const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
   const pageUrl = useLocation();
   const [bookmark, setBookMark] = useState();
   const {userId} = useSelector((state) => state.persistedReducer?.userData);
-  console.log(user_Id,"1");
-  console.log(userId,"2");
   useEffect(() => {
     if (pageUrl?.pathname === "/bookmark") setBookMark(true);
     else setBookMark(false);
@@ -113,7 +111,7 @@ const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
         </NavLink>
         
         <div className="flex flex-wrap gap-3 justify-end">
-          {bookmark || userId==user_Id ? (
+          {bookmark  ? (
             <LuBookmarkMinus
               className="text-3xl hover:text-green-600 hover:cursor-pointer dark:text-white"
               onClick={() => removeBookMark()}
