@@ -3,6 +3,7 @@ import { databases, ID, storage } from "../config";
 import { useNavigate } from "react-router-dom";
 import conf from "../conf/conf";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const AddBlog = () => {
   const uId = useId();
@@ -23,6 +24,15 @@ const AddBlog = () => {
         ID.unique(),
         blog
       );
+      toast.success("Blog Created Successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       navigate("/");
     } catch (error) {
       toast.error(error.message, {
