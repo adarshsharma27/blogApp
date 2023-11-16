@@ -115,7 +115,7 @@ const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
             userId==user_Id &&
           <LuPencilLine 
               className="text-3xl hover:text-indigo-400 hover:cursor-pointer dark:text-white"
-              onClick={() => navigate("/updateblog")}
+              onClick={() => navigate(`/updateblog/${$id}`)}
             />
           }
           {
