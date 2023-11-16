@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
-import { LuBookmarkPlus, LuBookmarkMinus, LuTrash2 } from "react-icons/lu";
+import { LuBookmarkPlus, LuBookmarkMinus, LuTrash2,LuPencilLine  } from "react-icons/lu";
 import { databases, ID } from "../config";
 import conf from "../conf/conf";
 import { toast } from "react-toastify";
@@ -110,7 +110,21 @@ const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
           </svg>
         </NavLink>
         
-        <div className="flex flex-wrap gap-3 justify-end">
+        <div className="flex flex-wrap gap-3 justify-end">        
+          {
+            userId==user_Id &&
+          <LuPencilLine 
+              className="text-3xl hover:text-indigo-400 hover:cursor-pointer dark:text-white"
+              onClick={() => navigate("/updateblog")}
+            />
+          }
+          {
+            userId==user_Id &&
+          <LuTrash2
+              className="text-3xl hover:text-red-400 hover:cursor-pointer dark:text-white"
+              onClick={() => deleteBlog()}
+            />
+          }
           {bookmark  ? (
             <LuBookmarkMinus
               className="text-3xl hover:text-green-600 hover:cursor-pointer dark:text-white"
@@ -122,13 +136,6 @@ const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
               onClick={() => addBookMark()}
             />
           )}
-          {
-            userId==user_Id &&
-          <LuTrash2
-              className="text-3xl hover:text-red-400 hover:cursor-pointer dark:text-white"
-              onClick={() => deleteBlog()}
-            />
-          }
         </div>
         
          

@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import BookMarkBlog from "./components/BookMarkBlog";
 import ProtectedRoutes from "./ProtectedRoutes";
 import { useSelector } from "react-redux";
+import UpdateBlog from "./components/UpdateBlog";
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const addDarkMode = () => {
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/addblog" element={<AddBlog />} />
           <Route path="/addblog/:id" element={<BlogDetail />} />
           <Route path="/bookmark" element={<BookMarkBlog />} />
+          <Route path="/updateblog" element={<UpdateBlog />} />
         </Route>
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/signup" element={<SignUp />} />
