@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import { databases} from "../config";
 import conf from "../conf/conf";
-
+import { NavLink } from "react-router-dom";
+import { LuChevronLeft  } from "react-icons/lu";
 const BookMarkBlog = () => {
   const [blogs, setBlogs] = useState();
   useEffect(() => {
@@ -22,7 +23,12 @@ const BookMarkBlog = () => {
   return (
     <>
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
-        <div className="container px-5 py-24 mx-auto">
+      <div className="container px-20 pt-8">
+          <NavLink to="/">
+            <LuChevronLeft className="w-10 h-10 p-1 hover:bg-indigo-400 hover:text-white text-gray-900 rounded-full bg-gray-200 font-bold hover:cursor-pointer dark:text-white" />
+          </NavLink>
+        </div>
+        <div className="container px-5 py-8 mx-auto">
           <div className="flex flex-col">
             <div className="h-1 bg-gray-200 rounded overflow-hidden">
               <div className="w-24 h-full bg-purple-500"></div>
