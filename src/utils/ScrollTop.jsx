@@ -22,7 +22,7 @@ const ScrollTop = () => {
     <>
       {visibleScrollTop && (
         <div className="fixed bottom-10 right-12" onClick={scrollTopBtn}>
-          <LuChevronsUp className="w-14 h-14 p-2 hover:bg-indigo-600 hover:text-white text-white rounded-full bg-gray-900 font-bold hover:cursor-pointer dark:text-white" />
+          <LuChevronsUp className="w-12 h-12 p-2 hover:bg-indigo-600 hover:text-white text-white rounded-full bg-gray-900 font-bold hover:cursor-pointer dark:text-white" />
         </div>
       )}
     </>
