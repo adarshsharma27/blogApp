@@ -14,6 +14,7 @@ import BookMarkBlog from "./components/BookMarkBlog";
 import ProtectedRoutes from "./ProtectedRoutes";
 import { useSelector } from "react-redux";
 import UpdateBlog from "./components/UpdateBlog";
+import ScrollTop from "./utils/ScrollTop";
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const addDarkMode = () => {
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
       </Routes>
       <ToastContainer bodyClassName="font-montserrat font-bold" />
+      <ScrollTop/>
       <Footer />
     </>
   );
