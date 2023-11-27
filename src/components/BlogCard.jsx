@@ -5,6 +5,7 @@ import { databases, ID } from "../config";
 import conf from "../conf/conf";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { NotificationAudio } from "../utils/NotificationAudio";
 
 const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
   const pageUrl = useLocation();
@@ -55,7 +56,17 @@ const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
         draggable: true,
         progress: undefined,
       });
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
     navigate("/bookmark");
   };
   const deleteBlog = async () => {
@@ -74,8 +85,20 @@ const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
         draggable: true,
         progress: undefined,
       });
-    } catch (error) {}
-    navigate("/");
+      NotificationAudio();
+      navigate("/");
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  
   };
   return (
     <>

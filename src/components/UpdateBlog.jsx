@@ -5,6 +5,7 @@ import conf from "../conf/conf";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { LuChevronLeft  } from "react-icons/lu";
+import { NotificationAudio } from "../utils/NotificationAudio";
 const UpdateBlog = () => {
   const uId = useId();
   const navigate=useNavigate()
@@ -62,6 +63,7 @@ const UpdateBlog = () => {
         draggable: true,
         progress: undefined,
       });
+      NotificationAudio();
       navigate("/");
  }
  catch (error) {

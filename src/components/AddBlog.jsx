@@ -5,6 +5,7 @@ import conf from "../conf/conf";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { LuChevronLeft  } from "react-icons/lu";
+import { NotificationAudio } from "../utils/NotificationAudio";
 const AddBlog = () => {
   const uId = useId();
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const AddBlog = () => {
         draggable: true,
         progress: undefined,
       });
+      NotificationAudio();
       navigate("/");
     } catch (error) {
       toast.error(error.message, {
