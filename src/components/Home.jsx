@@ -14,7 +14,7 @@ const Home = () => {
               air plant cold-pressed tacos poke beard tote bag. Heirloom echo
               park mlkshk tote bag selvage hot chicken authentic tumeric
               truffaut hexagon try-hard chambray."
-              padding={16}
+              padding={20}
       />
       <FeaturedBlog />
       <TrendingBlog />
