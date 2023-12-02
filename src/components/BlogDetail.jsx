@@ -3,6 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { databases } from "../config";
 import conf from "../conf/conf";
 import { LuChevronLeft  } from "react-icons/lu";
+import BackButton from "../utils/BackButton";
 const BlogDetail = () => {
   const [blog, setBlog] = useState();
   const {id} =useParams()
@@ -23,11 +24,7 @@ const BlogDetail = () => {
   return (
     <>
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
-        <div className="container px-6 md:px-20 pt-16">
-          <NavLink to="/">
-            <LuChevronLeft className="w-10 h-10 p-1 hover:bg-indigo-400 hover:text-white text-gray-900 rounded-full bg-gray-200 font-bold hover:cursor-pointer dark:text-white" />
-          </NavLink>
-        </div>
+        <BackButton/>
         <div className="container mx-auto flex flex-col px-5 py-4 justify-center items-center">
           <img
             className="lg:w-5/6 md:w-full w-full  mb-10 object-cover object-center rounded"

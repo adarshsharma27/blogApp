@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { LuChevronLeft  } from "react-icons/lu";
 import { NotificationAudio } from "../utils/NotificationAudio";
+import BackButton from "../utils/BackButton";
 const AddBlog = () => {
   const uId = useId();
   const navigate = useNavigate();
@@ -70,11 +71,7 @@ const AddBlog = () => {
   return (
     <>
       <section className="text-gray-600 font-montserrat relative dark:bg-slate-700">
-      <div className="container px-6 md:px-20 pt-16">
-          <NavLink to="/">
-            <LuChevronLeft className="w-10 h-10 p-1 hover:bg-indigo-400 hover:text-white text-gray-900 rounded-full bg-gray-200 font-bold hover:cursor-pointer dark:text-white" />
-          </NavLink>
-        </div>
+      <BackButton/>
         <div className="container px-5 py-4 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-3xl font-bold font-montserrat mb-4 text-gray-900 dark:text-white">

@@ -4,6 +4,7 @@ import { databases} from "../config";
 import conf from "../conf/conf";
 import { NavLink } from "react-router-dom";
 import { LuChevronLeft  } from "react-icons/lu";
+import BackButton from "../utils/BackButton";
 const BookMarkBlog = () => {
   const [blogs, setBlogs] = useState();
   useEffect(() => {
@@ -23,11 +24,7 @@ const BookMarkBlog = () => {
   return (
     <>
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
-      <div className="container px-6 md:px-20 pt-16">
-          <NavLink to="/">
-            <LuChevronLeft className="w-10 h-10 p-1 hover:bg-indigo-400 hover:text-white text-gray-900 rounded-full bg-gray-200 font-bold hover:cursor-pointer dark:text-white" />
-          </NavLink>
-        </div>
+      <BackButton/>
         <div className="container px-5 py-8 mx-auto">
           <div className="flex flex-col">
             <div className="h-1 bg-gray-200 rounded overflow-hidden">
