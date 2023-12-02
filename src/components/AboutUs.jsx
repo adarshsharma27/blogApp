@@ -6,7 +6,7 @@ import { LuChevronLeft } from "react-icons/lu";
 const AboutUs = () => {
   return (
     <>
-     <div className="container px-6 md:px-20 pt-8">
+     <div className="container px-6 md:px-20 pt-16">
           <NavLink to="/">
             <LuChevronLeft className="w-10 h-10 p-1 hover:bg-indigo-400 hover:text-white text-gray-900 rounded-full bg-gray-200 font-bold hover:cursor-pointer dark:text-white" />
           </NavLink>
@@ -18,6 +18,7 @@ const AboutUs = () => {
               air plant cold-pressed tacos poke beard tote bag. Heirloom echo
               park mlkshk tote bag selvage hot chicken authentic tumeric
               truffaut hexagon try-hard chambray."
+              padding={8}
       />
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
      

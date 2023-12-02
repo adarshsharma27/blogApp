@@ -136,8 +136,9 @@ const Header = ({ addDarkMode, darkMode }) => {
         </div>
         {/* Desktop Navigation end */}
         {/* Mobile Navigation start */}
-        <div className="md:hidden container mx-auto flex flex-wrap px-4 py-3 flex-col">
-          <div className="flex justify-between z-30 text-gray-600 ">
+        <div className="md:hidden container mx-auto flex flex-wrap px-4 pt-3 flex-col">
+        <div className="fixed top-0 left-0 right-0 z-30 container mx-auto flex flex-wrap px-4 pt-3 flex-col bg-gray-100">
+        <div className="flex justify-between z-30 text-gray-600">
             <NavLink
               to="/"
               className="flex font-montserrat font-medium items-center  mb-4 md:mb-0"
@@ -151,18 +152,21 @@ const Header = ({ addDarkMode, darkMode }) => {
               />
             </div>
           </div>
+        </div>
+         
 
           <nav
             className={
               open === true
-                ? "text-center z-20 mx-auto flex flex-col  justify-center  bg-gray-100 text-gray-600 w-full h-screen items-center text-base gap-2 absolute top-0 left-0 transition-all duration-1000 ease-in-out "
-                : "text-center z-20 mx-auto flex flex-col  justify-center  bg-gray-100 text-white w-full h-screen items-center text-base gap-2 absolute top-0  left-[-500px] transition-all duration-1000 ease-in-out "
+                ? "text-center z-20 mx-auto flex flex-col  justify-center  bg-gray-100 text-gray-600 w-full h-screen items-center text-base gap-2 fixed top-0 left-0 transition-all duration-1000 ease-in-out "
+                : "text-center z-20 mx-auto flex flex-col  justify-center  bg-gray-100 text-white w-full h-screen items-center text-base gap-2 fixed top-0  left-[-500px] transition-all duration-1000 ease-in-out "
             }
           >
             {user && (
               <NavLink
                 to="/"
                 className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
+                onClick={() => toggleNavigation()}
               >
                 Home
               </NavLink>
@@ -199,7 +203,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                 </NavLink>
                 <NavLink
                   to="/addblog"
-                  className="hover:text-purple-500 d-flex justify-center justify-center dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
+                  className="hover:text-purple-500 flex justify-center items-center	 dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
                   onClick={() => toggleNavigation()}
                 >
                     <div className="w-10 h-10 text-white p-2 bg-purple-500 rounded-full text-center font-bold">
