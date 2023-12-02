@@ -9,34 +9,44 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [nameErr, setNameErr] = useState("");
+  const [emailErr, setEmailErr] = useState(false);
+  const [passwordErr, setPasswordErr] = useState("");
   const dispatch = useDispatch();
   const Login = async () => {
-    try {
-      const userData = await account.createEmailSession(email, password);
-      dispatch(logIn(userData));
-      toast.success("LoggedIn Successfully", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      setEmail("");
-      setPassword("");
-      navigate("/addblog");
-    } catch (error) {
-      toast.error(error.message, {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+    let emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      setEmailErr(true);
+      setPasswordErr(false);
+    } else if (!password || password.trim().length <= 8) {
+      setPasswordErr(true);
+      setEmailErr(false);
+    } else {
+      try {
+        const userData = await account.createEmailSession(email, password);
+        dispatch(logIn(userData));
+        toast.success("LoggedIn Successfully", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setEmail("");
+        setPassword("");
+        navigate("/addblog");
+      } catch (error) {
+        toast.error(error.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     }
   };
   return (
@@ -68,8 +78,18 @@ const Login = () => {
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                 placeholder="Please Enter Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setEmailErr(false);
+                }}
               />
+              {emailErr && (
+                <div className="pt-2">
+                  <span className="text-red-400 text-base font-semibold">
+                    Please Enter Email
+                  </span>
+                </div>
+              )}
             </div>
             <div className="relative mb-4">
               <label
@@ -85,13 +105,23 @@ const Login = () => {
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                 placeholder="Please Enter Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setPasswordErr(false);
+                }}
               />
+              {passwordErr && (
+                <div className="pt-2">
+                  <span className="text-red-400 text-base font-semibold">
+                    Please Enter Password
+                  </span>
+                </div>
+              )}
             </div>
             <button
               className="text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg disabled:opacity-75 disabled:cursor-not-allowed"
-              disabled={!email || !password}
               onClick={Login}
+              disabled={emailErr || passwordErr}
             >
               Login
             </button>

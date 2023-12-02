@@ -9,33 +9,54 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [nameErr, setNameErr] = useState(false);
+  const [emailErr, setEmailErr] = useState(false);
+  const [passwordErr, setPasswordErr] = useState("");
   const SignUp = async () => {
-    try {
-      await account.create(ID.unique(), email, password, name);
-      setName("");
-      setEmail("");
-      setPassword("");
-      toast.success("SignUp Successfully", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      navigate("/login");
-    } catch (error) {
-      toast.error(error.message, {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+    let emailRegex = /^\S+@\S+\.\S+$/;
+    let nameReg = /^[A-Za-z]*$/;
+    if (!name || !nameReg.test(name) || name.trim().length > 50) {
+      debugger;
+      setNameErr(true);
+      setEmailErr(false);
+      setPasswordErr(false);
+    } else if (!emailRegex.test(email)) {
+      setEmailErr(true);
+      setNameErr(false);
+      setPasswordErr(false);
+    } else if (!password || password.trim().length <= 8) {
+      setPasswordErr(true);
+      setNameErr(false);
+      setEmailErr(false);
+    } else {
+      try {
+        await account.create(ID.unique(), email, password, name);
+        setName("");
+        setEmail("");
+        setPassword("");
+        toast.success("SignUp Successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        navigate("/login");
+      } catch (error) {
+        toast.error(error.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     }
+   
   };
   return (
     <>
@@ -66,8 +87,18 @@ const SignUp = () => {
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                 placeholder="Please Enter Name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setNameErr(false);
+                }}
               />
+              {nameErr && (
+                <div className="pt-2">
+                  <span className="text-red-400 text-base font-semibold">
+                    Please Enter Name
+                  </span>
+                </div>
+              )}
             </div>
             <div className="relative mb-4">
               <label
@@ -83,8 +114,18 @@ const SignUp = () => {
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                 placeholder="Please Enter Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setEmailErr(false);
+                }}
               />
+              {emailErr && (
+                <div className="pt-2">
+                  <span className="text-red-400 text-base font-semibold">
+                    Please Enter Email
+                  </span>
+                </div>
+              )}
             </div>
             <div className="relative mb-4">
               <label
@@ -100,13 +141,23 @@ const SignUp = () => {
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                 placeholder="Please Enter Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setPasswordErr(false);
+                }}
               />
+              {passwordErr && (
+                <div className="pt-2">
+                  <span className="text-red-400 text-base font-semibold">
+                    Please Enter Password
+                  </span>
+                </div>
+              )}
             </div>
             <button
               className="text-white font-semibold bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg disabled:opacity-75 disabled:cursor-not-allowed"
               onClick={SignUp}
-              disabled={!name || !email || !password}
+              disabled={nameErr || emailErr || passwordErr}
             >
               SignUp
             </button>
