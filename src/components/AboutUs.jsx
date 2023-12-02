@@ -1,9 +1,16 @@
 import React from "react";
 import Hero from "./Hero";
+import { NavLink } from "react-router-dom";
+import { LuChevronLeft } from "react-icons/lu";
 
 const AboutUs = () => {
   return (
     <>
+     <div className="container px-6 md:px-20 pt-8">
+          <NavLink to="/">
+            <LuChevronLeft className="w-10 h-10 p-1 hover:bg-indigo-400 hover:text-white text-gray-900 rounded-full bg-gray-200 font-bold hover:cursor-pointer dark:text-white" />
+          </NavLink>
+        </div>
       <Hero
         title="Before they sold out"
         imageUrl="../images/about.svg"
@@ -13,6 +20,7 @@ const AboutUs = () => {
               truffaut hexagon try-hard chambray."
       />
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
+     
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
             <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4 dark:text-white">
