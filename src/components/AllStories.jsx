@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import { databases} from "../config";
 import conf from "../conf/conf";
+import Skeleton from "./Skeleton";
 
 const AllStories = () => {
-  const [blogs, setBlogs] = useState();
+  const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     const getBlogs = async () => {
       try {
@@ -12,7 +13,7 @@ const AllStories = () => {
           conf.databaseId,
           conf.collectionId,
         );
-        
+
         setBlogs(resp?.documents);
       } catch (error) {
       }
@@ -29,7 +30,7 @@ const AllStories = () => {
             </div>
             <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
               <h1 className="sm:w-2/5 text-gray-900 font-bold font-montserrat text-3xl mb-2 sm:mb-0 dark:text-white">
-              AllStories
+                AllStories
               </h1>
               <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0 dark:text-gray-400">
                 Street art subway tile salvia four dollar toast bitters selfies
@@ -39,20 +40,29 @@ const AllStories = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {blogs?.map((blog) => {
-              const { title, category, description, $id,imageUrl,userId } = blog;
-              return (
-                <BlogCard
-                  title={title}
-                  category={category}
-                  description={description}
-                  $id={$id}
-                  key={$id}
-                  imageUrl={imageUrl}
-                  user_Id={userId}
-                />
-              );
-            })}
+            {blogs?.length === 0
+              ? Array.from({ length: 10 }).map(() => <Skeleton />)
+              : blogs?.map((blog) => {
+                  const {
+                    title,
+                    category,
+                    description,
+                    $id,
+                    imageUrl,
+                    userId,
+                  } = blog;
+                  return (
+                    <BlogCard
+                      title={title}
+                      category={category}
+                      description={description}
+                      $id={$id}
+                      key={$id}
+                      imageUrl={imageUrl}
+                      user_Id={userId}
+                    />
+                  );
+                })}
           </div>
         </div>
       </section>
