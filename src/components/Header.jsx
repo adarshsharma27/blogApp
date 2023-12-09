@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { account } from "../config";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../features/blogsSlice";
-import { LuAlignRight } from "react-icons/lu";
+import { LuAlignRight,LuX} from "react-icons/lu";
 const Header = ({ addDarkMode, darkMode }) => {
   const dispatch = useDispatch();
   const LogOut = async () => {
     await account.deleteSession("current");
     dispatch(logOut(null));
-    navigate("/login");
     setOpen(!open)
   };
   const user = useSelector((state) => state.persistedReducer?.userData);
@@ -26,7 +25,7 @@ const Header = ({ addDarkMode, darkMode }) => {
             to="/"
             className="flex font-montserrat font-medium items-center text-gray-900 mb-4 md:mb-0"
           >
-            <span className="ml-3 text-xl">DesiBlogs</span>
+            <img src="../images/logo.png" width="40px" /><span className="ml-2 text-xl font-bold text-purple-500">DesiBlogs</span>
           </NavLink>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             {user && (
@@ -137,23 +136,27 @@ const Header = ({ addDarkMode, darkMode }) => {
         {/* Desktop Navigation end */}
         {/* Mobile Navigation start */}
         <div className="md:hidden container mx-auto flex flex-wrap px-4 pt-3 flex-col">
-        <div className="fixed top-0 left-0 right-0 z-30 container mx-auto flex flex-wrap px-4 pt-3 flex-col bg-gray-100 dark:bg-slate-600 ">
-        <div className="flex justify-between z-30 text-gray-600 dark:text-white">
-            <NavLink
-              to="/"
-              className="flex font-montserrat font-medium items-center  mb-4 md:mb-0"
-            >
-              <span className="text-xl">DesiBlogs</span>
-            </NavLink>
-            <div>
-              <LuAlignRight
-                className="text-2xl"
-                onClick={() => toggleNavigation()}
-              />
+          <div className="fixed top-0 left-0 right-0 z-30 container mx-auto flex flex-wrap px-4 pt-3 flex-col bg-gray-100 dark:bg-slate-600 ">
+            <div className="flex justify-between z-30 text-gray-600 dark:text-white">
+              <NavLink
+                to="/"
+                className="flex font-montserrat font-medium items-center  mb-4 md:mb-0"
+              >
+                <img src="../images/logo.png" width="30px" /><span className="ml-2 text-xl font-bold text-purple-500">DesiBlogs</span>
+              </NavLink>
+              <div>
+              {
+                open === true ? <LuX
+                  className="text-2xl"
+                  onClick={() => toggleNavigation()}/> : <LuAlignRight
+                  className="text-2xl"
+                  onClick={() => toggleNavigation()}
+                />
+              }
+                
+              </div>
             </div>
           </div>
-        </div>
-         
 
           <nav
             className={
@@ -206,10 +209,10 @@ const Header = ({ addDarkMode, darkMode }) => {
                   className="hover:text-purple-500 flex justify-center items-center	 dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
                   onClick={() => toggleNavigation()}
                 >
-                    <div className="w-10 h-10 text-white p-2 bg-purple-500 rounded-full text-center font-bold">
-                      {user?.providerUid?.slice(0, 1)?.toUpperCase()}
-                    </div>
-                    </NavLink>
+                  <div className="w-10 h-10 text-white p-2 bg-purple-500 rounded-full text-center font-bold">
+                    {user?.providerUid?.slice(0, 1)?.toUpperCase()}
+                  </div>
+                </NavLink>
               </>
             ) : (
               <>

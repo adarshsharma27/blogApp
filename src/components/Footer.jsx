@@ -4,118 +4,75 @@ const Footer = () => {
   return (
     <>
       <footer className="text-gray-600 font-montserrat dark:bg-slate-700">
-        <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-          <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-              <span className="ml-3 text-xl">DesiBlogs</span>
-            <p className="mt-2 text-sm text-gray-500">
-              Air plant banjo lyft occupy retro adaptogen indego
-            </p>
+        <div className="container px-5 py-24 mx-auto flex items-center  md:flex-row md:flex-nowrap flex-wrap flex-col">
+          <div className="flex-shrink-0 md:mx-0 mx-auto text-center">
+            <img src="../images/logo.png" width="50px" />
           </div>
           <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-sm mb-3 dark:text-gray-400">
-                CATEGORIES
+                Services
               </h2>
               <nav className="list-none mb-10">
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    First Link
+                    Create Blogs
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Second Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Fourth Link
+                    Share Blogs
                   </a>
                 </li>
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-sm mb-3 dark:text-gray-400">
-                CATEGORIES
+                Company
               </h2>
               <nav className="list-none mb-10">
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    First Link
+                    About Us
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Second Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Fourth Link
+                    Sign Up
                   </a>
                 </li>
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-sm mb-3  dark:text-gray-400">
-                CATEGORIES
+                Helpful Links
               </h2>
               <nav className="list-none mb-10">
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    First Link
+                    About Us
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Second Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Fourth Link
+                    Sign Up
                   </a>
                 </li>
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-sm mb-3 dark:text-gray-400">
-                CATEGORIES
+                Legal
               </h2>
               <nav className="list-none mb-10">
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    First Link
+                    Accessibility
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Second Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800 dark:text-white">
-                    Fourth Link
+                    Security
                   </a>
                 </li>
               </nav>
