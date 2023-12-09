@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { LuChevronLeft  } from "react-icons/lu";
 import { NotificationAudio } from "../utils/NotificationAudio";
 import BackButton from "../utils/BackButton";
+import Loader from "./Loader";
 const UpdateBlog = () => {
   const uId = useId();
   const navigate=useNavigate()
@@ -15,6 +16,7 @@ const UpdateBlog = () => {
   const { userId } = useSelector((state) => state.persistedReducer?.userData);
   const [imageUrl, setImageUrl] = useState("");
   const [createDisable, setCreateDisable] = useState(true);
+  const[loader,setLoader]=useState(true)
   const blogHandle = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value,userId});
   };
@@ -27,6 +29,7 @@ const UpdateBlog = () => {
           id,
         );
         setBlog(resp);
+        setLoader(false)
       } catch (error) {
         toast.error(error.message, {
           position: "top-right",
@@ -102,7 +105,8 @@ const UpdateBlog = () => {
     <>
       <section className="text-gray-600 font-montserrat relative dark:bg-slate-700">
       <BackButton/>
-        <div className="container px-5 py-4 mx-auto">
+      {
+        loader ? <Loader/> : <div className="container px-5 py-4 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-3xl font-bold font-montserrat mb-4 text-gray-900 dark:text-white">
               Update Blog!!!
@@ -211,6 +215,8 @@ const UpdateBlog = () => {
             </div>
           </div>
         </div>
+      }
+        
       </section>
     </>
   );
