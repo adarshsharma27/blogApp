@@ -1,11 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import BlogCard from "./BlogCard";
 import { databases, Query } from "../config";
 import conf from "../conf/conf";
 import Skeleton from "./Skeleton";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { LuChevronRight, LuChevronLeft } from "react-icons/lu";
 const TrendingBlog = () => {
   const [blogs, setBlogs] = useState([]);
+  const arrowRef = useRef();
+  var settings = {
+    infinite: true,
+    speed: 650,
+    autoplay: true,
+    autoplaySpeed: 2800,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   useEffect(() => {
     const getBlogs = async () => {
       try {
@@ -24,7 +60,7 @@ const TrendingBlog = () => {
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col">
-            <div className="h-1 bg-gray-200 rounded overflow-hidden">
+            <div className="h-1 bg-gray-200 rounded">
               <div className="w-24 h-full bg-purple-500"></div>
             </div>
             <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
@@ -38,30 +74,51 @@ const TrendingBlog = () => {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {blogs?.length === 0
-              ? Array.from({ length: 10 }).map(() => <Skeleton />)
-              : blogs?.map((blog) => {
-                  const {
-                    title,
-                    category,
-                    description,
-                    $id,
-                    imageUrl,
-                    userId,
-                  } = blog;
-                  return (
-                    <BlogCard
-                      title={title}
-                      category={category}
-                      description={description}
-                      $id={$id}
-                      key={$id}
-                      imageUrl={imageUrl}
-                      user_Id={userId}
-                    />
-                  );
-                })}
+          <div className="relative">
+            <Slider {...settings} className="pb-4" ref={arrowRef}>
+              {blogs?.length === 0
+                ? Array.from({ length: 10 }).map(() => <Skeleton />)
+                : blogs?.map((blog) => {
+                    const {
+                      title,
+                      category,
+                      description,
+                      $id,
+                      imageUrl,
+                      userId,
+                    } = blog;
+                    return (
+                      <BlogCard
+                        key={$id}
+                        title={title}
+                        category={category}
+                        description={description}
+                        $id={$id}
+                        imageUrl={imageUrl}
+                        user_Id={userId}
+                        marginTrendingSlider={8}
+                      />
+                    );
+                  })}
+            </Slider>
+            <button className="button hidden md:block">
+              <LuChevronLeft
+                size={45}
+                className="absolute left-0 bottom-[-50px] p-1 rounded-lg bg-indigo-500  text-white transition hover:scale-110 hover:shadow-xl focus:outline-none"
+                onClick={() => {
+                  arrowRef.current.slickPrev();
+                }}
+              />
+            </button>
+            <button className="button hidden md:block">
+              <LuChevronRight
+                size={45}
+                className="absolute right-0 bottom-[-50px] p-1 rounded-lg bg-indigo-500 text-white transition hover:scale-110 hover:shadow-xl focus:outline-none"
+                onClick={() => {
+                  arrowRef.current.slickNext();
+                }}
+              />
+            </button>
           </div>
         </div>
       </section>

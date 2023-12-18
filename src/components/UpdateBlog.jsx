@@ -115,7 +115,7 @@ const UpdateBlog = () => {
               Freely Update Blog!!!!
             </p>
           </div>
-          <div className="lg:w-1/2 md:w-2/3 mx-auto">
+          <div className="lg:w-50 md:w-2/3 mx-auto card-shadow-custom p-6 rounded-lg">
             <div className="flex flex-wrap -m-2">
               <div className="p-2 w-full">
                 <div className="relative">

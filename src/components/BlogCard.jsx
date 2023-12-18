@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { NotificationAudio } from "../utils/NotificationAudio";
 
-const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
+const BlogCard = ({ title, category, description, $id, imageUrl,user_Id ,marginTrendingSlider}) => {
   const pageUrl = useLocation();
   const [bookmark, setBookMark] = useState();
   const {userId} = useSelector((state) => state.persistedReducer?.userData);
@@ -102,7 +102,7 @@ const BlogCard = ({ title, category, description, $id, imageUrl,user_Id}) => {
   };
   return (
     <>
-      <div className="p-4 sm:mb-0 mb-6 shadow-xl break-words">
+      <div className={marginTrendingSlider ? `m-2 p-4 card-shadow-custom break-words h-[500px] rounded-lg`:`p-4 sm:mb-0 mb-6 card-shadow-custom break-words rounded-lg`}>
         <div className="rounded-lg h-64 overflow-hidden">
           <img
             alt="content"
