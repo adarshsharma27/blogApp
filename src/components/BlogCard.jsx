@@ -102,7 +102,7 @@ const BlogCard = ({ title, category, description, $id, imageUrl,user_Id ,marginT
   };
   return (
     <>
-      <div className={marginTrendingSlider ? `m-2 p-4 card-shadow-custom break-words h-[500px] rounded-lg`:`p-4 sm:mb-0 mb-6 card-shadow-custom break-words rounded-lg`}>
+      <div className={marginTrendingSlider ? `m-2 p-4 card-shadow-custom break-words rounded-lg`:`p-4 sm:mb-0 mb-6 card-shadow-custom break-words rounded-lg`}>
         <div className="rounded-lg h-64 overflow-hidden">
           <img
             alt="content"
