@@ -124,21 +124,56 @@ const AddBlog = () => {
               </div>
               <div className="p-2 w-full">
                 <div className="relative">
-                  <label
-                    htmlFor={uId}
-                    className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200"
-                  >
+                  <span className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200">
                     Upload File
-                  </label>
-                  <input
-                    type="file"
-                    id={uId}
-                    name="file"
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
-                    placeholder="Please Enter Title"
-                    // value={}
-                    onChange={handleImage}
-                  />
+                  </span>
+
+                  <div className="flex items-center justify-center w-full">
+                    <label
+                      htmlFor="file-upload"
+                      className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-100 bg-opacity-50 dark:hover:bg-bray-800 dark:bg-slate-700 hover:bg-gray-100 dark:border-white dark:hover:border-indigo-600 dark:hover:bg-slate-600"
+                    >
+                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg
+                          className="w-10 h-10 mb-4 leading-7  text-base font-semibold text-indigo-500  dark:text-gray-200 "
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 16"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                          />
+                        </svg>
+                        <p className="mb-2 text-lg text-gray-500 dark:text-gray-400">
+                          <span className="font-semibold">Click to upload</span>{" "}
+                          or{" "}
+                          <span className="text-indigo-500  text-2xl font-bold">
+                            Drag
+                          </span>{" "}
+                          and
+                          <span className="text-indigo-500  text-2xl font-bold">
+                            {" "}
+                            Drop
+                          </span>
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                          SVG, PNG, JPG or GIF (MAX-2MB)
+                        </p>
+                      </div>
+                      <input
+                        type="file"
+                        id="file-upload"
+                        name="file"
+                        className="hidden"
+                        onChange={handleImage}
+                      />
+                    </label>
+                  </div>
                 </div>
               </div>
               <div className="p-2 w-full">
