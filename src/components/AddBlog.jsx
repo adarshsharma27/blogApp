@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import conf from "../conf/conf";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { LuChevronLeft  } from "react-icons/lu";
+import {LuX } from "react-icons/lu";
 import { NotificationAudio } from "../utils/NotificationAudio";
 import BackButton from "../utils/BackButton";
 const AddBlog = () => {
@@ -12,6 +12,8 @@ const AddBlog = () => {
   const navigate = useNavigate();
   const [blog, setBlog] = useState({});
   const [imageUrl, setImageUrl] = useState("");
+  const [uploadFileId, setUploadFileId] = useState("");
+  const [hideFileUpload, setHideFileUpload] = useState(true);
   const [createDisable, setCreateDisable] = useState(true);
   const { userId } = useSelector((state) => state.persistedReducer?.userData);
   const blogHandle = (e) => {
@@ -51,17 +53,73 @@ const AddBlog = () => {
   };
   const handleImage = (e) => {
     const image = e.target.files[0];
-    const promise = storage.createFile(conf.bucketId, ID.unique(), image);
-    promise.then(
-      function (response) {
-        const fileId = response.$id;
-        if (fileId) {
-          const imgUrl = storage.getFilePreview("653022b9b06e66621238", fileId);
-          if (imgUrl?.href) {
-            setImageUrl(imgUrl?.href);
-            setCreateDisable(false);
+    const imageType = image?.type.split("/")[1];
+    const imageSize = image?.size;
+    debugger;
+    if (
+      imageType != "jpeg" &&
+      imageType != "jpg" &&
+      imageType != "jpeg" &&
+      imageType != "gif"
+    ) {
+      toast.error("Please Upload PNG, JPG or GIF  Format", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else if (imageSize > 2000000) {
+      toast.error("Please Upload File Size less then 2MB", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      const promise = storage.createFile(conf.bucketId, ID.unique(), image);
+      promise.then(
+        function (response) {
+          const fileId = response.$id;
+          if (fileId) {
+            const imgUrl = storage.getFilePreview(
+              "653022b9b06e66621238",
+              fileId
+            );
+            if (imgUrl?.href) {
+              setImageUrl(imgUrl?.href);
+              setCreateDisable(false);
+              setUploadFileId(fileId);
+              setHideFileUpload(false);
+            }
           }
+        },
+        function (error) {
+          console.log(error); // Failure
         }
+      );
+    }
+  };
+  const deleteImage = () => {
+    setImageUrl("");
+    const promise = storage.deleteFile(conf.bucketId, uploadFileId);
+    promise.then(
+      function () {
+        toast.success("Image Deleted Successfully", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setHideFileUpload(true);
       },
       function (error) {
         console.log(error); // Failure
@@ -71,7 +129,7 @@ const AddBlog = () => {
   return (
     <>
       <section className="text-gray-600 font-montserrat relative dark:bg-slate-700">
-      <BackButton/>
+        <BackButton />
         <div className="container px-5 py-4 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-3xl font-bold font-montserrat mb-4 text-gray-900 dark:text-white">
@@ -122,60 +180,78 @@ const AddBlog = () => {
                   </select>
                 </div>
               </div>
-              <div className="p-2 w-full">
-                <div className="relative">
-                  <span className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200">
-                    Upload File
-                  </span>
+              {hideFileUpload && (
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <span className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200">
+                      Upload File
+                    </span>
 
-                  <div className="flex items-center justify-center w-full">
-                    <label
-                      htmlFor="file-upload"
-                      className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-100 bg-opacity-50 dark:hover:bg-bray-800 dark:bg-slate-700 hover:bg-gray-100 dark:border-white dark:hover:border-indigo-600 dark:hover:bg-slate-600"
-                    >
-                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                        <svg
-                          className="w-10 h-10 mb-4 leading-7  text-base font-semibold text-indigo-500  dark:text-gray-200 "
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 20 16"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                          />
-                        </svg>
-                        <p className="mb-2  text-sm  text-center md:text-lg text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">Click to upload</span>{" "}
-                          or{" "}
-                          <span className="text-indigo-500 text-md md:text-2xl font-bold">
-                            Drag
-                          </span>{" "}
-                          and
-                          <span className="text-indigo-500 text-md md:text-2xl font-bold">
-                            {" "}
-                            Drop
-                          </span>
-                        </p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          SVG, PNG, JPG or GIF (MAX-2MB)
-                        </p>
-                      </div>
-                      <input
-                        type="file"
-                        id="file-upload"
-                        name="file"
-                        className="hidden"
-                        onChange={handleImage}
-                      />
-                    </label>
+                    <div className="flex items-center justify-center w-full">
+                      <label
+                        htmlFor="file-upload"
+                        className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-100 bg-opacity-50 dark:hover:bg-bray-800 dark:bg-slate-700 hover:bg-gray-100 dark:border-white dark:hover:border-purple-600 dark:hover:bg-slate-600"
+                      >
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                          <svg
+                            className="w-10 h-10 mb-4 leading-7  text-base font-semibold text-purple-500  dark:text-gray-200 "
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 20 16"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                            />
+                          </svg>
+                          <p className="mb-2  text-sm  text-center md:text-lg text-gray-500 dark:text-gray-400">
+                            <span className="font-semibold">
+                              Click to upload
+                            </span>
+                            or
+                            <span className="text-purple-500 text-md md:text-2xl font-bold">
+                              Drag
+                            </span>
+                            and
+                            <span className="text-purple-500 text-md md:text-2xl font-bold">
+                              Drop
+                            </span>
+                          </p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">
+                            PNG, JPG or GIF (MAX-2MB)
+                          </p>
+                        </div>
+                        <input
+                          type="file"
+                          id="file-upload"
+                          name="file"
+                          className="hidden"
+                          onChange={handleImage}
+                        />
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
+
+              {imageUrl && (
+                <>
+                  <div className="p-2 w-full">
+                    <div className="relative flex flex-col items-center justify-center p-2 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-100 bg-opacity-50 dark:hover:bg-bray-800 dark:bg-slate-700  dark:border-white">
+                      <img src={imageUrl} className="relative" />
+                      <LuX
+                        size={40}
+                        className=" bg-purple-600 text-white p-1 hover:bg-red-400 transition hover:scale-110  hover:cursor-pointer dark:text-white absolute top-6 right-6"
+                        onClick={() => deleteImage()}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
               <div className="p-2 w-full">
                 <div className="relative">
                   <label
