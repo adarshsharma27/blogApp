@@ -17,7 +17,7 @@ const AddBlog = () => {
   const [createDisable, setCreateDisable] = useState(true);
   const { userId } = useSelector((state) => state.persistedReducer?.userData);
   const blogHandle = (e) => {
-    setBlog({ ...blog, [e.target.name]: e.target.value, imageUrl, userId });
+    setBlog({ ...blog, [e.target.name]: e.target.value, imageUrl, userId ,uploadFileId });
   };
 
   const addBlog = async (e) => {
@@ -100,7 +100,15 @@ const AddBlog = () => {
           }
         },
         function (error) {
-          console.log(error); // Failure
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }); // Failure
         }
       );
     }
@@ -122,7 +130,15 @@ const AddBlog = () => {
         setHideFileUpload(true);
       },
       function (error) {
-        console.log(error); // Failure
+        toast.error(error, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }); // Failure
       }
     );
   };
