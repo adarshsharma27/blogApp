@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { account, ID } from "../config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LuEye, LuEyeOff } from "react-icons/lu";
 const SignUp = () => {
   const uId = useId();
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const SignUp = () => {
   const [nameErr, setNameErr] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const SignUp = async () => {
     let emailRegex = /^\S+@\S+\.\S+$/;
     let nameReg = /^[A-Za-z]*$/;
@@ -56,7 +58,6 @@ const SignUp = () => {
         });
       }
     }
-   
   };
   return (
     <>
@@ -135,7 +136,7 @@ const SignUp = () => {
                 Password
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id={uId}
                 name="password"
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
@@ -152,6 +153,20 @@ const SignUp = () => {
                     Please Enter Password
                   </span>
                 </div>
+              )}
+              {password && (
+                <span
+                  className="absolute inset-y-0  top-[25px] end-0 grid place-content-center px-4 hover:cursor-pointer"
+                  onClick={() => {
+                    setShowPassword(!showPassword);
+                  }}
+                >
+                  {showPassword == true ? (
+                    <LuEyeOff size={24} className="text-purple-600" />
+                  ) : (
+                    <LuEye size={24} className="text-purple-600" />
+                  )}
+                </span>
               )}
             </div>
             <button
