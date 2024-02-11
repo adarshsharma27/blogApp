@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
-import { databases} from "../config";
+import { databases } from "../config";
 import conf from "../conf/conf";
-import { NavLink } from "react-router-dom";
-import { LuChevronLeft  } from "react-icons/lu";
 import BackButton from "../utils/BackButton";
 const BookMarkBlog = () => {
   const [blogs, setBlogs] = useState();

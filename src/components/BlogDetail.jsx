@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { databases } from "../config";
 import conf from "../conf/conf";
-import { LuChevronLeft  } from "react-icons/lu";
 import BackButton from "../utils/BackButton";
 const BlogDetail = () => {
   const [blog, setBlog] = useState();

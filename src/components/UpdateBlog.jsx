@@ -1,10 +1,10 @@
 import { React, useEffect, useId, useState } from "react";
-import { useParams,useNavigate, NavLink } from "react-router-dom";
-import { databases,ID, storage } from "../config";
+import { useParams, useNavigate } from "react-router-dom";
+import { databases, ID, storage } from "../config";
 import conf from "../conf/conf";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import {LuX } from "react-icons/lu";
+import { LuX } from "react-icons/lu";
 import { NotificationAudio } from "../utils/NotificationAudio";
 import BackButton from "../utils/BackButton";
 import Loader from "./Loader";
