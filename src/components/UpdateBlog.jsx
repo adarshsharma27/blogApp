@@ -34,6 +34,7 @@ const UpdateBlog = () => {
         setBlog(resp);
         setImageUrl(resp?.imageUrl)
         setUploadFileId(resp?.uploadFileId)
+        setCreateDisable(false);
         setLoader(false)
       } catch (error) {
         toast.error(error.message, {
@@ -92,7 +93,6 @@ const UpdateBlog = () => {
     const image = e.target.files[0];
     const imageType = image?.type.split("/")[1];
     const imageSize = image?.size;
-    debugger;
     if (
       imageType != "jpeg" &&
       imageType != "jpg" &&
@@ -119,7 +119,6 @@ const UpdateBlog = () => {
         progress: undefined,
       });
     } else {
-      debugger;
       if(imageFileUpload){
         const promise = storage.createFile(conf.bucketId, ID.unique(), image);
         promise.then(
@@ -190,7 +189,6 @@ const UpdateBlog = () => {
     }
   };
   const deleteImage = () => {
-    debugger;
     setImageUrl("");
     const promise = storage.deleteFile(conf.bucketId, uploadFileId);
     promise.then(
