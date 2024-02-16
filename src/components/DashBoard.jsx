@@ -9,6 +9,8 @@ const DashBoard = () => {
   const [users, setUsers] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [trendingBlogs, setTrendingBlogs] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
+
   useEffect(() => {
     const getUsers = async () => {
       try {
@@ -17,6 +19,7 @@ const DashBoard = () => {
           conf.usersCollectionId
         );
         setUsers(resp?.total);
+        setAllUsers(resp?.documents);
       } catch (error) {}
     };
     getUsers();
@@ -105,7 +108,7 @@ const DashBoard = () => {
               </p>
             </div>
           </div>
-          <DashBoardTable />
+          <DashBoardTable users={allUsers} />
           <DashBoardCharts />
         </div>
       </section>
