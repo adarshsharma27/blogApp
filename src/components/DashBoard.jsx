@@ -1,9 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DashBoardCharts from "./DashBoardCharts";
 import DashBoardTable from "./DashBoardTable";
 import { LuUsers, LuScrollText, LuTrendingUp } from "react-icons/lu";
+import conf from "../conf/conf";
+import { Query, databases } from "../config";
 
 const DashBoard = () => {
+  const [users, setUsers] = useState([]);
+  const [blogs, setBlogs] = useState([]);
+  const [trendingBlogs, setTrendingBlogs] = useState([]);
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const resp = await databases.listDocuments(
+          conf.databaseId,
+          conf.usersCollectionId
+        );
+        setUsers(resp?.total);
+      } catch (error) {}
+    };
+    getUsers();
+  }, []);
+  useEffect(() => {
+    const getBlogs = async () => {
+      try {
+        const resp = await databases.listDocuments(
+          conf.databaseId,
+          conf.collectionId
+        );
+
+        setBlogs(resp?.total);
+      } catch (error) {}
+    };
+    getBlogs();
+  }, []);
+  useEffect(() => {
+    const getTrendingBlogs = async () => {
+      try {
+        const resp = await databases.listDocuments(
+          conf.databaseId,
+          conf.collectionId,
+          [Query.equal("category", "trending")]
+        );
+        setTrendingBlogs(resp?.total);
+      } catch (error) {}
+    };
+    getTrendingBlogs();
+  }, []);
   return (
     <>
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
@@ -24,7 +67,7 @@ const DashBoard = () => {
                 />
               </div>
               <h2 className="text-6xl  font-bold font-montserrat text-gray-900 dark:text-white capitalize">
-                2
+                {users}
               </h2>
 
               <p className="text-xl font-bold leading-relaxed  text-gray-600  dark:text-gray-300 capitalize">
@@ -39,7 +82,7 @@ const DashBoard = () => {
                 />
               </div>
               <h2 className="text-6xl font-bold font-montserrat text-gray-900 dark:text-white capitalize">
-                2
+                {blogs}
               </h2>
 
               <p className="text-xl font-bold leading-relaxed text-gray-600 dark:text-gray-300 capitalize">
@@ -54,7 +97,7 @@ const DashBoard = () => {
                 />
               </div>
               <h2 className="text-6xl font-bold font-montserrat text-gray-900 dark:text-white capitalize">
-                2
+                {trendingBlogs}
               </h2>
 
               <p className="text-xl font-bold leading-relaxed text-gray-600  dark:text-gray-300 capitalize">
