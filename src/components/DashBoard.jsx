@@ -109,7 +109,7 @@ const DashBoard = () => {
             </div>
           </div>
           <DashBoardTable users={allUsers} />
-          <DashBoardCharts />
+          <DashBoardCharts users={users} blogs={blogs} trendingBlogs={trendingBlogs}/>
         </div>
       </section>
     </>

@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const DashBoardCharts = () => {
+const DashBoardCharts = ({ users, blogs, trendingBlogs }) => {
   const options = {
     responsive: true,
     plugins: {},
@@ -33,7 +33,7 @@ const DashBoardCharts = () => {
     datasets: [
       {
         label: "Application Record",
-        data: [20, 25, 35],
+        data: [users, blogs, trendingBlogs],
         backgroundColor: "#A855F7",
         borderColor: "#A855F7",
         radius: "0",
