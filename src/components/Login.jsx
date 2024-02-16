@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { logIn } from "../features/blogsSlice";
 import { LuEye, LuEyeOff } from "react-icons/lu";
+import conf from "../conf/conf";
 const Login = () => {
   const uId = useId();
   const navigate = useNavigate();
@@ -38,7 +39,14 @@ const Login = () => {
         });
         setEmail("");
         setPassword("");
-        navigate("/addblog");
+        if (
+          userData.userId === conf.adminUserId &&
+          userData.providerUid === conf.adminUserEmail
+        ) {
+          navigate("/dashboard");
+        } else {
+          navigate("/addblog");
+        }
       } catch (error) {
         toast.error(error.message, {
           position: "top-right",

@@ -54,7 +54,7 @@ const SignUp = () => {
         if (response) {
           await databases.createDocument(
             conf.databaseId,
-            "65ce3f711ada6a206371",
+            conf.usersCollectionId,
             ID.unique(),
             {
               name,
