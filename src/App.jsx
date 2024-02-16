@@ -15,6 +15,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import { useSelector } from "react-redux";
 import UpdateBlog from "./components/UpdateBlog";
 import ScrollTop from "./utils/ScrollTop";
+import DashBoard from "./components/DashBoard";
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const addDarkMode = () => {
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/addblog/:id" element={<BlogDetail />} />
           <Route path="/bookmark" element={<BookMarkBlog />} />
           <Route path="/updateblog/:id" element={<UpdateBlog />} />
+          <Route path="/dashboard/" element={<DashBoard />} />
         </Route>
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/signup" element={<SignUp />} />

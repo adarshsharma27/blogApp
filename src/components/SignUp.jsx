@@ -1,9 +1,10 @@
 import React, { useState, useId } from "react";
 import { useNavigate } from "react-router-dom";
-import { account, ID } from "../config";
+import { account, databases, ID } from "../config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LuEye, LuEyeOff } from "react-icons/lu";
+import conf from "../conf/conf";
 const SignUp = () => {
   const uId = useId();
   const navigate = useNavigate();
@@ -32,7 +33,12 @@ const SignUp = () => {
       setEmailErr(false);
     } else {
       try {
-        await account.create(ID.unique(), email, password, name);
+        const response = await account.create(
+          ID.unique(),
+          email,
+          password,
+          name
+        );
         setName("");
         setEmail("");
         setPassword("");
@@ -45,6 +51,17 @@ const SignUp = () => {
           draggable: true,
           progress: undefined,
         });
+        if (response) {
+          await databases.createDocument(
+            conf.databaseId,
+            "65ce3f711ada6a206371",
+            ID.unique(),
+            {
+              name,
+              email,
+            }
+          );
+        }
         navigate("/login");
       } catch (error) {
         toast.error(error.message, {
