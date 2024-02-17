@@ -1,4 +1,3 @@
-import { elements } from "chart.js";
 import React from "react";
 
 const DashBoardTable = ({ users }) => {
@@ -22,7 +21,7 @@ const DashBoardTable = ({ users }) => {
 
           <tbody className="divide-y divide-gray-200">
             {users?.map((elements) => (
-              <tr className="even:bg-gray-50 dark:bg-slate-600 text-center">
+              <tr className="even:bg-gray-50 dark:bg-slate-600 text-center" key={elements.$id}>
                 <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
                   {elements.$id}
                 </td>
