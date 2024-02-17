@@ -25,6 +25,7 @@ ChartJS.register(
 const DashBoardCharts = ({ users, blogs, trendingBlogs }) => {
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {},
   };
 
@@ -42,7 +43,7 @@ const DashBoardCharts = ({ users, blogs, trendingBlogs }) => {
   };
   return (
     <>
-      <div className="py-4 container">
+      <div className="my-6 w-full p-4 container h-[50vh] md:h-[80vh] card-shadow-custom rounded-lg">
         <Bar options={options} data={data} />
       </div>
     </>

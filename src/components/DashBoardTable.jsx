@@ -4,12 +4,7 @@ import React from "react";
 const DashBoardTable = ({ users }) => {
   return (
     <>
-      <div className="flex flex-wrap sm:flex-row flex-col pt-6">
-        <h1 className="sm:w-2/5 text-gray-900 font-bold font-montserrat text-3xl mb-2 sm:mb-0 dark:text-white">
-          Users Details
-        </h1>
-      </div>
-      <div className="overflow-x-auto overflow-y-scroll h-[500px] container my-6 mx-auto rounded-lg border border-gray-200  dark:bg-slate-700">
+      <div className="overflow-x-auto overflow-y-scroll h-[80vh] container my-6 mx-auto rounded-lg border border-gray-200  dark:bg-slate-700 card-shadow-custom">
         <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-medium dark:bg-slate-700">
           <thead className="text-center bg-gray-100 dark:bg-slate-200 ">
             <tr>

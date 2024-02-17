@@ -108,8 +108,19 @@ const DashBoard = () => {
               </p>
             </div>
           </div>
-          <DashBoardTable users={allUsers} />
-          <DashBoardCharts users={users} blogs={blogs} trendingBlogs={trendingBlogs}/>
+          <div className="flex flex-wrap sm:flex-row flex-col pt-6">
+            <h1 className="sm:w-2/5 text-gray-900 font-bold font-montserrat text-3xl  sm:mb-0 dark:text-white">
+              Users Details
+            </h1>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+            <DashBoardTable users={allUsers} />
+            <DashBoardCharts
+              users={users}
+              blogs={blogs}
+              trendingBlogs={trendingBlogs}
+            />
+          </div>
         </div>
       </section>
     </>
