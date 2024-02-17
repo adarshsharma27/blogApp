@@ -26,7 +26,34 @@ const DashBoardCharts = ({ users, blogs, trendingBlogs }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: {},
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            family: "'Montserrat', 'sans-serif'",
+            weight: "bold",
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            family: "'Montserrat', 'sans-serif'",
+            weight: "bold",
+          },
+        },
+      },
+      y: {
+        ticks: {
+          font: {
+            family: "'Montserrat', 'sans-serif'",
+            weight: "bold",
+          },
+        },
+      },
+    },
   };
 
   const data = {
