@@ -35,6 +35,14 @@ const DashBoardCharts = ({ users, blogs, trendingBlogs }) => {
           },
         },
       },
+      tooltip: {
+        titleFont: {
+          family: "'Montserrat', 'sans-serif'",
+        },
+        bodyFont: {
+          family: "'Montserrat', 'sans-serif'",
+        },
+      },
     },
     scales: {
       x: {
