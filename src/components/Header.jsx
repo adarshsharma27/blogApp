@@ -1,21 +1,22 @@
 import React, { useState } from "react";
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { account } from "../config";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../features/blogsSlice";
-import { LuAlignRight,LuX} from "react-icons/lu";
+import { LuAlignRight, LuX } from "react-icons/lu";
+import conf from "../conf/conf";
 const Header = ({ addDarkMode, darkMode }) => {
   const dispatch = useDispatch();
   const LogOut = async () => {
     await account.deleteSession("current");
     dispatch(logOut(null));
-    setOpen(!open)
+    setOpen(!open);
   };
   const user = useSelector((state) => state.persistedReducer?.userData);
-  const[open,setOpen]=useState(false);
-  const toggleNavigation=()=>{
-    setOpen(!open)
-  }
+  const [open, setOpen] = useState(false);
+  const toggleNavigation = () => {
+    setOpen(!open);
+  };
   return (
     <>
       <header className="text-gray-600 font-montserrat bg-gray-100 dark:bg-slate-700">
@@ -25,7 +26,10 @@ const Header = ({ addDarkMode, darkMode }) => {
             to="/"
             className="flex font-montserrat font-medium items-center text-gray-900 mb-4 md:mb-0"
           >
-            <img src="../images/logo.png" width="40px" /><span className="ml-2 text-xl font-bold text-purple-500">DesiBlogs</span>
+            <img src="../images/logo.png" width="40px" />
+            <span className="ml-2 text-xl font-bold text-purple-500">
+              DesiBlogs
+            </span>
           </NavLink>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             {user && (
@@ -56,6 +60,15 @@ const Header = ({ addDarkMode, darkMode }) => {
                 >
                   BookMarks
                 </NavLink>
+                {user?.userId === conf.adminUserId &&
+                  user?.providerUid === conf.adminUserEmail && (
+                    <NavLink
+                      to="/dashboard"
+                      className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
+                    >
+                      DashBoard
+                    </NavLink>
+                  )}
                 <NavLink
                   to="/login"
                   className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
@@ -63,6 +76,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                 >
                   LogOut
                 </NavLink>
+
                 <NavLink to="/addblog" className="lg:mr-5 md:mr-0 mt-2 md:mt-0">
                   <div className="w-10 h-10 text-white p-2 bg-purple-500 rounded-full text-center font-bold">
                     {user?.providerUid?.slice(0, 1)?.toUpperCase()}
@@ -142,18 +156,23 @@ const Header = ({ addDarkMode, darkMode }) => {
                 to="/"
                 className="flex font-montserrat font-medium items-center  mb-4 md:mb-0"
               >
-                <img src="../images/logo.png" width="30px" /><span className="ml-2 text-xl font-bold text-purple-500">DesiBlogs</span>
+                <img src="../images/logo.png" width="30px" />
+                <span className="ml-2 text-xl font-bold text-purple-500">
+                  DesiBlogs
+                </span>
               </NavLink>
               <div>
-              {
-                open === true ? <LuX
-                  className="text-2xl"
-                  onClick={() => toggleNavigation()}/> : <LuAlignRight
-                  className="text-2xl"
-                  onClick={() => toggleNavigation()}
-                />
-              }
-                
+                {open === true ? (
+                  <LuX
+                    className="text-2xl"
+                    onClick={() => toggleNavigation()}
+                  />
+                ) : (
+                  <LuAlignRight
+                    className="text-2xl"
+                    onClick={() => toggleNavigation()}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -197,6 +216,15 @@ const Header = ({ addDarkMode, darkMode }) => {
                 >
                   BookMarks
                 </NavLink>
+                {user?.userId === conf.adminUserId &&
+                  user?.providerUid === conf.adminUserEmail && (
+                    <NavLink
+                      to="/dashboard"
+                      className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500  hover:border-purple-500  font-semibold"
+                    >
+                      DashBoard
+                    </NavLink>
+                  )}
                 <NavLink
                   to="/login"
                   className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500  hover:border-purple-500  font-semibold"
