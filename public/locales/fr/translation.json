@@ -1,0 +1,14 @@
+{
+  "commonTitle": {
+    "logInTitle": "Iniciar sesión",
+    "signUpTitle": "¡Regístrate!",
+    "Name": "Nombre",
+    "Email": "Correo electrónico",
+    "Password": "Contraseña",
+    "Please Enter Name": "Por favor ingresa tu nombre",
+    "Please Enter Email": "Por favor ingresa tu correo electrónico",
+    "Please Enter Password": "Por favor ingresa tu contraseña",
+    "logInButton": "Iniciar sesión",
+    "signUpButton": "Registrarse"
+  }
+}

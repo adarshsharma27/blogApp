@@ -1,0 +1,14 @@
+{
+  "commonTitle": {
+    "logInTitle": "LogIn",
+    "signUpTitle": "Sign Up!",
+    "Name": "Name",
+    "Email": "Email",
+    "Password": "Password",
+    "Please Enter Name": "Please Enter Name",
+    "Please Enter Email": "Please Enter Email",
+    "Please Enter Password": "Please Enter Password",
+    "logInButton": "LogIn",
+    "signUpButton": "SignUp"
+  }
+}

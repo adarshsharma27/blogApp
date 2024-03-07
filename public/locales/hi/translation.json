@@ -1,0 +1,14 @@
+{
+  "commonTitle": {
+    "logInTitle": "लॉग इन",
+    "signUpTitle": "साइन अप करें!",
+    "Name": "नाम",
+    "Email": "ईमेल",
+    "Password": "पासवर्ड",
+    "Please Enter Name": "कृपया अपना नाम दर्ज करें",
+    "Please Enter Email": "कृपया अपना ईमेल दर्ज करें",
+    "Please Enter Password": "कृपया अपना पासवर्ड दर्ज करें",
+    "logInButton": "लॉग इन करें",
+    "signUpButton": "साइन अप करें"
+  }
+}

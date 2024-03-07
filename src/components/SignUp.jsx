@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LuEye, LuEyeOff } from "react-icons/lu";
 import conf from "../conf/conf";
+import { useTranslation } from "react-i18next";
 const SignUp = () => {
   const uId = useId();
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const SignUp = () => {
   const [emailErr, setEmailErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const { t } = useTranslation();
   const SignUp = async () => {
     let emailRegex = /^\S+@\S+\.\S+$/;
     let nameReg = /^[A-Za-z]*$/;
@@ -89,21 +91,21 @@ const SignUp = () => {
           </div>
           <div className="lg:w-3/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 dark:shadow-2xl dark:bg-slate-700">
             <h2 className="text-gray-900 text-2xl font-semibold font-montserrat mb-5 dark:text-white">
-              Sign Up
+              {t("commonTitle.signUpTitle")}
             </h2>
             <div className="relative mb-4">
               <label
                 htmlFor={uId}
                 className="leading-7 text-base font-semibold text-gray-600 dark:text-gray-300"
               >
-                Full Name
+                {t("commonTitle.Name")}
               </label>
               <input
                 type="text"
                 id={uId}
                 name="full-name"
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
-                placeholder="Please Enter Name"
+                placeholder={t("commonTitle.Please Enter Name")}
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
@@ -113,7 +115,7 @@ const SignUp = () => {
               {nameErr && (
                 <div className="pt-2">
                   <span className="text-red-400 text-base font-semibold">
-                    Please Enter Name
+                    {t("commonTitle.Please Enter Name")}
                   </span>
                 </div>
               )}
@@ -123,14 +125,14 @@ const SignUp = () => {
                 htmlFor={uId}
                 className="leading-7 text-base font-semibold text-gray-600 dark:text-gray-300"
               >
-                Email
+                {t("commonTitle.Email")}
               </label>
               <input
                 type="email"
                 id={uId}
                 name="email"
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
-                placeholder="Please Enter Email"
+                placeholder={t("commonTitle.Please Enter Email")}
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -140,7 +142,7 @@ const SignUp = () => {
               {emailErr && (
                 <div className="pt-2">
                   <span className="text-red-400 text-base font-semibold">
-                    Please Enter Email
+                    {t("commonTitle.Please Enter Email")}
                   </span>
                 </div>
               )}
@@ -150,14 +152,14 @@ const SignUp = () => {
                 htmlFor={uId}
                 className="leading-7 text-base font-semibold text-gray-600 dark:text-gray-200"
               >
-                Password
+                {t("commonTitle.Password")}
               </label>
               <input
                 type={showPassword ? "text" : "password"}
                 id={uId}
                 name="password"
                 className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
-                placeholder="Please Enter Password"
+                placeholder={t("commonTitle.Please Enter Password")}
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -167,7 +169,7 @@ const SignUp = () => {
               {passwordErr && (
                 <div className="pt-2">
                   <span className="text-red-400 text-base font-semibold">
-                    Please Enter Password
+                    {t("commonTitle.Please Enter Password")}
                   </span>
                 </div>
               )}
@@ -191,7 +193,7 @@ const SignUp = () => {
               onClick={SignUp}
               disabled={nameErr || emailErr || passwordErr}
             >
-              SignUp
+              {t("commonTitle.signUpButton")}
             </button>
           </div>
         </div>

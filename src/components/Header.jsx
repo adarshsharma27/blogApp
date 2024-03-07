@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../features/blogsSlice";
 import { LuAlignRight, LuX } from "react-icons/lu";
 import conf from "../conf/conf";
+import i18n from "i18next";
 const Header = ({ addDarkMode, darkMode }) => {
   const dispatch = useDispatch();
   const LogOut = async () => {
@@ -14,9 +15,11 @@ const Header = ({ addDarkMode, darkMode }) => {
   };
   const user = useSelector((state) => state.persistedReducer?.userData);
   const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState(i18n.language);
   const toggleNavigation = () => {
     setOpen(!open);
   };
+  console.log(i18n, "i18n");
   return (
     <>
       <header className="text-gray-600 font-montserrat bg-gray-100 dark:bg-slate-700">
@@ -100,6 +103,21 @@ const Header = ({ addDarkMode, darkMode }) => {
                 </NavLink>
               </>
             )}
+            <select
+              name="langSelector"
+              id="langSelector"
+              className="mr-5 hover:text-gray-900 dark:text-white font-semibold cursor-pointer bg-transparent focus:outline-none"
+              onChange={(e) => {
+                setLang(e.target.value);
+                i18n.changeLanguage(e.target.value);
+              }}
+              value={lang}
+            >
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="fr">Spanish</option>
+              <option value="de">German</option>
+            </select>
           </nav>
           <button
             className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none text-base mt-2 md:mt-0"
@@ -259,6 +277,23 @@ const Header = ({ addDarkMode, darkMode }) => {
                 </NavLink>
               </>
             )}
+            <select
+              name="langSelector"
+              id="langSelector"
+              className="hover:text-purple-500 dark:text-white  text-center w-10/12 py-2 border-b-2  border-gray-500 hover:border-purple-500  font-semibold bg-transparent  focus:outline-none"
+              onChange={(e) => {
+                setLang(e.target.value);
+                i18n.changeLanguage(e.target.value);
+              }}
+              value={lang}
+            >
+              <option value="en" className="text-center">
+                English
+              </option>
+              <option value="hi">Hindi</option>
+              <option value="fr">Spanish</option>
+              <option value="de">German</option>
+            </select>
             <button
               className="inline-flex items-center justify-center  border-b-2 w-10/12 border-gray-500 hover:border-purple-500  border-0 py-1 px-3 focus:outline-none text-base mt-2 md:mt-0"
               onClick={() => {
