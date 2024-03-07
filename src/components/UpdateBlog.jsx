@@ -8,6 +8,7 @@ import { LuX } from "react-icons/lu";
 import { NotificationAudio } from "../utils/NotificationAudio";
 import BackButton from "../utils/BackButton";
 import Loader from "./Loader";
+import { useTranslation } from "react-i18next";
 const UpdateBlog = () => {
   const uId = useId();
   const navigate=useNavigate()
@@ -20,6 +21,7 @@ const UpdateBlog = () => {
   const [imageFileUpload, setImageFileUpload] = useState(false);
   const [createDisable, setCreateDisable] = useState(true);
   const[loader,setLoader]=useState(true)
+  const{t}=useTranslation();
   const blogHandle = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value,userId});
   };
@@ -218,10 +220,10 @@ const UpdateBlog = () => {
         loader ? <Loader/> : <div className="container px-5 py-4 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-3xl font-bold font-montserrat mb-4 text-gray-900 dark:text-white">
-              Update Blog!!!
+            {t('addUpdateBlogs.updateBlogTitle')}
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base  dark:text-gray-400">
-              Freely Update Blog!!!!
+            {t('addUpdateBlogs.updateBlogHeader')}
             </p>
           </div>
           <div className="lg:w-50 md:w-2/3 mx-auto card-shadow-custom p-6 rounded-lg">
@@ -232,14 +234,14 @@ const UpdateBlog = () => {
                     htmlFor={uId}
                     className="leading-7 pb-2 text-base font-semibold text-gray-600  dark:text-gray-200"
                   >
-                    Name
+                   {t('addUpdateBlogs.Title')}
                   </label>
                   <input
                     type="text"
                     id={uId}
                     name="title"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
-                    placeholder="Please Enter Title"
+                    placeholder={t('addUpdateBlogs.Please Enter Title')}
                     value={blog?.title}
                     onChange={blogHandle}
                   />
@@ -251,7 +253,7 @@ const UpdateBlog = () => {
                     htmlFor={uId}
                     className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200"
                   >
-                    Category
+                      {t('addUpdateBlogs.Category')}
                   </label>
                   <select
                     id={uId}
@@ -260,9 +262,9 @@ const UpdateBlog = () => {
                     onChange={blogHandle}
                   >
                     <option value={blog?.category}>{blog?.category}</option>
-                    <option value="">Select Category</option>
-                    <option value="Trending">Trending</option>
-                    <option value="Featured">Featured</option>
+                    <option value="">{t('addUpdateBlogs.Select Category')}</option>
+                    <option value="Trending">{t('addUpdateBlogs.Trending')}</option>
+                    <option value="Featured">{t('addUpdateBlogs.Featured')}</option>
                   </select>
                 </div>
               </div>
@@ -270,7 +272,7 @@ const UpdateBlog = () => {
                 <div className="p-2 w-full">
                   <div className="relative">
                     <span className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200">
-                      Upload File
+                    {t('addUpdateBlogs.Upload File')}
                     </span>
 
                     <div className="flex items-center justify-center w-full">
@@ -296,19 +298,19 @@ const UpdateBlog = () => {
                           </svg>
                           <p className="mb-2  text-sm  text-center md:text-lg text-gray-500 dark:text-gray-400">
                             <span className="font-semibold">
-                              Click to upload
+                            {t('addUpdateBlogs.Click to upload')}
                             </span>
                             or
                             <span className="text-purple-500 text-md md:text-2xl font-bold">
-                              Drag
+                            {t('addUpdateBlogs.Drag')}
                             </span>
                             and
                             <span className="text-purple-500 text-md md:text-2xl font-bold">
-                              Drop
+                            {t('addUpdateBlogs.Drop')}
                             </span>
                           </p>
                           <p className="text-xs text-gray-500 dark:text-gray-400">
-                            PNG, JPG or GIF (MAX-2MB)
+                          {t('addUpdateBlogs.PNG, JPG or GIF (MAX-2MB)')}
                           </p>
                         </div>
                         <input
@@ -344,7 +346,7 @@ const UpdateBlog = () => {
                     htmlFor={uId}
                     className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200"
                   >
-                    Message
+                    {t('addUpdateBlogs.Message')} 
                   </label>
                   <textarea
                     id={uId}
@@ -352,7 +354,7 @@ const UpdateBlog = () => {
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                     data-gramm="false"
                     wt-ignore-input="true"
-                    placeholder="Please Enter Description"
+                    placeholder= {t('addUpdateBlogs.Please Enter Description')}
                     value={blog?.description}
                     onChange={blogHandle}
                   ></textarea>
@@ -365,7 +367,7 @@ const UpdateBlog = () => {
                     onClick={updateBlog}
                     disabled={createDisable}
                 >
-                  Update Blog
+                   {t('addUpdateBlogs.Update Blog')}
                 </button>
               </div>
             </div>

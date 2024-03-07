@@ -18,5 +18,26 @@
     "BookMarks": " BookMarks",
     "DashBoard": "DashBoard",
     "LogOut": "LogOut"
+  },
+  "addUpdateBlogs": {
+    "addBlogTitle": "Share Your Insights: Create Your Own Blog Post",
+    "updateBlogTitle": "Revitalize Your Content: Update Blog",
+    "addBlogHeader": "Empower your voice and ideas by easily composing and publishing blogs using our intuitive Add Blog form.",
+    "updateBlogHeader": "Refresh and refine your published articles effortlessly using our intuitive Update Blog feature, designed for seamless content management.",
+    "Title": "Title",
+    "Category": "Category",
+    "Select Category": "Select Category",
+    "Message": "Message",
+    "Trending": "Trending",
+    "featured": "featured",
+    "Please Enter Title": "Please Enter Title",
+    "Upload File": "Upload File",
+    "Click to upload": "Click to upload",
+    "Drag": "Drag",
+    "Drop": "Drop",
+    "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG or GIF (MAX-2MB)",
+    "Please Enter Description": "Please Enter Description",
+    "Create Blog": "Create Blog",
+    "Update Blog": "Update Blog"
   }
 }

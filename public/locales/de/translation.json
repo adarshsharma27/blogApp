@@ -18,6 +18,26 @@
     "BookMarks": " Lesezeichen",
     "DashBoard": "Dashboard",
     "LogOut": "Abmelden"
-}
-
+  },
+  "addUpdateBlogs": {
+    "addBlogTitle": "Teilen Sie Ihre Erkenntnisse: Erstellen Sie Ihren eigenen Blog-Beitrag",
+    "updateBlogTitle": "Beleben Sie Ihren Inhalt neu: Blog aktualisieren",
+    "addBlogHeader": "Stärken Sie Ihre Stimme und Ideen, indem Sie mit unserem intuitiven Hinzufügen-Blog-Formular problemlos Blogs verfassen und veröffentlichen.",
+    "updateBlogHeader": "Aktualisieren und verfeinern Sie Ihre veröffentlichten Artikel mühelos mit unserer intuitiven Funktion zum Aktualisieren des Blogs, die für nahtlose Inhaltsverwaltung entwickelt wurde.",
+    "Title": "Titel",
+    "Category": "Kategorie",
+    "Select Category": "Kategorie auswählen",
+    "Message": "Nachricht",
+    "Trending": "Trendig",
+    "featured": "Vorgestellt",
+    "Please Enter Title": "Bitte geben Sie einen Titel ein",
+    "Upload File": "Datei hochladen",
+    "Click to upload": "Klicken Sie, um hochzuladen",
+    "Drag": "Ziehen",
+    "Drop": "Ablegen",
+    "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG oder GIF (MAX-2MB)",
+    "Please Enter Description": "Bitte geben Sie eine Beschreibung ein",
+    "Create Blog": "Blog erstellen",
+    "Update Blog": "Blog aktualisieren"
+  }
 }
