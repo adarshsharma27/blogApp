@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../features/blogsSlice";
 import { LuAlignRight, LuX } from "react-icons/lu";
 import conf from "../conf/conf";
-import i18n from "i18next";
+import { useTranslation } from "react-i18next";
 const Header = ({ addDarkMode, darkMode }) => {
   const dispatch = useDispatch();
+  const {t,i18n}=useTranslation()
   const LogOut = async () => {
     await account.deleteSession("current");
     dispatch(logOut(null));
@@ -15,11 +16,9 @@ const Header = ({ addDarkMode, darkMode }) => {
   };
   const user = useSelector((state) => state.persistedReducer?.userData);
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState(i18n.language);
   const toggleNavigation = () => {
     setOpen(!open);
   };
-  console.log(i18n, "i18n");
   return (
     <>
       <header className="text-gray-600 font-montserrat bg-gray-100 dark:bg-slate-700">
@@ -40,14 +39,14 @@ const Header = ({ addDarkMode, darkMode }) => {
                 to="/"
                 className="mr-5 hover:text-gray-900 dark:text-white  font-semibold"
               >
-                Home
+                {t("navigationTitle.Home")}
               </NavLink>
             )}
             <NavLink
               to="/aboutus"
               className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
             >
-              About Us
+              {t("navigationTitle.About Us")}
             </NavLink>
             {user ? (
               <>
@@ -55,13 +54,13 @@ const Header = ({ addDarkMode, darkMode }) => {
                   to="/addblog"
                   className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                 >
-                  AddBlog
+                    {t("navigationTitle.AddBlog")}
                 </NavLink>
                 <NavLink
                   to="/bookmark"
                   className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                 >
-                  BookMarks
+                  {t("navigationTitle.BookMarks")}
                 </NavLink>
                 {user?.userId === conf.adminUserId &&
                   user?.providerUid === conf.adminUserEmail && (
@@ -69,7 +68,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                       to="/dashboard"
                       className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                     >
-                      DashBoard
+                      {t("navigationTitle.DashBoard")}
                     </NavLink>
                   )}
                 <NavLink
@@ -77,7 +76,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                   className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                   onClick={LogOut}
                 >
-                  LogOut
+                  {t("navigationTitle.LogOut")}
                 </NavLink>
 
                 <NavLink to="/addblog" className="lg:mr-5 md:mr-0 mt-2 md:mt-0">
@@ -92,14 +91,14 @@ const Header = ({ addDarkMode, darkMode }) => {
                   to="/signUp"
                   className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                 >
-                  SignUp
+                  {t("commonTitle.signUpButton")}
                 </NavLink>
 
                 <NavLink
                   to="/login"
                   className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                 >
-                  Login
+                  {t("commonTitle.logInTitle")}
                 </NavLink>
               </>
             )}
@@ -108,10 +107,9 @@ const Header = ({ addDarkMode, darkMode }) => {
               id="langSelector"
               className="mr-5 hover:text-gray-900 dark:text-white font-semibold cursor-pointer bg-transparent focus:outline-none"
               onChange={(e) => {
-                setLang(e.target.value);
                 i18n.changeLanguage(e.target.value);
               }}
-              value={lang}
+              value={i18n.language}
             >
               <option value="en">English</option>
               <option value="hi">Hindi</option>
@@ -208,7 +206,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                 className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
                 onClick={() => toggleNavigation()}
               >
-                Home
+                {t("navigationTitle.Home")}
               </NavLink>
             )}
             <NavLink
@@ -216,7 +214,7 @@ const Header = ({ addDarkMode, darkMode }) => {
               className="hover:text-purple-500 dark:text-white  py-2 border-b-2 w-10/12 border-gray-500  hover:border-purple-500  font-semibold"
               onClick={() => toggleNavigation()}
             >
-              About Us
+              {t("navigationTitle.About Us")}
             </NavLink>
             {user ? (
               <>
@@ -225,14 +223,14 @@ const Header = ({ addDarkMode, darkMode }) => {
                   className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500  hover:border-purple-500  font-semibold"
                   onClick={() => toggleNavigation()}
                 >
-                  AddBlog
+                  {t("navigationTitle.AddBlog")}
                 </NavLink>
                 <NavLink
                   to="/bookmark"
                   className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
                   onClick={() => toggleNavigation()}
                 >
-                  BookMarks
+                  {t("navigationTitle.BookMarks")}
                 </NavLink>
                 {user?.userId === conf.adminUserId &&
                   user?.providerUid === conf.adminUserEmail && (
@@ -240,7 +238,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                       to="/dashboard"
                       className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500  hover:border-purple-500  font-semibold"
                     >
-                      DashBoard
+                      {t("navigationTitle.DashBoard")}
                     </NavLink>
                   )}
                 <NavLink
@@ -248,7 +246,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                   className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500  hover:border-purple-500  font-semibold"
                   onClick={LogOut}
                 >
-                  LogOut
+                  {t("navigationTitle.LogOut")}
                 </NavLink>
                 <NavLink
                   to="/addblog"
@@ -266,14 +264,14 @@ const Header = ({ addDarkMode, darkMode }) => {
                   to="/signUp"
                   className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
                 >
-                  SignUp
+                  {t("commonTitle.signUpTitle")}
                 </NavLink>
 
                 <NavLink
                   to="/login"
                   className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
                 >
-                  Login
+                  {t("commonTitle.logInTitle")}
                 </NavLink>
               </>
             )}
@@ -282,10 +280,9 @@ const Header = ({ addDarkMode, darkMode }) => {
               id="langSelector"
               className="hover:text-purple-500 dark:text-white  text-center w-10/12 py-2 border-b-2  border-gray-500 hover:border-purple-500  font-semibold bg-transparent  focus:outline-none"
               onChange={(e) => {
-                setLang(e.target.value);
                 i18n.changeLanguage(e.target.value);
               }}
-              value={lang}
+              value={i18n.language}
             >
               <option value="en" className="text-center">
                 English

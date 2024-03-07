@@ -10,5 +10,14 @@
     "Please Enter Password": "Bitte geben Sie Ihr Passwort ein",
     "logInButton": "Anmelden",
     "signUpButton": "Registrieren"
-  }
+  },
+  "navigationTitle": {
+    "Home": "Startseite",
+    "About Us": "Über uns",
+    "AddBlog": "Blog hinzufügen",
+    "BookMarks": " Lesezeichen",
+    "DashBoard": "Dashboard",
+    "LogOut": "Abmelden"
+}
+
 }

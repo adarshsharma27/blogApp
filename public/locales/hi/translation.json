@@ -10,5 +10,14 @@
     "Please Enter Password": "कृपया अपना पासवर्ड दर्ज करें",
     "logInButton": "लॉग इन करें",
     "signUpButton": "साइन अप करें"
-  }
+  },
+  "navigationTitle": {
+    "Home": "होम",
+    "About Us": "हमारे बारे में",
+    "AddBlog": "ब्लॉग जोड़ें",
+    "BookMarks": " बुकमार्क्स",
+    "DashBoard": "डैशबोर्ड",
+    "LogOut": "लॉग आउट"
+}
+
 }

@@ -10,5 +10,13 @@
     "Please Enter Password": "Please Enter Password",
     "logInButton": "LogIn",
     "signUpButton": "SignUp"
+  },
+  "navigationTitle": {
+    "Home": "Home",
+    "About Us": "About Us",
+    "AddBlog": "AddBlog",
+    "BookMarks": " BookMarks",
+    "DashBoard": "DashBoard",
+    "LogOut": "LogOut"
   }
 }
