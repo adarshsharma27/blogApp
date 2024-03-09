@@ -45,9 +45,11 @@
     "heroSectionDescription": "Explora una colección seleccionada de blogs perspicaces y fascinantes que cubren diversos temas. ¡Comienza a explorar ahora!",
     "Featured Blog": "Blog Destacado",
     "Trending Blog": "Blog Tendencia",
+    "BookMarked Blog":"Blog Marcado",
     "All Stories": "Todas las Historias",
     "Featured Blog Description": "Descubre nuestra colección seleccionada de blogs destacados, cuidadosamente seleccionados por su calidad y relevancia.",
     "Trending Blog Description": "Explora los últimos y más comentados blogs que están causando sensación en nuestra vibrante comunidad.",
+    "BookMarked Blog Description":"Marca tus blogs favoritos y accede a ellos en cualquier momento y lugar. Explora tu colección personalizada de artículos guardados y nunca te pierdas de lecturas cautivadoras nuevamente.",
     "All Stories Blog Description": "Sumérgete en una amplia gama de historias cautivadoras, que van desde anécdotas personales hasta reflexiones perspicaces."
   },
   "aboutUs": {
