@@ -1,0 +1,83 @@
+{
+  "commonTitle": {
+    "logInTitle": "Iniciar sesión",
+    "signUpTitle": "¡Regístrate!",
+    "Name": "Nombre",
+    "Email": "Correo electrónico",
+    "Password": "Contraseña",
+    "Please Enter Name": "Por favor ingresa tu nombre",
+    "Please Enter Email": "Por favor ingresa tu correo electrónico",
+    "Please Enter Password": "Por favor ingresa tu contraseña",
+    "logInButton": "Iniciar sesión",
+    "signUpButton": "Registrarse"
+  },
+  "navigationTitle": {
+    "Home": "Inicio",
+    "About Us": "Sobre nosotros",
+    "AddBlog": "Agregar Blog",
+    "BookMarks": "Marcadores",
+    "DashBoard": "Tablero",
+    "LogOut": "Cerrar sesión"
+  },
+  "addUpdateBlogs": {
+    "addBlogTitle": "Comparte tus ideas: Crea tu propia publicación de blog",
+    "updateBlogTitle": "Revitaliza tu contenido: Actualiza tu blog",
+    "addBlogHeader": "Empodera tu voz e ideas al componer y publicar blogs fácilmente usando nuestro intuitivo formulario de agregar blog.",
+    "updateBlogHeader": "Actualice y perfeccione sus artículos publicados fácilmente usando nuestra intuitiva función de Actualizar blog, diseñada para una gestión de contenido sin problemas.",
+    "Title": "Título",
+    "Category": "Categoría",
+    "Select Category": "Seleccionar categoría",
+    "Message": "Mensaje",
+    "Trending": "Tendencias",
+    "featured": "Destacado",
+    "Please Enter Title": "Por favor, ingrese un título",
+    "Upload File": "Subir archivo",
+    "Click to upload": "Haz clic para cargar",
+    "Drag": "Arrastrar",
+    "Drop": "Soltar",
+    "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG o GIF (MÁX. 2MB)",
+    "Please Enter Description": "Por favor, ingrese una descripción",
+    "Create Blog": "Crear blog",
+    "Update Blog": "Actualizar blog"
+  },
+  "heroSection": {
+    "heroSectionTitle": "Descubre Blogs Fascinantes",
+    "heroSectionDescription": "Explora una colección seleccionada de blogs perspicaces y fascinantes que cubren diversos temas. ¡Comienza a explorar ahora!",
+    "Featured Blog": "Blog Destacado",
+    "Trending Blog": "Blog Tendencia",
+    "All Stories": "Todas las Historias",
+    "Featured Blog Description": "Descubre nuestra colección seleccionada de blogs destacados, cuidadosamente seleccionados por su calidad y relevancia.",
+    "Trending Blog Description": "Explora los últimos y más comentados blogs que están causando sensación en nuestra vibrante comunidad.",
+    "All Stories Blog Description": "Sumérgete en una amplia gama de historias cautivadoras, que van desde anécdotas personales hasta reflexiones perspicaces."
+  },
+  "aboutUs": {
+    "aboutUsSectionTitle": "Descubre Nuestras Ofertas",
+    "aboutUsSectionDescription": "Desbloquea una serie de servicios personalizados diseñados para elevar tu presencia digital y alcanzar el éxito.",
+    "aboutUsServiceTitle": "Descubre Nuestras Ofertas",
+    "aboutUsServiceDescription": "Desbloquea una serie de servicios personalizados diseñados para elevar tu presencia digital y alcanzar el éxito.",
+    "MultiLanguageSupport": "Soporte Multilingüe",
+    "UserFriendly": "Fácil de Usar",
+    "Secure": "Seguro",
+    "MultiLanguageSupportDescription": "Supera las barreras lingüísticas con nuestro soporte multilingüe, que permite una comunicación fluida entre audiencias diversas.",
+    "UserFriendlyDescription": "Experimenta la simplicidad y facilidad de uso con nuestra interfaz amigable, diseñada para mejorar tu navegación e interacción.",
+    "SecureDescription": "Descansa tranquilo con nuestras sólidas medidas de seguridad, garantizando la seguridad y confidencialidad de tus datos en cada paso.",
+    "Step1": "Paso 1: Únete a Nuestra Comunidad",
+    "Step2": "Paso 2: Sumérgete en la Blogosfera",
+    "Step3": "Paso 3: Crea tu Obra Maestra",
+    "Step4": "Paso 4: Potencia tu Voz",
+    "Step5": "Paso 5: Crea tu Lista de Lectura",
+    "Step1Description": "Crea tu cuenta personalizada para desbloquear un mundo de posibilidades de blogging. ¡Regístrate ahora y sé parte de nuestra vibrante comunidad!",
+    "Step2Description": "Explora historias cautivadoras, artículos perspicaces y contenido que provoca reflexiones de nuestra amplia gama de escritores. ¡Sumérgete en un mar de conocimiento e inspiración!",
+    "Step3Description": "Toma el control de tu narrativa y libera tu creatividad. Con nuestra plataforma de blogging intuitiva, tienes el poder de crear, editar y publicar tus entradas de blog con facilidad.",
+    "Step4Description": "Comparte tus perspectivas únicas, experiencias y pasiones con el mundo. Desde anécdotas personales hasta conocimientos de expertos, tu voz importa aquí. ¡Comienza a escribir tu historia hoy mismo!",
+    "Step5Description": "Descubre nuevos favoritos y marca los artículos que resuenen contigo. Crea tu lista de lectura personalizada y vuelve a visitar tus piezas favoritas cada vez que te inspire."
+  },
+  "footer": {
+    "Services": "Servicios",
+    "Company": "Empresa",
+    "Helpful Links": "Enlaces útiles",
+    "Legal": "Legal",
+    "©2023 DesiBlogs —": "©2023 DesiBlogs —",
+    "@AdarshSharma": "@AdarshSharma"
+  }
+}

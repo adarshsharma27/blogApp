@@ -3,31 +3,28 @@ import Hero from "./Hero";
 import { NavLink } from "react-router-dom";
 import { LuChevronLeft } from "react-icons/lu";
 import BackButton from "../utils/BackButton";
+import { useTranslation } from "react-i18next";
 
 const AboutUs = () => {
+  const {t}=useTranslation();
   return (
     <>
      <BackButton/>
       <Hero
-        title="Before they sold out"
+        title={t('aboutUs.aboutUsSectionTitle')}
         imageUrl="../images/about.svg"
-        description=" Copper mug try-hard pitchfork pour-over freegan heirloom neutra
-              air plant cold-pressed tacos poke beard tote bag. Heirloom echo
-              park mlkshk tote bag selvage hot chicken authentic tumeric
-              truffaut hexagon try-hard chambray."
+        description={t('aboutUs.aboutUsSectionDescription')}
               padding={8}
       />
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
      
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4 dark:text-white">
-              Raw Denim Heirloom Man Braid
+            <h1 className="sm:text-3xl text-2xl font-bold title-font text-gray-900 mb-4 dark:text-white">
+            {t('aboutUs.aboutUsServiceTitle')}
             </h1>
             <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500">
-              Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-              taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh
-              mi pug.
+            {t('aboutUs.aboutUsServiceDescription')}
             </p>
             <div className="flex mt-6 justify-center">
               <div className="w-16 h-1 rounded-full bg-purple-500 inline-flex"></div>
@@ -49,13 +46,11 @@ const AboutUs = () => {
                 </svg>
               </div>
               <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3 dark:text-white">
-                  Shooting Stars
+                <h2 className="text-gray-900 text-lg title-font font-bold mb-3 dark:text-white">
+                {t('aboutUs.MultiLanguageSupport')}
                 </h2>
                 <p className="leading-relaxed text-base  dark:text-gray-400">
-                  Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-                  taxidermy. Gastropub indxgo juice poutine, ramps microdosing
-                  banh mi pug VHS try-hard.
+                {t('aboutUs.MultiLanguageSupportDescription')}
                 </p>
               </div>
             </div>
@@ -76,13 +71,11 @@ const AboutUs = () => {
                 </svg>
               </div>
               <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3 dark:text-white">
-                  The Catalyzer
+                <h2 className="text-gray-900 text-lg title-font font-bold mb-3 dark:text-white">
+                {t('aboutUs.UserFriendly')}
                 </h2>
                 <p className="leading-relaxed text-base  dark:text-gray-400">
-                  Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-                  taxidermy. Gastropub indxgo juice poutine, ramps microdosing
-                  banh mi pug VHS try-hard.
+                {t('aboutUs.UserFriendlyDescription')}
                 </p>
               </div>
             </div>
@@ -102,13 +95,11 @@ const AboutUs = () => {
                 </svg>
               </div>
               <div className="flex-grow">
-                <h2 className="text-gray-900 text-lg title-font font-medium mb-3  dark:text-gray-400">
-                  Neptune
+                <h2 className="text-gray-900 text-lg title-font font-bold mb-3  dark:text-gray-400">
+                {t('aboutUs.Secure')}
                 </h2>
                 <p className="leading-relaxed text-base  dark:text-gray-400">
-                  Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-                  taxidermy. Gastropub indxgo juice poutine, ramps microdosing
-                  banh mi pug VHS try-hard.
+                {t('aboutUs.SecureDescription')}
                 </p>
               </div>
             </div>
@@ -140,12 +131,11 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
-                    STEP 1
+                  <h2 className="font-bold title-font text-sm  text-gray-900 mb-1 tracking-wider dark:text-white">
+                  {t('aboutUs.Step1')}
                   </h2>
                   <p className="leading-relaxed  dark:text-gray-400">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                  {t('aboutUs.Step1Description')}
                   </p>
                 </div>
               </div>
@@ -167,12 +157,11 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white ">
-                    STEP 2
+                  <h2 className="font-bold title-font text-sm  text-gray-900 mb-1 tracking-wider dark:text-white ">
+                  {t('aboutUs.Step2')}
                   </h2>
                   <p className="leading-relaxed  dark:text-gray-400">
-                    Vice migas literally kitsch +1 pok pok. Truffaut hot chicken
-                    slow-carb health goth, vape typewriter.
+                  {t('aboutUs.Step2Description')}
                   </p>
                 </div>
               </div>
@@ -195,12 +184,11 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
-                    STEP 3
+                  <h2 className="font-bold title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
+                  {t('aboutUs.Step3')}
                   </h2>
                   <p className="leading-relaxed  dark:text-gray-400">
-                    Coloring book nar whal glossier master cleanse umami. Salvia
-                    +1 master cleanse blog taiyaki.
+                  {t('aboutUs.Step3Description')}
                   </p>
                 </div>
               </div>
@@ -223,12 +211,11 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
-                    STEP 4
+                  <h2 className="font-bold title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
+                  {t('aboutUs.Step4')}
                   </h2>
                   <p className="leading-relaxed  dark:text-gray-400">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                  {t('aboutUs.Step4Description')}
                   </p>
                 </div>
               </div>
@@ -248,12 +235,11 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
-                    FINISH
+                  <h2 className="font-bold title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
+                  {t('aboutUs.Step5')}
                   </h2>
                   <p className="leading-relaxed  dark:text-gray-400">
-                    Pitchfork ugh tattooed scenester echo park gastropub
-                    whatever cold-pressed retro.
+                  {t('aboutUs.Step5Description')}
                   </p>
                 </div>
               </div>

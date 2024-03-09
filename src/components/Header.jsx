@@ -113,7 +113,7 @@ const Header = ({ addDarkMode, darkMode }) => {
             >
               <option value="en">English</option>
               <option value="hi">Hindi</option>
-              <option value="fr">Spanish</option>
+              <option value="es">Spanish</option>
               <option value="de">German</option>
             </select>
           </nav>
@@ -288,7 +288,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                 English
               </option>
               <option value="hi">Hindi</option>
-              <option value="fr">Spanish</option>
+              <option value="es">Spanish</option>
               <option value="de">German</option>
             </select>
             <button

@@ -39,5 +39,45 @@
     "Please Enter Description": "Please Enter Description",
     "Create Blog": "Create Blog",
     "Update Blog": "Update Blog"
+  },
+  "heroSection": {
+    "heroSectionTitle": "Discover Captivating Blogs",
+    "heroSectionDescription": "Explore a curated collection of insightful and captivating blogs covering various topics. Start exploring now!",
+    "Featured Blog": "Featured Blog",
+    "Trending Blog": "Trending Blog",
+    "All Stories": "All Stories",
+    "Featured Blog Description": "Discover our curated collection of standout blogs, carefully selected for their quality and relevance.",
+    "Trending Blog Description": "Explore the latest and most talked-about blogs making waves in our vibrant community.",
+    "All Stories Blog Description": "Dive into a diverse array of captivating stories, ranging from personal anecdotes to insightful reflections."
+  },
+  "aboutUs": {
+    "aboutUsSectionTitle": "Discover Our Offerings",
+    "aboutUsSectionDescription": "Unlock a range of tailored services designed to elevate your digital presence and drive success.",
+    "aboutUsServiceTitle": "Discover Our Offerings",
+    "aboutUsServiceDescription": "Unlock a range of tailored services designed to elevate your digital presence and drive success.",
+    "MultiLanguageSupport": "MultiLanguageSupport",
+    "UserFriendly": "UserFriendly",
+    "Secure": "Secure",
+    "MultiLanguageSupportDescription": "Break language barriers with our multi-language support, enabling seamless communication across diverse audiences.",
+    "UserFriendlyDescription": "Experience simplicity and ease-of-use with our user-friendly interface, designed to enhance your browsing and interaction.",
+    "SecureDescription": "Rest assured with our robust security measures, ensuring the safety and confidentiality of your data at every step.",
+    "Step1": "Step 1: Join Our Community",
+    "Step2": "Step 2: Dive into the Blogosphere",
+    "Step3": "Step 3: Craft Your Masterpiece",
+    "Step4": "Step 4: Empower Your Voice",
+    "Step5": "Step 5: Curate Your Reading List",
+    "Step1Description": "Create your personalized account to unlock a world of blogging possibilities. Sign up now and become a part of our vibrant community!",
+    "Step2Description": "Explore captivating stories, insightful articles, and thought-provoking content from our diverse range of writers. Immerse yourself in a sea of knowledge and inspiration!",
+    "Step3Description": "Take control of your narrative and unleash your creativity. With our intuitive blogging platform, you have the power to create, edit, and publish your blog posts with ease.",
+    "Step4Description": "Share your unique perspectives, experiences, and passions with the world. From personal anecdotes to expert insights, your voice matters here. Start writing your story today",
+    "Step5Description": "Discover new favorites and bookmark articles that resonate with you. Build your personalized reading list and revisit your favorite pieces whenever inspiration strikes."
+  },
+  "footer": {
+    "Services": "Services",
+    "Company": "Company",
+    "Helpful Links": "Helpful Links",
+    "Legal": "Legal",
+    "©2023 DesiBlogs —": "©2023 DesiBlogs —",
+    "@AdarshSharma": "@AdarshSharma"
   }
 }

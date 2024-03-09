@@ -39,5 +39,45 @@
     "Please Enter Description": "Bitte geben Sie eine Beschreibung ein",
     "Create Blog": "Blog erstellen",
     "Update Blog": "Blog aktualisieren"
+  },
+  "heroSection": {
+    "heroSectionTitle": "Entdecke fesselnde Blogs",
+    "heroSectionDescription": "Entdecke eine kuratierte Sammlung von aufschlussreichen und fesselnden Blogs zu verschiedenen Themen. Beginne jetzt zu erkunden!",
+    "Featured Blog": "Hervorgehobener Blog",
+    "Trending Blog": "Trendiger Blog",
+    "All Stories": "Alle Geschichten",
+    "Featured Blog Description": "Entdecke unsere kuratierte Sammlung herausragender Blogs, sorgfältig ausgewählt aufgrund ihrer Qualität und Relevanz.",
+    "Trending Blog Description": "Entdecke die neuesten und meistdiskutierten Blogs, die in unserer lebendigen Community für Aufsehen sorgen.",
+    "All Stories Blog Description": "Tauche ein in eine vielfältige Auswahl fesselnder Geschichten, von persönlichen Anekdoten bis zu aufschlussreichen Reflexionen."
+  },
+  "aboutUs": {
+    "aboutUsSectionTitle": "Entdecken Sie unsere Angebote",
+    "aboutUsSectionDescription": "Entdecken Sie eine Reihe maßgeschneiderter Dienstleistungen, die darauf abzielen, Ihre digitale Präsenz zu verbessern und Erfolg zu erzielen.",
+    "aboutUsServiceTitle": "Entdecken Sie unsere Angebote",
+    "aboutUsServiceDescription": "Entdecken Sie eine Reihe maßgeschneiderter Dienstleistungen, die darauf abzielen, Ihre digitale Präsenz zu verbessern und Erfolg zu erzielen.",
+    "MultiLanguageSupport": "Mehrsprachiger Support",
+    "UserFriendly": "Benutzerfreundlich",
+    "Secure": "Sicher",
+    "MultiLanguageSupportDescription": "Überwinden Sie Sprachbarrieren mit unserem mehrsprachigen Support, der eine nahtlose Kommunikation über verschiedene Zielgruppen hinweg ermöglicht.",
+    "UserFriendlyDescription": "Erleben Sie Einfachheit und Benutzerfreundlichkeit mit unserer benutzerfreundlichen Oberfläche, die entwickelt wurde, um Ihre Navigation und Interaktion zu verbessern.",
+    "SecureDescription": "Ruhe in der Gewissheit unserer robusten Sicherheitsmaßnahmen, die die Sicherheit und Vertraulichkeit Ihrer Daten bei jedem Schritt gewährleisten.",
+    "Step1": "Schritt 1: Tritt unserer Gemeinschaft bei",
+    "Step2": "Schritt 2: Tauche in die Blogosphäre ein",
+    "Step3": "Schritt 3: Erschaffe dein Meisterwerk",
+    "Step4": "Schritt 4: Stärke deine Stimme",
+    "Step5": "Schritt 5: Stelle deine Leseliste zusammen",
+    "Step1Description": "Erstelle dein personalisiertes Konto, um eine Welt voller Blogging-Möglichkeiten zu entdecken. Registriere dich jetzt und werde Teil unserer lebendigen Community!",
+    "Step2Description": "Entdecke fesselnde Geschichten, aufschlussreiche Artikel und zum Nachdenken anregende Inhalte aus unserem vielfältigen Pool von Autoren. Tauche ein in ein Meer aus Wissen und Inspiration!",
+    "Step3Description": "Übernimm die Kontrolle über deine Erzählung und entfessele deine Kreativität. Mit unserer intuitiven Blogging-Plattform hast du die Kraft, deine Blogbeiträge einfach zu erstellen, zu bearbeiten und zu veröffentlichen.",
+    "Step4Description": "Teile deine einzigartigen Perspektiven, Erfahrungen und Leidenschaften mit der Welt. Von persönlichen Anekdoten bis hin zu Experteneinblicken spielt deine Stimme hier eine Rolle. Beginne heute damit, deine Geschichte zu schreiben!",
+    "Step5Description": "Entdecke neue Favoriten und markiere Artikel, die mit dir resonieren. Erstelle deine personalisierte Leseliste und kehre immer wieder zu deinen Lieblingsstücken zurück, wenn die Inspiration zuschlägt."
+  },
+  "footer": {
+    "Services": "Dienstleistungen",
+    "Company": "Unternehmen",
+    "Helpful Links": "Hilfreiche Links",
+    "Legal": "Rechtliches",
+    "©2023 DesiBlogs —": "©2023 DesiBlogs —",
+    "@AdarshSharma": "@AdarshSharma"
   }
 }

@@ -7,8 +7,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { LuChevronRight, LuChevronLeft } from "react-icons/lu";
+import { useTranslation } from "react-i18next";
 const TrendingBlog = () => {
   const [blogs, setBlogs] = useState([]);
+  const {t}=useTranslation();
   const arrowRef = useRef();
   var settings = {
     infinite: true,
@@ -65,12 +67,10 @@ const TrendingBlog = () => {
             </div>
             <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
               <h1 className="sm:w-2/5 text-gray-900 font-bold font-montserrat text-3xl mb-2 sm:mb-0 dark:text-gray-400">
-                TrendingBlog
+              {t('heroSection.Trending Blog')}
               </h1>
               <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0 dark:text-white">
-                Street art subway tile salvia four dollar toast bitters selfies
-                quinoa yuccie synth meditation iPhone intelligentsia prism tofu.
-                Viral gochujang bitters dreamcatcher.
+              {t('heroSection.Trending Blog Description')}
               </p>
             </div>
           </div>

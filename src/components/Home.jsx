@@ -3,17 +3,16 @@ import FeaturedBlog from "./FeaturedBlog";
 import Hero from "./Hero";
 import TrendingBlog from "./TrendingBlog";
 import AllStories from "./AllStories";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const{t}=useTranslation();
   return (
     <>
       <Hero
-        title="Before they sold out"
+        title={t('heroSection.heroSectionTitle')}
         imageUrl="../images/header.svg"
-        description=" Copper mug try-hard pitchfork pour-over freegan heirloom neutra
-              air plant cold-pressed tacos poke beard tote bag. Heirloom echo
-              park mlkshk tote bag selvage hot chicken authentic tumeric
-              truffaut hexagon try-hard chambray."
+        description={t('heroSection.heroSectionDescription')}
               padding={24}
       />
       <FeaturedBlog />
