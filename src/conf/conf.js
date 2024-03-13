@@ -8,6 +8,8 @@ const conf ={
     usersCollectionId:String(import.meta.env.VITE_APPWRITE_USERSCOLLECTION_ID),
     adminUserId:String(import.meta.env.VITE_APPWRITE_ADMINUSER_ID),
     adminUserEmail:String(import.meta.env.VITE_APPWRITE_ADMINUSER_EMAIL),
+    guestUserPassword:String(import.meta.env.VITE_APPWRITE_GUESTUSER_PASSWORD),
+    guestUserEmail:String(import.meta.env.VITE_APPWRITE_GUESTUSER_EMAIL),
 }
 
 export default conf

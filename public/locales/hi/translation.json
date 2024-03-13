@@ -9,7 +9,8 @@
     "Please Enter Email": "कृपया अपना ईमेल दर्ज करें",
     "Please Enter Password": "कृपया अपना पासवर्ड दर्ज करें",
     "logInButton": "लॉग इन करें",
-    "signUpButton": "साइन अप करें"
+    "signUpButton": "साइन अप करें",
+    "guestLogInButton": "मेहमान के रूप में लॉग इन करें"
   },
   "navigationTitle": {
     "Home": "होम",

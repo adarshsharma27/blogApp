@@ -9,7 +9,8 @@
     "Please Enter Email": "Bitte geben Sie Ihre E-Mail-Adresse ein",
     "Please Enter Password": "Bitte geben Sie Ihr Passwort ein",
     "logInButton": "Anmelden",
-    "signUpButton": "Registrieren"
+    "signUpButton": "Registrieren",
+    "guestLogInButton": "Als Gast einloggen"
   },
   "navigationTitle": {
     "Home": "Startseite",

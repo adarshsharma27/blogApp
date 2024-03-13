@@ -1,4 +1,4 @@
-import React, { useState, useId } from "react";
+import React, { useState, useId, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { account } from "../config";
 import { toast } from "react-toastify";
@@ -59,6 +59,46 @@ const Login = () => {
           progress: undefined,
         });
       }
+    }
+  };
+  const loginAsGuest = async () => {
+    setEmail(conf.guestUserEmail);
+    setPassword(conf.guestUserPassword);
+    try {
+      const userData = await account.createEmailSession(
+        conf.guestUserEmail,
+        conf.guestUserPassword
+      );
+      dispatch(logIn(userData));
+      toast.success("LoggedIn Successfully", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setEmail("");
+      setPassword("");
+      if (
+        userData.userId === conf.adminUserId &&
+        userData.providerUid === conf.adminUserEmail
+      ) {
+        navigate("/dashboard");
+      } else {
+        navigate("/addblog");
+      }
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   return (
@@ -150,6 +190,13 @@ const Login = () => {
               disabled={emailErr || passwordErr}
             >
               {t("commonTitle.logInButton")}
+            </button>
+            <button
+              className="text-white bg-[#2D283E] mt-4 border-0 py-2 px-8 focus:outline-none hover:bg-green-500 rounded text-lg disabled:opacity-75 disabled:cursor-not-allowed"
+              onClick={() => loginAsGuest()}
+              disabled={emailErr || passwordErr}
+            >
+              {t("commonTitle.guestLogInButton")}
             </button>
           </div>
         </div>

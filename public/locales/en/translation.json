@@ -9,7 +9,8 @@
     "Please Enter Email": "Please Enter Email",
     "Please Enter Password": "Please Enter Password",
     "logInButton": "LogIn",
-    "signUpButton": "SignUp"
+    "signUpButton": "SignUp",
+    "guestLogInButton":"LogIn As Guest"
   },
   "navigationTitle": {
     "Home": "Home",
