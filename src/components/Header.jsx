@@ -8,7 +8,7 @@ import conf from "../conf/conf";
 import { useTranslation } from "react-i18next";
 const Header = ({ addDarkMode, darkMode }) => {
   const dispatch = useDispatch();
-  const {t,i18n}=useTranslation()
+  const { t, i18n } = useTranslation();
   const LogOut = async () => {
     await account.deleteSession("current");
     dispatch(logOut(null));
@@ -54,10 +54,10 @@ const Header = ({ addDarkMode, darkMode }) => {
                   to="/addblog"
                   className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                 >
-                    {t("navigationTitle.AddBlog")}
+                  {t("navigationTitle.AddBlog")}
                 </NavLink>
                 <NavLink
-                  to="/bookmark"
+                  to={`/bookmark/${user?.userId}`}
                   className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
                 >
                   {t("navigationTitle.BookMarks")}

@@ -6,7 +6,7 @@ import {
   LuTrash2,
   LuPencilLine,
 } from "react-icons/lu";
-import { databases, ID } from "../config";
+import { databases } from "../config";
 import conf from "../conf/conf";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
@@ -25,7 +25,7 @@ const BlogCard = ({
   const [bookmark, setBookMark] = useState();
   const { userId } = useSelector((state) => state.persistedReducer?.userData);
   useEffect(() => {
-    if (pageUrl?.pathname === "/bookmark") setBookMark(true);
+    if (pageUrl?.pathname === `/bookmark/${userId}`) setBookMark(true);
     else setBookMark(false);
   }, []);
   const navigate = useNavigate();
@@ -40,6 +40,7 @@ const BlogCard = ({
           category,
           description,
           imageUrl: imageUrl ? imageUrl : "https://dummyimage.com/1203x503",
+          user_Id,
         }
       );
       toast.success("Bookmark Saved", {
@@ -51,7 +52,7 @@ const BlogCard = ({
         draggable: true,
         progress: undefined,
       });
-      navigate("/bookmark");
+      navigate(`/bookmark/${user_Id}`);
     } catch (error) {
       toast.error("Bookmark Already Saved", {
         position: "top-right",
@@ -91,7 +92,7 @@ const BlogCard = ({
         progress: undefined,
       });
     }
-    navigate("/bookmark");
+    navigate("/");
   };
   const deleteBlog = async () => {
     try {
