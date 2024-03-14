@@ -50,6 +50,7 @@ const AllStories = () => {
                     $id,
                     imageUrl,
                     userId,
+                    date
                   } = blog;
                   return (
                     <BlogCard
@@ -60,6 +61,7 @@ const AllStories = () => {
                       key={$id}
                       imageUrl={imageUrl}
                       user_Id={userId}
+                      date={date}
                     />
                   );
                 })}

@@ -18,8 +18,9 @@ const AddBlog = () => {
   const [createDisable, setCreateDisable] = useState(true);
   const { userId } = useSelector((state) => state.persistedReducer?.userData);
   const{t}=useTranslation();
+  const date= new Date();
   const blogHandle = (e) => {
-    setBlog({ ...blog, [e.target.name]: e.target.value, imageUrl, userId ,uploadFileId });
+    setBlog({ ...blog, [e.target.name]: e.target.value, imageUrl, userId ,uploadFileId,date});
   };
 
   const addBlog = async (e) => {

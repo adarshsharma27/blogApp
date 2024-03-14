@@ -50,6 +50,7 @@ const FeaturedBlog = () => {
                     $id,
                     imageUrl,
                     userId,
+                    date
                   } = blog;
                   return (
                     <BlogCard
@@ -60,6 +61,7 @@ const FeaturedBlog = () => {
                       key={$id}
                       imageUrl={imageUrl}
                       user_Id={userId}
+                      date={date}
                     />
                   );
                 })}

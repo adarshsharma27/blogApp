@@ -86,6 +86,7 @@ const TrendingBlog = () => {
                       $id,
                       imageUrl,
                       userId,
+                      date
                     } = blog;
                     return (
                       <BlogCard
@@ -96,6 +97,7 @@ const TrendingBlog = () => {
                         $id={$id}
                         imageUrl={imageUrl}
                         user_Id={userId}
+                        date={date}
                         marginTrendingSlider={8}
                       />
                     );
