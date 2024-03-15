@@ -50,6 +50,7 @@ const AllStories = () => {
                     $id,
                     imageUrl,
                     userId,
+                    id,
                     date
                   } = blog;
                   return (
@@ -61,6 +62,7 @@ const AllStories = () => {
                       key={$id}
                       imageUrl={imageUrl}
                       user_Id={userId}
+                      id={id}
                       date={date}
                     />
                   );

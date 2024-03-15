@@ -6,7 +6,7 @@ import {
   LuTrash2,
   LuPencilLine,
 } from "react-icons/lu";
-import { databases } from "../config";
+import { ID, databases } from "../config";
 import conf from "../conf/conf";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
@@ -26,22 +26,23 @@ const BlogCard = ({
   const [bookmark, setBookMark] = useState();
   const { userId } = useSelector((state) => state.persistedReducer?.userData);
   useEffect(() => {
-    if (pageUrl?.pathname === `/bookmark/${userId}`) setBookMark(true);
+    if (pageUrl?.pathname.split("/")[1] === `bookmark`) setBookMark(true);
     else setBookMark(false);
-  }, []);
+  }, [pageUrl]);
   const navigate = useNavigate();
   const addBookMark = async () => {
     try {
       const response = await databases.createDocument(
         conf.databaseId,
         conf.bookMarkCollectionId,
-        $id,
+        ID.unique(),
         {
+          id: $id,
           title,
           category,
           description,
           imageUrl: imageUrl ? imageUrl : "https://dummyimage.com/1203x503",
-          user_Id,
+          userId,
         }
       );
       toast.success("Bookmark Saved", {
@@ -53,7 +54,7 @@ const BlogCard = ({
         draggable: true,
         progress: undefined,
       });
-      navigate(`/bookmark/${user_Id}`);
+      navigate(`/bookmark/${userId}/${$id}`);
     } catch (error) {
       toast.error("Bookmark Already Saved", {
         position: "top-right",
@@ -173,13 +174,13 @@ const BlogCard = ({
         </NavLink>
 
         <div className="flex flex-wrap gap-3 justify-end">
-          {userId == user_Id && (
+          {userId == user_Id && !bookmark && (
             <LuPencilLine
               className="text-3xl hover:text-indigo-400 hover:cursor-pointer dark:text-white"
               onClick={() => navigate(`/updateblog/${$id}`)}
             />
           )}
-          {userId == user_Id && (
+          {userId == user_Id && !bookmark && (
             <LuTrash2
               className="text-3xl hover:text-red-400 hover:cursor-pointer dark:text-white"
               onClick={() => deleteBlog()}
@@ -191,12 +192,10 @@ const BlogCard = ({
               onClick={() => removeBookMark()}
             />
           ) : (
-            userId == user_Id && (
-              <LuBookmarkPlus
-                className="text-3xl hover:text-green-600 hover:cursor-pointer dark:text-white"
-                onClick={() => addBookMark()}
-              />
-            )
+            <LuBookmarkPlus
+              className="text-3xl hover:text-green-600 hover:cursor-pointer dark:text-white"
+              onClick={() => addBookMark()}
+            />
           )}
         </div>
       </div>

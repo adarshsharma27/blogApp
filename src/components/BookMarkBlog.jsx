@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 const BookMarkBlog = () => {
   const [blogs, setBlogs] = useState();
-  const { id } = useParams();
+  const {userId} = useParams();
   const { t } = useTranslation();
   useEffect(() => {
     const getBlogs = async () => {
@@ -15,13 +15,18 @@ const BookMarkBlog = () => {
         const promise = await databases.listDocuments(
           conf.databaseId,
           conf.bookMarkCollectionId,
-          [Query.equal("user_Id", id)]
+          [Query.equal("userId", userId)]
         );
         setBlogs(promise?.documents);
       } catch (error) {}
     };
     getBlogs();
   }, []);
+
+  const filteredBlogs = Array.from(new Set(blogs?.map(a => a.id))).map(id => {
+    return blogs?.find(a => a.id === id);
+});
+// console.log(uniqueData)
 
   return (
     <>
@@ -43,13 +48,13 @@ const BookMarkBlog = () => {
           </div>
           <div
             className={
-              blogs?.length === 0
+              filteredBlogs?.length === 0
                 ? "grid  gap-4 place-content-center"
                 : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
             }
           >
-            {blogs?.length !== 0 ? (
-              blogs?.map((blog) => {
+            {filteredBlogs?.length !== 0 ? (
+              filteredBlogs?.map((blog) => {
                 const { title, category, description, $id, imageUrl, userId,date } =
                   blog;
                 return (

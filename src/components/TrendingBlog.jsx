@@ -86,6 +86,7 @@ const TrendingBlog = () => {
                       $id,
                       imageUrl,
                       userId,
+                      id,
                       date
                     } = blog;
                     return (
@@ -97,6 +98,7 @@ const TrendingBlog = () => {
                         $id={$id}
                         imageUrl={imageUrl}
                         user_Id={userId}
+                        id={id}
                         date={date}
                         marginTrendingSlider={8}
                       />
