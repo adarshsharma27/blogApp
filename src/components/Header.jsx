@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation ,Link } from "react-router-dom";
 import { account } from "../config";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../features/blogsSlice";
@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 const Header = ({ addDarkMode, darkMode }) => {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
+  const pageUrl = useLocation();
   const LogOut = async () => {
     await account.deleteSession("current");
     dispatch(logOut(null));
@@ -24,7 +25,7 @@ const Header = ({ addDarkMode, darkMode }) => {
       <header className="text-gray-600 font-montserrat bg-gray-100 dark:bg-slate-700">
         {/* Desktop Navigation start */}
         <div className="hidden container mx-auto md:flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <NavLink
+          <Link
             to="/"
             className="flex font-montserrat font-medium items-center text-gray-900 mb-4 md:mb-0"
           >
@@ -32,7 +33,7 @@ const Header = ({ addDarkMode, darkMode }) => {
             <span className="ml-2 text-xl font-bold text-purple-500">
               DesiBlogs
             </span>
-          </NavLink>
+          </Link>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             {user && (
               <NavLink
@@ -56,12 +57,15 @@ const Header = ({ addDarkMode, darkMode }) => {
                 >
                   {t("navigationTitle.AddBlog")}
                 </NavLink>
-                <NavLink
-                  to={`/bookmark/${user?.userId}`}
-                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold"
+                {
+                  (pageUrl?.pathname.split("/")[1] === `bookmark`) && <NavLink
+                  to={""}
+                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold active"
                 >
                   {t("navigationTitle.BookMarks")}
                 </NavLink>
+                }
+                
                 {user?.userId === conf.adminUserId &&
                   user?.providerUid === conf.adminUserEmail && (
                     <NavLink
@@ -79,11 +83,11 @@ const Header = ({ addDarkMode, darkMode }) => {
                   {t("navigationTitle.LogOut")}
                 </NavLink>
 
-                <NavLink to="/addblog" className="lg:mr-5 md:mr-0 mt-2 md:mt-0">
+                <Link to="/addblog" className="lg:mr-5 md:mr-0 mt-2 md:mt-0">
                   <div className="w-10 h-10 text-white p-2 bg-purple-500 rounded-full text-center font-bold">
                     {user?.providerUid?.slice(0, 1)?.toUpperCase()}
                   </div>
-                </NavLink>
+                </Link>
               </>
             ) : (
               <>
@@ -225,13 +229,14 @@ const Header = ({ addDarkMode, darkMode }) => {
                 >
                   {t("navigationTitle.AddBlog")}
                 </NavLink>
-                <NavLink
-                  to="/bookmark"
-                  className="hover:text-purple-500 dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
-                  onClick={() => toggleNavigation()}
+                {
+                  (pageUrl?.pathname.split("/")[1] === `bookmark`) && <NavLink
+                  to={""}
+                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold active"
                 >
                   {t("navigationTitle.BookMarks")}
                 </NavLink>
+                }
                 {user?.userId === conf.adminUserId &&
                   user?.providerUid === conf.adminUserEmail && (
                     <NavLink
@@ -248,7 +253,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                 >
                   {t("navigationTitle.LogOut")}
                 </NavLink>
-                <NavLink
+                <Link
                   to="/addblog"
                   className="hover:text-purple-500 flex justify-center items-center	 dark:text-white py-2 border-b-2 w-10/12 border-gray-500 hover:border-purple-500  font-semibold"
                   onClick={() => toggleNavigation()}
@@ -256,7 +261,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                   <div className="w-10 h-10 text-white p-2 bg-purple-500 rounded-full text-center font-bold">
                     {user?.providerUid?.slice(0, 1)?.toUpperCase()}
                   </div>
-                </NavLink>
+                </Link>
               </>
             ) : (
               <>
