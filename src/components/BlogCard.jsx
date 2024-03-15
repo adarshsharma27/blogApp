@@ -43,6 +43,7 @@ const BlogCard = ({
           description,
           imageUrl: imageUrl ? imageUrl : "https://dummyimage.com/1203x503",
           userId,
+          date
         }
       );
       toast.success("Bookmark Saved", {
