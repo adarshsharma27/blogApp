@@ -57,15 +57,15 @@ const Header = ({ addDarkMode, darkMode }) => {
                 >
                   {t("navigationTitle.AddBlog")}
                 </NavLink>
-                {
-                  (pageUrl?.pathname.split("/")[1] === `bookmark`) && <NavLink
-                  to={""}
-                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold active"
-                >
-                  {t("navigationTitle.BookMarks")}
-                </NavLink>
-                }
-                
+                {pageUrl?.pathname.split("/")[1] === `bookmark` && (
+                  <NavLink
+                    to={""}
+                    className="mr-5 hover:text-gray-900 dark:text-white font-semibold active"
+                  >
+                    {t("navigationTitle.BookMarks")}
+                  </NavLink>
+                )}
+
                 {user?.userId === conf.adminUserId &&
                   user?.providerUid === conf.adminUserEmail && (
                     <NavLink
@@ -121,6 +121,28 @@ const Header = ({ addDarkMode, darkMode }) => {
               <option value="de">German</option>
             </select>
           </nav>
+          <Link
+            to="/search"
+            type="button"
+            className="text-gray-600 hover:text-gray-700"
+          >
+            <span className="sr-only">Search</span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
+          </Link>
           <button
             className="inline-flex items-center  border-0 py-1 px-3 focus:outline-none text-base mt-2 md:mt-0"
             onClick={() => {
@@ -229,14 +251,14 @@ const Header = ({ addDarkMode, darkMode }) => {
                 >
                   {t("navigationTitle.AddBlog")}
                 </NavLink>
-                {
-                  (pageUrl?.pathname.split("/")[1] === `bookmark`) && <NavLink
-                  to={""}
-                  className="mr-5 hover:text-gray-900 dark:text-white font-semibold active"
-                >
-                  {t("navigationTitle.BookMarks")}
-                </NavLink>
-                }
+                {pageUrl?.pathname.split("/")[1] === `bookmark` && (
+                  <NavLink
+                    to={""}
+                    className="mr-5 hover:text-gray-900 dark:text-white font-semibold active"
+                  >
+                    {t("navigationTitle.BookMarks")}
+                  </NavLink>
+                )}
                 {user?.userId === conf.adminUserId &&
                   user?.providerUid === conf.adminUserEmail && (
                     <NavLink
@@ -296,6 +318,28 @@ const Header = ({ addDarkMode, darkMode }) => {
               <option value="es">Spanish</option>
               <option value="de">German</option>
             </select>
+            <Link
+            to="/search"
+            type="button"
+            className="text-gray-600 hover:text-gray-700"
+          >
+            <span className="sr-only">Search</span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
+          </Link>
             <button
               className="inline-flex items-center justify-center  border-b-2 w-10/12 border-gray-500 hover:border-purple-500  border-0 py-1 px-3 focus:outline-none text-base mt-2 md:mt-0"
               onClick={() => {

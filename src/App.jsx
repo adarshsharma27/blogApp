@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 import UpdateBlog from "./components/UpdateBlog";
 import ScrollTop from "./utils/ScrollTop";
 import DashBoard from "./components/DashBoard";
+import Search from "./components/Search";
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const addDarkMode = () => {
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/bookmark/:userId/:id" element={<BookMarkBlog />} />
           <Route path="/updateblog/:id" element={<UpdateBlog />} />
           <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/search" element={<Search />} />
         </Route>
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/signup" element={<SignUp />} />
