@@ -11,6 +11,7 @@ const Search = () => {
   const { t } = useTranslation();
   const [category, setCategory] = useState("all");
   const [search, setSearch] = useState("");
+  const [active, setActive] = useState(false);
   useEffect(() => {
     const getBlogs = async () => {
       if (category === "all") {
@@ -92,41 +93,83 @@ const Search = () => {
 
             <ul className="mt-6 md:space-y-4 md:block flex flex-wrap justify-start content-center gap-2">
               <li
-                className="hidden md:block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-base font-semibold text-gray-700   cursor-pointer"
-                onClick={() => setCategory("all")}
+                className={
+                  active && category === "all"
+                    ? "bg-purple-500 text-white hidden md:block rounded-lg  dark:bg-purple-500 dark:text-white  px-4 py-2 text-base font-semibold  cursor-pointer"
+                    : "hidden md:block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-base font-semibold text-gray-700  hover:bg-purple-500 hover:text-white  cursor-pointer"
+                }
+                onClick={(e) => {
+                  setCategory("all");
+                  setActive(true);
+                }}
               >
                 {t("heroSection.All Stories")}
               </li>
               <li
-                className="hidden md:block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
-                onClick={() => setCategory("featured")}
+                className={
+                  active && category === "featured"
+                    ? "bg-purple-500 text-white hidden md:block rounded-lg  dark:bg-purple-500 dark:text-white  px-4 py-2 text-base font-semibold  cursor-pointer"
+                    : "hidden md:block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-base font-semibold text-gray-700 hover:bg-purple-500 hover:text-white  cursor-pointer"
+                }
+                onClick={() => {
+                  setCategory("featured");
+                  setActive(true);
+                }}
               >
                 {t("heroSection.Featured Blogs")}
               </li>
 
               <li
-                className="hidden md:block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
-                onClick={() => setCategory("trending")}
+                className={
+                  active && category === "trending"
+                    ? "bg-purple-500 text-white hidden md:block rounded-lg  dark:bg-purple-500 dark:text-white  px-4 py-2 text-base font-semibold  cursor-pointer"
+                    : "hidden md:block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-base font-semibold text-gray-700 hover:bg-purple-500 hover:text-white  cursor-pointer"
+                }
+                onClick={() => {
+                  setCategory("trending");
+                  setActive(true);
+                }}
               >
                 {t("heroSection.Trending Blogs")}
               </li>
               {/* Mobile filter start */}
               <li
-                className="block md:hidden rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-sm font-semibold text-gray-700   cursor-pointer"
-                onClick={() => setCategory("all")}
+                className={
+                  active && category === "all"
+                    ? "bg-purple-500 text-white block md:hidden rounded-lg  dark:bg-purple-500 dark:text-white  px-4 py-2 text-sm font-semibold  cursor-pointer"
+                    : "block md:hidden rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-purple-500 hover:text-white  cursor-pointer"
+                }
+                onClick={() => {
+                  setCategory("all");
+                  setActive(true);
+                }}
               >
                 {t("commonTitle.All")}
               </li>
               <li
-                className="block md:hidden rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-sm font-semibold text-gray-700 cursor-pointer"
-                onClick={() => setCategory("featured")}
+                className={
+                  active && category === "featured"
+                    ? "bg-purple-500 text-white block md:hidden rounded-lg  dark:bg-purple-500 dark:text-white  px-4 py-2 text-sm font-semibold  cursor-pointer"
+                    : "block md:hidden rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-sm font-semibold text-gray-700  hover:bg-purple-500 hover:text-white cursor-pointer"
+                }
+                onClick={() => {
+                  setCategory("featured");
+                  setActive(true);
+                }}
               >
                 {t("addUpdateBlogs.Featured")}
               </li>
 
               <li
-                className="block md:hidden rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-sm font-semibold text-gray-700 cursor-pointer"
-                onClick={() => setCategory("trending")}
+                className={
+                  active && category === "trending"
+                    ? "bg-purple-500 text-white block md:hidden rounded-lg  dark:bg-purple-500 dark:text-white  px-4 py-2 text-sm font-semibold  cursor-pointer"
+                    : "block md:hidden rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-sm font-semibold text-gray-700  hover:bg-purple-500 hover:text-white cursor-pointer"
+                }
+                onClick={() => {
+                  setCategory("trending");
+                  setActive(true);
+                }}
               >
                 {t("addUpdateBlogs.Trending")}
               </li>
