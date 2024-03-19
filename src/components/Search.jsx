@@ -48,7 +48,7 @@ const Search = () => {
         setBlogs(resp?.documents);
       } catch (error) {}
     } else if (search.length < 3) {
-      toast.error("Search with more Character", {
+      toast.error("Search with more Characters", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: false,
@@ -56,7 +56,7 @@ const Search = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-      }); // Failure
+      });
     } else if (search.length >= 3) {
       try {
         const resp = await databases.listDocuments(
@@ -64,8 +64,20 @@ const Search = () => {
           conf.collectionId,
           [Query.equal("title", search)]
         );
-
-        setBlogs(resp?.documents);
+        if (resp?.documents?.length === 0) {
+          toast.error("No Search Results", {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          setBlogs(resp?.documents);
+        } else {
+          setBlogs(resp?.documents);
+        }
       } catch (error) {}
     }
   };
