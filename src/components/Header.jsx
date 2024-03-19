@@ -124,7 +124,7 @@ const Header = ({ addDarkMode, darkMode }) => {
           <Link
             to="/search"
             type="button"
-            className="text-gray-600 hover:text-gray-700"
+            className="text-gray-600 dark:text-white hover:text-gray-700"
           >
             <span className="sr-only">Search</span>
 
@@ -321,7 +321,7 @@ const Header = ({ addDarkMode, darkMode }) => {
             <Link
             to="/search"
             type="button"
-            className="text-gray-600 hover:text-gray-700"
+            className="text-gray-600 dark:text-white hover:text-gray-700"
           >
             <span className="sr-only">Search</span>
 

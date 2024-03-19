@@ -83,32 +83,32 @@ const Search = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 font-montserrat">
-        <div className="flex h-screen flex-col justify-between border-e bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 font-montserrat dark:bg-slate-700">
+        <div className="flex h-screen flex-col justify-between border-e bg-white dark:bg-slate-700">
           <div className="px-4 py-6">
-            <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-lg  font-semibold text-gray-500">
-            {t("commonTitle.Filters")}
+            <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 dark:bg-slate-500 dark:text-white text-lg  font-semibold text-gray-500">
+              {t("commonTitle.Filters")}
             </span>
 
             <ul className="mt-6 space-y-4">
               <li
-                className="block rounded-lg bg-gray-100 px-4 py-2 text-base font-semibold text-gray-700   cursor-pointer"
+                className="block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-base font-semibold text-gray-700   cursor-pointer"
                 onClick={() => setCategory("all")}
               >
-                 {t("heroSection.All Stories")}
+                {t("heroSection.All Stories")}
               </li>
               <li
-                className="block rounded-lg bg-gray-100 px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
+                className="block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
                 onClick={() => setCategory("featured")}
               >
-                 {t("heroSection.Featured Blogs")}
+                {t("heroSection.Featured Blogs")}
               </li>
 
               <li
-                className="block rounded-lg bg-gray-100 px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
+                className="block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
                 onClick={() => setCategory("trending")}
               >
-                 {t("heroSection.Trending Blogs")}
+                {t("heroSection.Trending Blogs")}
               </li>
             </ul>
           </div>
@@ -130,7 +130,7 @@ const Search = () => {
               >
                 <button
                   type="button"
-                  className="text-gray-600 hover:text-gray-700"
+                  className="text-gray-600 dark:text-white hover:text-gray-700"
                 >
                   <span className="sr-only">{t("commonTitle.Search")}</span>
 
@@ -140,7 +140,7 @@ const Search = () => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="h-4 w-4"
+                    className="h-5 w-5"
                   >
                     <path
                       strokeLinecap="round"
