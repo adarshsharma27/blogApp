@@ -13,7 +13,8 @@
     "guestLogInButton": "मेहमान के रूप में लॉग इन करें",
     "Search": "खोज",
     "Search Blogs": "ब्लॉग खोजें",
-    "Filters": "फिल्टर"
+    "Filters": "फिल्टर",
+    "All":"सभी शब्द"
   },
   "navigationTitle": {
     "Home": "होम",

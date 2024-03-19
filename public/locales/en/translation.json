@@ -13,7 +13,8 @@
     "guestLogInButton": "LogIn As Guest",
     "Search": "Search",
     "Search Blogs": "Search Blogs",
-    "Filters": "Filters"
+    "Filters": "Filters",
+    "All":"All"
   },
   "navigationTitle": {
     "Home": "Home",

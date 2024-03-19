@@ -13,7 +13,8 @@
     "guestLogInButton": "Iniciar sesión como invitado",
     "Search": "Buscar",
     "Search Blogs": "Buscar Blogs",
-    "Filters": "Filtros"
+    "Filters": "Filtros",
+    "All":"TodaPalabras"
   },
   "navigationTitle": {
     "Home": "Inicio",

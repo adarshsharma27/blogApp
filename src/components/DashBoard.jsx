@@ -5,6 +5,7 @@ import { LuUsers, LuScrollText, LuTrendingUp } from "react-icons/lu";
 import conf from "../conf/conf";
 import { Query, databases } from "../config";
 import { useTranslation } from "react-i18next";
+import BackButton from "../utils/BackButton";
 
 const DashBoard = () => {
   const [users, setUsers] = useState([]);
@@ -54,7 +55,7 @@ const DashBoard = () => {
   return (
     <>
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
-        <div className="container px-5  mx-auto">
+        <div className="container px-5 md:py-0 py-10 mx-auto">
           <div className="flex flex-col">
             <div className="flex flex-wrap sm:flex-row flex-col py-6">
               <h1 className="sm:w-2/5 text-gray-900 font-bold font-montserrat text-3xl mb-2 sm:mb-0 dark:text-white">

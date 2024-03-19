@@ -83,33 +83,54 @@ const Search = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 font-montserrat dark:bg-slate-700">
-        <div className="flex h-screen flex-col justify-between border-e bg-white dark:bg-slate-700">
-          <div className="px-4 py-6">
-            <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 dark:bg-slate-500 dark:text-white text-lg  font-semibold text-gray-500">
+      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 md:gap-4  font-montserrat dark:bg-slate-700">
+        <div className="flex  flex-col justify-between md:border-e bg-white dark:bg-slate-700">
+          <div className="px-4 md:py-6 pt-16 pb-2">
+            <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 dark:bg-slate-500 dark:text-white md:text-lg text-base  font-semibold text-gray-500">
               {t("commonTitle.Filters")}
             </span>
 
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-6 md:space-y-4 md:block flex flex-wrap justify-start content-center gap-2">
               <li
-                className="block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-base font-semibold text-gray-700   cursor-pointer"
+                className="hidden md:block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-base font-semibold text-gray-700   cursor-pointer"
                 onClick={() => setCategory("all")}
               >
                 {t("heroSection.All Stories")}
               </li>
               <li
-                className="block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
+                className="hidden md:block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
                 onClick={() => setCategory("featured")}
               >
                 {t("heroSection.Featured Blogs")}
               </li>
 
               <li
-                className="block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
+                className="hidden md:block rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
                 onClick={() => setCategory("trending")}
               >
                 {t("heroSection.Trending Blogs")}
               </li>
+              {/* Mobile filter start */}
+              <li
+                className="block md:hidden rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white  px-4 py-2 text-sm font-semibold text-gray-700   cursor-pointer"
+                onClick={() => setCategory("all")}
+              >
+                {t("commonTitle.All")}
+              </li>
+              <li
+                className="block md:hidden rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-sm font-semibold text-gray-700 cursor-pointer"
+                onClick={() => setCategory("featured")}
+              >
+                {t("addUpdateBlogs.Featured")}
+              </li>
+
+              <li
+                className="block md:hidden rounded-lg bg-gray-100 dark:bg-slate-600 dark:text-white px-4 py-2 text-sm font-semibold text-gray-700 cursor-pointer"
+                onClick={() => setCategory("trending")}
+              >
+                {t("addUpdateBlogs.Trending")}
+              </li>
+              {/* Mobile filter end */}
             </ul>
           </div>
         </div>
