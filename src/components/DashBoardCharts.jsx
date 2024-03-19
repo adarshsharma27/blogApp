@@ -10,6 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { useTranslation } from "react-i18next";
 
 ChartJS.register(
   CategoryScale,
@@ -23,6 +24,7 @@ ChartJS.register(
 );
 
 const DashBoardCharts = ({ users, blogs, trendingBlogs }) => {
+  const { t } = useTranslation();
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -65,7 +67,11 @@ const DashBoardCharts = ({ users, blogs, trendingBlogs }) => {
   };
 
   const data = {
-    labels: ["Total Users", "Total Blogs", "Trending Blogs"],
+    labels: [
+      t("DashBoardTitle.Total Users"),
+      t("DashBoardTitle.Total Blogs"),
+      t("DashBoardTitle.Trending Blogs"),
+    ],
     datasets: [
       {
         label: "Application Record",

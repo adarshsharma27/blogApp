@@ -10,7 +10,10 @@
     "Please Enter Password": "Por favor ingresa tu contraseña",
     "logInButton": "Iniciar sesión",
     "signUpButton": "Registrarse",
-    "guestLogInButton": "Iniciar sesión como invitado"
+    "guestLogInButton": "Iniciar sesión como invitado",
+    "Search": "Buscar",
+    "Search Blogs": "Buscar Blogs",
+    "Filters": "Filtros"
   },
   "navigationTitle": {
     "Home": "Inicio",
@@ -44,13 +47,13 @@
   "heroSection": {
     "heroSectionTitle": "Descubre Blogs Fascinantes",
     "heroSectionDescription": "Explora una colección seleccionada de blogs perspicaces y fascinantes que cubren diversos temas. ¡Comienza a explorar ahora!",
-    "Featured Blog": "Blog Destacado",
-    "Trending Blog": "Blog Tendencia",
-    "BookMarked Blog":"Blog Marcado",
+    "Featured Blogs": "Blog Destacados",
+    "Trending Blogs": "Blog Tendencias",
+    "BookMarked Blogs": "Blog Marcados",
     "All Stories": "Todas las Historias",
     "Featured Blog Description": "Descubre nuestra colección seleccionada de blogs destacados, cuidadosamente seleccionados por su calidad y relevancia.",
     "Trending Blog Description": "Explora los últimos y más comentados blogs que están causando sensación en nuestra vibrante comunidad.",
-    "BookMarked Blog Description":"Marca tus blogs favoritos y accede a ellos en cualquier momento y lugar. Explora tu colección personalizada de artículos guardados y nunca te pierdas de lecturas cautivadoras nuevamente.",
+    "BookMarked Blog Description": "Marca tus blogs favoritos y accede a ellos en cualquier momento y lugar. Explora tu colección personalizada de artículos guardados y nunca te pierdas de lecturas cautivadoras nuevamente.",
     "All Stories Blog Description": "Sumérgete en una amplia gama de historias cautivadoras, que van desde anécdotas personales hasta reflexiones perspicaces."
   },
   "aboutUs": {
@@ -74,6 +77,14 @@
     "Step3Description": "Toma el control de tu narrativa y libera tu creatividad. Con nuestra plataforma de blogging intuitiva, tienes el poder de crear, editar y publicar tus entradas de blog con facilidad.",
     "Step4Description": "Comparte tus perspectivas únicas, experiencias y pasiones con el mundo. Desde anécdotas personales hasta conocimientos de expertos, tu voz importa aquí. ¡Comienza a escribir tu historia hoy mismo!",
     "Step5Description": "Descubre nuevos favoritos y marca los artículos que resuenen contigo. Crea tu lista de lectura personalizada y vuelve a visitar tus piezas favoritas cada vez que te inspire."
+  },
+  "DashBoardTitle": {
+    "DashBoard": "Tablero",
+    "Total Users": "Usuarios Totales",
+    "Total Blogs": "Blogs Totales",
+    "Trending Blogs": "Blogs Populares",
+    "Users Details": "Detalles de Usuarios",
+    "Id": "Id"
   },
   "footer": {
     "Services": "Servicios",

@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const DashBoardTable = ({ users }) => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="overflow-x-auto overflow-y-scroll h-[80vh] container my-6 mx-auto rounded-lg border border-gray-200  dark:bg-slate-700 card-shadow-custom">
@@ -8,20 +10,23 @@ const DashBoardTable = ({ users }) => {
           <thead className="text-center bg-gray-100 dark:bg-slate-200 ">
             <tr>
               <th className="whitespace-nowrap px-4 py-2  text-lg font-semibold text-gray-900">
-                Id
+                {t("DashBoardTitle.Id")}Id
               </th>
               <th className="whitespace-nowrap px-4 py-2 text-lg font-semibold text-gray-900">
-                Name
+                {t("commonTitle.Name")}
               </th>
               <th className="whitespace-nowrap px-4 py-2  text-lg font-semibold text-gray-900">
-                Email
+                {t("commonTitle.Email")}
               </th>
             </tr>
           </thead>
 
           <tbody className="divide-y divide-gray-200">
             {users?.map((elements) => (
-              <tr className="even:bg-gray-50 dark:bg-slate-600 text-center" key={elements.$id}>
+              <tr
+                className="even:bg-gray-50 dark:bg-slate-600 text-center"
+                key={elements.$id}
+              >
                 <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
                   {elements.$id}
                 </td>

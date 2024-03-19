@@ -87,7 +87,7 @@ const Search = () => {
         <div className="flex h-screen flex-col justify-between border-e bg-white">
           <div className="px-4 py-6">
             <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-lg  font-semibold text-gray-500">
-              Filters
+            {t("commonTitle.Filters")}
             </span>
 
             <ul className="mt-6 space-y-4">
@@ -95,20 +95,20 @@ const Search = () => {
                 className="block rounded-lg bg-gray-100 px-4 py-2 text-base font-semibold text-gray-700   cursor-pointer"
                 onClick={() => setCategory("all")}
               >
-                All Stories
+                 {t("heroSection.All Stories")}
               </li>
               <li
                 className="block rounded-lg bg-gray-100 px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
                 onClick={() => setCategory("featured")}
               >
-                Featured
+                 {t("heroSection.Featured Blogs")}
               </li>
 
               <li
                 className="block rounded-lg bg-gray-100 px-4 py-2 text-base font-semibold text-gray-700 cursor-pointer"
                 onClick={() => setCategory("trending")}
               >
-                Trending
+                 {t("heroSection.Trending Blogs")}
               </li>
             </ul>
           </div>
@@ -116,15 +116,10 @@ const Search = () => {
         <div className="container px-5 py-4 mx-auto font-montserrat col-span-3">
           <div className="card-shadow-custom p-6 rounded">
             <div className="relative">
-              <label htmlFor="Search" className="sr-only">
-                {" "}
-                Search{" "}
-              </label>
-
               <input
                 type="text"
                 id="Search"
-                placeholder="Search for..."
+                placeholder={t("commonTitle.Search Blogs")}
                 className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                 onChange={(e) => setSearch(e.target.value)}
               />
@@ -137,7 +132,7 @@ const Search = () => {
                   type="button"
                   className="text-gray-600 hover:text-gray-700"
                 >
-                  <span className="sr-only">Search</span>
+                  <span className="sr-only">{t("commonTitle.Search")}</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

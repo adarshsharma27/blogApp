@@ -10,7 +10,10 @@
     "Please Enter Password": "Please Enter Password",
     "logInButton": "LogIn",
     "signUpButton": "SignUp",
-    "guestLogInButton":"LogIn As Guest"
+    "guestLogInButton": "LogIn As Guest",
+    "Search": "Search",
+    "Search Blogs": "Search Blogs",
+    "Filters": "Filters"
   },
   "navigationTitle": {
     "Home": "Home",
@@ -44,13 +47,13 @@
   "heroSection": {
     "heroSectionTitle": "Discover Captivating Blogs",
     "heroSectionDescription": "Explore a curated collection of insightful and captivating blogs covering various topics. Start exploring now!",
-    "Featured Blog": "Featured Blog",
-    "Trending Blog": "Trending Blog",
-    "BookMarked Blog":"BookMarked Blog",
+    "Featured Blogs": "Featured Blogs",
+    "Trending Blogs": "Trending Blogs",
+    "BookMarked Blogs": "BookMarked Blogs",
     "All Stories": "All Stories",
     "Featured Blog Description": "Discover our curated collection of standout blogs, carefully selected for their quality and relevance.",
     "Trending Blog Description": "Explore the latest and most talked-about blogs making waves in our vibrant community.",
-    "BookMarked Blog Description":"Bookmark your favorite blogs and access them anytime, anywhere. Explore your curated collection of saved articles and never miss out on captivating reads again.",
+    "BookMarked Blog Description": "Bookmark your favorite blogs and access them anytime, anywhere. Explore your curated collection of saved articles and never miss out on captivating reads again.",
     "All Stories Blog Description": "Dive into a diverse array of captivating stories, ranging from personal anecdotes to insightful reflections."
   },
   "aboutUs": {
@@ -74,6 +77,14 @@
     "Step3Description": "Take control of your narrative and unleash your creativity. With our intuitive blogging platform, you have the power to create, edit, and publish your blog posts with ease.",
     "Step4Description": "Share your unique perspectives, experiences, and passions with the world. From personal anecdotes to expert insights, your voice matters here. Start writing your story today",
     "Step5Description": "Discover new favorites and bookmark articles that resonate with you. Build your personalized reading list and revisit your favorite pieces whenever inspiration strikes."
+  },
+  "DashBoardTitle": {
+    "DashBoard": "DashBoard",
+    "Total Users": "Total Users",
+    "Total Blogs": "Total Blogs",
+    "Trending Blogs": "Trending Blogs",
+    "Users Details": "Users Details",
+    "Id": "Id"
   },
   "footer": {
     "Services": "Services",
