@@ -14,7 +14,7 @@
     "Search": "खोज",
     "Search Blogs": "ब्लॉग खोजें",
     "Filters": "फिल्टर",
-    "All":"सभी शब्द"
+    "All": "सभी शब्द"
   },
   "navigationTitle": {
     "Home": "होम",
@@ -31,7 +31,7 @@
     "updateBlogHeader": "हमारी अद्भुत अपडेट ब्लॉग सुविधा का उपयोग करके अपने प्रकाशित लेखों को आसानी से ताजगी दें और सीमित सामग्री प्रबंधन के लिए डिज़ाइन किया गया है।",
     "Title": "शीर्षक",
     "Category": "श्रेणी",
-    "Select Category": "श्रेणी चुनें",
+    "Please Select Category": "कृपया श्रेणी चुनें",
     "Message": "संदेश",
     "Trending": "लोकप्रिय",
     "Featured": "विशेष रुप से प्रदर्शित",
@@ -43,7 +43,8 @@
     "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG या GIF (अधिकतम 2MB)",
     "Please Enter Description": "कृपया विवरण दर्ज करें",
     "Create Blog": "ब्लॉग बनाएं",
-    "Update Blog": "ब्लॉग अपडेट करें"
+    "Update Blog": "ब्लॉग अपडेट करें",
+    "Please Upload Image": "कृपया छवि अपलोड करें"
   },
   "heroSection": {
     "heroSectionTitle": "मोहक ब्लॉग खोजें",

@@ -14,7 +14,7 @@
     "Search": "Suche",
     "Search Blogs": "Blogs suchen",
     "Filters": "Filter",
-    "All":"Alle Worte"
+    "All": "Alle Worte"
   },
   "navigationTitle": {
     "Home": "Startseite",
@@ -31,7 +31,7 @@
     "updateBlogHeader": "Aktualisieren und verfeinern Sie Ihre veröffentlichten Artikel mühelos mit unserer intuitiven Funktion zum Aktualisieren des Blogs, die für nahtlose Inhaltsverwaltung entwickelt wurde.",
     "Title": "Titel",
     "Category": "Kategorie",
-    "Select Category": "Kategorie auswählen",
+    "Please Select Category": " Bitte Kategorie auswählen",
     "Message": "Nachricht",
     "Trending": "Trendig",
     "Featured": "Vorgestellt",
@@ -43,7 +43,8 @@
     "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG oder GIF (MAX-2MB)",
     "Please Enter Description": "Bitte geben Sie eine Beschreibung ein",
     "Create Blog": "Blog erstellen",
-    "Update Blog": "Blog aktualisieren"
+    "Update Blog": "Blog aktualisieren",
+    "Please Upload Image": "Por favor, sube la imagen"
   },
   "heroSection": {
     "heroSectionTitle": "Entdecke fesselnde Blogs",

@@ -15,50 +15,90 @@ const AddBlog = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [uploadFileId, setUploadFileId] = useState("");
   const [hideFileUpload, setHideFileUpload] = useState(true);
-  const [createDisable, setCreateDisable] = useState(true);
+  const [createDisable, setCreateDisable] = useState(false);
+  const [titleErr, setTitleErr] = useState(false);
+  const [categoryErr, setCategoryErr] = useState(false);
+  const [imageErr, setImageErr] = useState(false);
+  const [descriptionErr, setDescriptionErr] = useState(false);
   const { userId } = useSelector((state) => state.persistedReducer?.userData);
-  const{t}=useTranslation();
-  const date= new Date();
+  const { t } = useTranslation();
+  const date = new Date();
   const blogHandle = (e) => {
-    setBlog({ ...blog, [e.target.name]: e.target.value, imageUrl, userId ,uploadFileId,date});
+    setBlog({
+      ...blog,
+      [e.target.name]: e.target.value,
+      imageUrl,
+      userId,
+      uploadFileId,
+      date,
+    });
   };
 
   const addBlog = async (e) => {
-    try {
-      await databases.createDocument(
-        conf.databaseId,
-        conf.collectionId,
-        ID.unique(),
-        blog
-      );
-      toast.success("Blog Created Successfully", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      NotificationAudio();
-      navigate("/");
-    } catch (error) {
-      toast.error(error.message, {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+    if (!blog.title || blog.title.trim() === "" || blog.title.length >= 50) {
+      setTitleErr(true);
+      setCategoryErr(false);
+      setImageErr(false);
+      setDescriptionErr(false);
+      window.scrollTo(0, 0);
+    } else if (!blog.category || blog.category === "") {
+      setCategoryErr(true);
+      setTitleErr(false);
+      setImageErr(false);
+      setDescriptionErr(false);
+      window.scrollTo(0, 0);
+    } else if (!imageUrl || imageUrl.trim() === "") {
+      setImageErr(true);
+      setTitleErr(false);
+      setCategoryErr(false);
+      setDescriptionErr(false);
+      window.scrollTo(0, 0);
+    } else if (
+      !blog.description ||
+      blog.description.trim() === "" ||
+      blog.description.length >= 500
+    ) {
+      setDescriptionErr(true);
+      setTitleErr(false);
+      setCategoryErr(false);
+      setImageErr(false);
+    } else {
+      try {
+        await databases.createDocument(
+          conf.databaseId,
+          conf.collectionId,
+          ID.unique(),
+          blog
+        );
+        toast.success("Blog Created Successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        NotificationAudio();
+        navigate("/");
+      } catch (error) {
+        toast.error(error.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     }
   };
   const handleImage = (e) => {
     const image = e.target.files[0];
     const imageType = image?.type.split("/")[1];
     const imageSize = image?.size;
-    debugger;
+    setCreateDisable(true);
     if (
       imageType != "jpeg" &&
       imageType != "jpg" &&
@@ -152,10 +192,10 @@ const AddBlog = () => {
         <div className="container px-5 py-4 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-3xl font-bold font-montserrat mb-4 text-gray-900 dark:text-white">
-            {t('addUpdateBlogs.addBlogTitle')}
+              {t("addUpdateBlogs.addBlogTitle")}
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base  dark:text-gray-400">
-            {t('addUpdateBlogs.addBlogHeader')}
+              {t("addUpdateBlogs.addBlogHeader")}
             </p>
           </div>
           <div className="lg:w-50 md:w-2/3 mx-auto card-shadow-custom p-6 rounded-lg">
@@ -166,17 +206,24 @@ const AddBlog = () => {
                     htmlFor={uId}
                     className="leading-7 pb-2 text-base font-semibold text-gray-600  dark:text-gray-200"
                   >
-                     {t('addUpdateBlogs.Title')}
+                    {t("addUpdateBlogs.Title")}
                   </label>
                   <input
                     type="text"
                     id={uId}
                     name="title"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
-                    placeholder={t('addUpdateBlogs.Please Enter Title')}
+                    placeholder={t("addUpdateBlogs.Please Enter Title")}
                     value={blog.title}
                     onChange={blogHandle}
                   />
+                  {titleErr && (
+                    <div className="pt-2">
+                      <span className="text-red-400 text-base font-semibold">
+                        {t("addUpdateBlogs.Please Enter Title")}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="p-2 w-full">
@@ -185,7 +232,7 @@ const AddBlog = () => {
                     htmlFor={uId}
                     className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200"
                   >
-                    {t('addUpdateBlogs.Category')}
+                    {t("addUpdateBlogs.Category")}
                   </label>
                   <select
                     id={uId}
@@ -193,17 +240,30 @@ const AddBlog = () => {
                     name="category"
                     onChange={blogHandle}
                   >
-                    <option value="">{t('addUpdateBlogs.Select Category')}</option>
-                    <option value="trending">{t('addUpdateBlogs.Trending')}</option>
-                    <option value="featured">{t('addUpdateBlogs.Featured')}</option>
+                    <option value="">
+                      {t("addUpdateBlogs.Please Select Category")}
+                    </option>
+                    <option value="trending">
+                      {t("addUpdateBlogs.Trending")}
+                    </option>
+                    <option value="featured">
+                      {t("addUpdateBlogs.Featured")}
+                    </option>
                   </select>
+                  {categoryErr && (
+                    <div className="pt-2">
+                      <span className="text-red-400 text-base font-semibold">
+                        {t("addUpdateBlogs.Please Select Category")}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
               {hideFileUpload && (
                 <div className="p-2 w-full">
                   <div className="relative">
                     <span className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200">
-                    {t('addUpdateBlogs.Upload File')}
+                      {t("addUpdateBlogs.Upload File")}
                     </span>
 
                     <div className="flex items-center justify-center w-full">
@@ -229,19 +289,19 @@ const AddBlog = () => {
                           </svg>
                           <p className="mb-2  text-sm  text-center md:text-lg text-gray-500 dark:text-gray-400">
                             <span className="font-semibold">
-                            {t('addUpdateBlogs.Click to upload')}
+                              {t("addUpdateBlogs.Click to upload")}
                             </span>
                             or
                             <span className="text-purple-500 text-md md:text-2xl font-bold">
-                            {t('addUpdateBlogs.Drag')}
+                              {t("addUpdateBlogs.Drag")}
                             </span>
                             and
                             <span className="text-purple-500 text-md md:text-2xl font-bold">
-                            {t('addUpdateBlogs.Drop')}
+                              {t("addUpdateBlogs.Drop")}
                             </span>
                           </p>
                           <p className="text-xs text-gray-500 dark:text-gray-400">
-                          {t('addUpdateBlogs.PNG, JPG or GIF (MAX-2MB)')}
+                            {t("addUpdateBlogs.PNG, JPG or GIF (MAX-2MB)")}
                           </p>
                         </div>
                         <input
@@ -254,6 +314,13 @@ const AddBlog = () => {
                       </label>
                     </div>
                   </div>
+                  {imageErr && (
+                    <div className="pt-2">
+                      <span className="text-red-400 text-base font-semibold">
+                        {t("addUpdateBlogs.Please Upload Image")}
+                      </span>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -277,7 +344,7 @@ const AddBlog = () => {
                     htmlFor={uId}
                     className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200"
                   >
-                     {t('addUpdateBlogs.Message')}
+                    {t("addUpdateBlogs.Message")}
                   </label>
                   <textarea
                     id={uId}
@@ -285,20 +352,27 @@ const AddBlog = () => {
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                     data-gramm="false"
                     wt-ignore-input="true"
-                    placeholder= {t('addUpdateBlogs.Please Enter Description')}
+                    placeholder={t("addUpdateBlogs.Please Enter Description")}
                     value={blog.description}
                     onChange={blogHandle}
                   ></textarea>
+                  {descriptionErr && (
+                    <div className="pt-2">
+                      <span className="text-red-400 text-base font-semibold">
+                        {t("addUpdateBlogs.Please Enter Description")}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
               <div className="p-2 w-full">
                 <button
-                  className="flex mx-auto text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg"
+                  className="flex mx-auto text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg disabled:opacity-80 disabled:cursor-not-allowed"
                   onClick={addBlog}
                   disabled={createDisable}
                 >
-                  {t('addUpdateBlogs.Create Blog')}
+                  {t("addUpdateBlogs.Create Blog")}
                 </button>
               </div>
             </div>
