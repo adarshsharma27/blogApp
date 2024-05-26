@@ -158,7 +158,7 @@ const BlogCard = ({
         </p>
         <NavLink
           to={`/addblog/${$id}`}
-          className="text-purple-500 inline-flex items-center py-3  font-semibold underline underline-offset-2 "
+          className="text-purple-500 inline-flex items-center py-3  font-semibold underline underline-offset-2 text-base"
         >
           Read More
           <svg
