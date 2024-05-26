@@ -131,10 +131,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-bold title-font text-sm  text-gray-900 mb-1 tracking-wider dark:text-white">
+                  <h2 className="font-bold title-font text-base  text-gray-900 mb-1 tracking-wider dark:text-white">
                   {t('aboutUs.Step1')}
                   </h2>
-                  <p className="leading-relaxed  dark:text-gray-400">
+                  <p className="leading-relaxed text-base dark:text-gray-400">
                   {t('aboutUs.Step1Description')}
                   </p>
                 </div>
@@ -157,10 +157,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-bold title-font text-sm  text-gray-900 mb-1 tracking-wider dark:text-white ">
+                  <h2 className="font-bold title-font text-base  text-gray-900 mb-1 tracking-wider dark:text-white ">
                   {t('aboutUs.Step2')}
                   </h2>
-                  <p className="leading-relaxed  dark:text-gray-400">
+                  <p className="leading-relaxed text-base dark:text-gray-400">
                   {t('aboutUs.Step2Description')}
                   </p>
                 </div>
@@ -184,10 +184,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-bold title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
+                  <h2 className="font-bold title-font text-base text-gray-900 mb-1 tracking-wider dark:text-white">
                   {t('aboutUs.Step3')}
                   </h2>
-                  <p className="leading-relaxed  dark:text-gray-400">
+                  <p className="leading-relaxed text-base dark:text-gray-400">
                   {t('aboutUs.Step3Description')}
                   </p>
                 </div>
@@ -211,10 +211,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-bold title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
+                  <h2 className="font-bold title-font text-base text-gray-900 mb-1 tracking-wider dark:text-white">
                   {t('aboutUs.Step4')}
                   </h2>
-                  <p className="leading-relaxed  dark:text-gray-400">
+                  <p className="leading-relaxed text-base dark:text-gray-400">
                   {t('aboutUs.Step4Description')}
                   </p>
                 </div>
@@ -235,10 +235,10 @@ const AboutUs = () => {
                   </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                  <h2 className="font-bold title-font text-sm text-gray-900 mb-1 tracking-wider dark:text-white">
+                  <h2 className="font-bold title-font text-base text-gray-900 mb-1 tracking-wider dark:text-white">
                   {t('aboutUs.Step5')}
                   </h2>
-                  <p className="leading-relaxed  dark:text-gray-400">
+                  <p className="leading-relaxed  text-base dark:text-gray-400">
                   {t('aboutUs.Step5Description')}
                   </p>
                 </div>

@@ -13,13 +13,13 @@ const Footer = () => {
           </div>
           <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-sm mb-3 dark:text-gray-400">
+              <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-base mb-3 dark:text-gray-400">
               {t('footer.Services')}
               </h2>
               <nav className="list-none mb-10">
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-gray-800 dark:text-white"
+                    className="text-gray-600 text-base hover:text-gray-800 dark:text-white"
                     to="/aboutus"
                   >
                     {t("navigationTitle.About Us")}
@@ -28,13 +28,13 @@ const Footer = () => {
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-sm mb-3 dark:text-gray-400">
+              <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-base mb-3 dark:text-gray-400">
               {t('footer.Company')} 
               </h2>
               <nav className="list-none mb-10">
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-gray-800 dark:text-white"
+                    className="text-gray-600 text-base hover:text-gray-800 dark:text-white"
                     to="/signup"
                   >
                     {t("commonTitle.signUpTitle")}
@@ -43,13 +43,13 @@ const Footer = () => {
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-sm mb-3  dark:text-gray-400">
+              <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-base mb-3  dark:text-gray-400">
               {t('footer.Services')}
               </h2>
-              <nav className="list-none mb-10">
+              <nav className="list-none mb-10 ">
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-gray-800 dark:text-white"
+                    className="text-gray-600 text-base hover:text-gray-800 dark:text-white"
                     to="/login"
                   >
                     {t("commonTitle.logInTitle")}
@@ -58,13 +58,13 @@ const Footer = () => {
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-sm mb-3 dark:text-gray-400">
+              <h2 className="font-montserrat font-medium text-gray-900 tracking-widest text-base mb-3 dark:text-gray-400">
               {t('footer.Legal')} 
               </h2>
               <nav className="list-none mb-10">
                 <li>
                   <Link
-                    className="text-gray-600 hover:text-gray-800 dark:text-white"
+                    className="text-gray-600 text-base hover:text-gray-800 dark:text-white"
                     to="/addblog"
                   >
                     {t("navigationTitle.AddBlog")}
@@ -77,7 +77,7 @@ const Footer = () => {
         <div className="bg-gray-100 dark:bg-slate-700">
           <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p className="text-gray-500 text-sm text-center sm:text-left">
-            {t('footer. ©2023 DesiBlogs —')}
+            {t('footer.©2023 DesiBlogs —')}
               <Link
                 href="https://frontendadarshsharma.netlify.com/"
                 rel="noopener noreferrer"
