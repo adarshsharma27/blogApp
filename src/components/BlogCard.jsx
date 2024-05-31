@@ -151,9 +151,9 @@ const BlogCard = ({
           {category}
         </p>
         <p className="text-base leading-relaxed mt-2 dark:text-gray-400 capitalize">
-          {description?.slice(0, 200)}...
+          {description?.slice(0, 100)}...
         </p>
-        <p className="text-base text-right leading-relaxed mt-2 dark:text-gray-800 font-bold capitalize">
+        <p className="text-base text-right leading-relaxed mt-2 dark:text-gray-400 font-bold capitalize">
           {new Date(date).toLocaleString()}
         </p>
         <NavLink
