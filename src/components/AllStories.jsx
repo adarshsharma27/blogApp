@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 const AllStories = () => {
   const [blogs, setBlogs] = useState([]);
+  const [reload ,setReload]=useState(false)
   const{t}=useTranslation();
   useEffect(() => {
     const getBlogs = async () => {
@@ -21,7 +22,8 @@ const AllStories = () => {
       }
     };
     getBlogs();
-  }, []);
+    setReload(false)
+  }, [reload]);
   return (
     <>
       <section className="text-gray-600 font-montserrat dark:bg-slate-700">
@@ -64,6 +66,7 @@ const AllStories = () => {
                       user_Id={userId}
                       id={id}
                       date={date}
+                      setReload={setReload}
                     />
                   );
                 })}

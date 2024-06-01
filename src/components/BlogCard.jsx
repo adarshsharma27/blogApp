@@ -21,6 +21,7 @@ const BlogCard = ({
   user_Id,
   date,
   marginTrendingSlider,
+  setReload
 }) => {
   const pageUrl = useLocation();
   const [bookmark, setBookMark] = useState();
@@ -100,11 +101,6 @@ const BlogCard = ({
   const deleteBlog = async () => {
     try {
       await databases.deleteDocument(conf.databaseId, conf.collectionId, $id);
-      await databases.deleteDocument(
-        conf.databaseId,
-        "65390dca0d53e330d986",
-        $id
-      );
       toast.success("Blog Removed Successfully", {
         position: "top-right",
         autoClose: 5000,
@@ -116,6 +112,7 @@ const BlogCard = ({
       });
       NotificationAudio();
       navigate("/");
+      setReload(true);
     } catch (error) {
       toast.error(error.message, {
         position: "top-right",

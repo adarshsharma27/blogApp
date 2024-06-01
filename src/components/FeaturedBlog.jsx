@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 const FeaturedBlog = () => {
   const [blogs, setBlogs] = useState([]);
+  const [reload ,setReload]=useState(false)
   const {t}=useTranslation();
   useEffect(() => {
     const getBlogs = async () => {
@@ -21,6 +22,7 @@ const FeaturedBlog = () => {
       }
     };
     getBlogs();
+    setReload(false)
   }, []);
   return (
     <>
@@ -64,6 +66,7 @@ const FeaturedBlog = () => {
                       user_Id={userId}
                       id={id}
                       date={date}
+                      setReload={setReload}
                     />
                   );
                 })}

@@ -10,6 +10,7 @@ import { LuChevronRight, LuChevronLeft } from "react-icons/lu";
 import { useTranslation } from "react-i18next";
 const TrendingBlog = () => {
   const [blogs, setBlogs] = useState([]);
+  const [reload ,setReload]=useState(false)
   const {t}=useTranslation();
   const arrowRef = useRef();
   var settings = {
@@ -56,6 +57,7 @@ const TrendingBlog = () => {
       } catch (error) {}
     };
     getBlogs();
+    setReload(false)
   }, []);
   return (
     <>
@@ -101,6 +103,7 @@ const TrendingBlog = () => {
                         id={id}
                         date={date}
                         marginTrendingSlider={8}
+                        setReload={setReload}
                       />
                     );
                   })}
