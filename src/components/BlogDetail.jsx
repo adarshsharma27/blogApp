@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { databases } from "../config";
 import conf from "../conf/conf";
 import BackButton from "../utils/BackButton";
+import MDEditor from "@uiw/react-md-editor";
 const BlogDetail = () => {
   const [blog, setBlog] = useState();
   const {id} =useParams()
@@ -39,8 +40,9 @@ const BlogDetail = () => {
               {blog?.title}
             </h1>
             <p className="mb-8 leading-relaxed  text-base  dark:text-gray-400">
-              {blog?.description}
+              {blog?.shortDescription}
             </p>
+            <MDEditor.Markdown source={blog?.markdown} className="font-montserrat"/>
           </div>
         </div>
       </section>

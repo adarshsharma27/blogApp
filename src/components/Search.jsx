@@ -223,7 +223,7 @@ const Search = () => {
                   const {
                     title,
                     category,
-                    description,
+                    shortDescription,
                     $id,
                     imageUrl,
                     userId,
@@ -234,7 +234,7 @@ const Search = () => {
                     <BlogCard
                       title={title}
                       category={category}
-                      description={description}
+                      shortDescription={shortDescription}
                       $id={$id}
                       key={$id}
                       imageUrl={imageUrl}

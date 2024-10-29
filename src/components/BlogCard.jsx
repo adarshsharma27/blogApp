@@ -15,7 +15,7 @@ import { NotificationAudio } from "../utils/NotificationAudio";
 const BlogCard = ({
   title,
   category,
-  description,
+  shortDescription,
   $id,
   imageUrl,
   user_Id,
@@ -41,7 +41,7 @@ const BlogCard = ({
           id: $id,
           title,
           category,
-          description,
+          shortDescription,
           imageUrl: imageUrl ? imageUrl : "https://dummyimage.com/1203x503",
           userId,
           date
@@ -148,7 +148,7 @@ const BlogCard = ({
           {category}
         </p>
         <p className="text-base leading-relaxed mt-2 dark:text-gray-400 capitalize">
-          {description?.slice(0, 100)}...
+          {shortDescription?.slice(0, 100)}...
         </p>
         <p className="text-base text-right leading-relaxed mt-2 dark:text-gray-400 font-bold capitalize">
           {new Date(date).toLocaleString()}

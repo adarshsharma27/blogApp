@@ -84,7 +84,7 @@ const TrendingBlog = () => {
                     const {
                       title,
                       category,
-                      description,
+                      shortDescription,
                       $id,
                       imageUrl,
                       userId,
@@ -96,7 +96,7 @@ const TrendingBlog = () => {
                         key={$id}
                         title={title}
                         category={category}
-                        description={description}
+                        shortDescription={shortDescription}
                         $id={$id}
                         imageUrl={imageUrl}
                         user_Id={userId}

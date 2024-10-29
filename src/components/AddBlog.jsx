@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import conf from "../conf/conf";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { LuX } from "react-icons/lu";
+import { LuLightbulb, LuX } from "react-icons/lu";
 import { NotificationAudio } from "../utils/NotificationAudio";
 import BackButton from "../utils/BackButton";
 import { useTranslation } from "react-i18next";
+import MDEditor from "@uiw/react-md-editor";
+import { Bars } from "react-loader-spinner";
 const AddBlog = () => {
   const uId = useId();
   const navigate = useNavigate();
@@ -20,6 +22,11 @@ const AddBlog = () => {
   const [categoryErr, setCategoryErr] = useState(false);
   const [imageErr, setImageErr] = useState(false);
   const [descriptionErr, setDescriptionErr] = useState(false);
+  const [shortDescriptionErr, setShortDescriptionErr] = useState(false);
+  const [shortDescription, setShortDescription] = useState("");
+  const [generateLoader, setGenerateLoader] = useState(false);
+  const [markdown, setMarkdown] = useState("### Please Enter Message");
+  console.log(markdown);
   const { userId } = useSelector((state) => state.persistedReducer?.userData);
   const { t } = useTranslation();
   const date = new Date();
@@ -27,10 +34,6 @@ const AddBlog = () => {
     setBlog({
       ...blog,
       [e.target.name]: e.target.value,
-      imageUrl,
-      userId,
-      uploadFileId,
-      date,
     });
   };
 
@@ -40,35 +43,51 @@ const AddBlog = () => {
       setCategoryErr(false);
       setImageErr(false);
       setDescriptionErr(false);
+      setShortDescriptionErr(false);
       window.scrollTo(0, 0);
     } else if (!blog.category || blog.category === "") {
       setCategoryErr(true);
       setTitleErr(false);
       setImageErr(false);
       setDescriptionErr(false);
+      setShortDescriptionErr(false);
       window.scrollTo(0, 0);
     } else if (!imageUrl || imageUrl.trim() === "") {
       setImageErr(true);
       setTitleErr(false);
       setCategoryErr(false);
       setDescriptionErr(false);
+      setShortDescriptionErr(false);
       window.scrollTo(0, 0);
-    } else if (
-      !blog.description ||
-      blog.description.trim() === "" ||
-      blog.description.length >= 500
-    ) {
+    } else if (!shortDescription || shortDescription.trim() === "") {
+      setShortDescriptionErr(true);
+      setDescriptionErr(false);
+      setTitleErr(false);
+      setCategoryErr(false);
+      setImageErr(false);
+      window.scrollTo(0, 0);
+    } else if (!markdown || markdown.trim() === "") {
       setDescriptionErr(true);
       setTitleErr(false);
       setCategoryErr(false);
       setImageErr(false);
+      setShortDescriptionErr(false);
+      window.scrollTo(0, 0);
     } else {
       try {
         await databases.createDocument(
           conf.databaseId,
           conf.collectionId,
           ID.unique(),
-          blog
+          {
+            ...blog,
+            imageUrl,
+            userId,
+            uploadFileId,
+            date,
+            shortDescription,
+            markdown,
+          }
         );
         toast.success("Blog Created Successfully", {
           position: "top-right",
@@ -185,6 +204,14 @@ const AddBlog = () => {
       }
     );
   };
+  const generateAIShortDescription = async () => {
+    setGenerateLoader(true);
+    const result = await AIChatSession.sendMessage(
+      `Given the blog title ${blog.title}, provide a concise description of 2-3 lines that summarizes the main theme or content of the blog within 90 characters.`
+    );
+    setShortDescription(result.response.text());
+    setGenerateLoader(false);
+  };
   return (
     <>
       <section className="text-gray-600 font-montserrat relative dark:bg-slate-700">
@@ -198,8 +225,8 @@ const AddBlog = () => {
               {t("addUpdateBlogs.addBlogHeader")}
             </p>
           </div>
-          <div className="lg:w-50 md:w-2/3 mx-auto card-shadow-custom p-6 rounded-lg">
-            <div className="flex flex-wrap -m-2">
+          <div className="md:w-10/12 mx-auto card-shadow-custom p-6 rounded-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
               <div className="p-2 w-full">
                 <div className="relative">
                   <label
@@ -259,6 +286,62 @@ const AddBlog = () => {
                   )}
                 </div>
               </div>
+            </div>
+            <div className="p-2 w-full">
+              <div className="relative">
+                <div className="flex flex-wrap justify-between items-center py-2">
+                  <label
+                    htmlFor={uId}
+                    className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200"
+                  >
+                    {t("addUpdateBlogs.Please Enter Short Description")}
+                  </label>
+                  <button
+                    className={`flex justify-center items-center  border border-purple-600  py-1 px-4 focus:outline-none hover:bg-purple-600 hover:text-white cursor-pointer rounded text-lg disabled:opacity-80 disabled:cursor-not-allowed disabled:hover:bg-purple-400 ${
+                      generateLoader
+                        ? "text-white bg-purple-600"
+                        : " text-purple-600 bg-white"
+                    }`}
+                    onClick={generateAIShortDescription}
+                    disabled={!blog?.title}
+                  >
+                    {generateLoader ? (
+                      <Bars color="#fff" height="30" width="100" />
+                    ) : (
+                      <>
+                        Generate from AI
+                        <LuLightbulb
+                          size={24}
+                          className="hover:text-indigo-400 hover:cursor-pointer dark:text-white"
+                        />
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                <textarea
+                  id={uId}
+                  name="description"
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
+                  data-gramm="false"
+                  wt-ignore-input="true"
+                  placeholder={t(
+                    "addUpdateBlogs.Please Enter Short Description"
+                  )}
+                  value={shortDescription}
+                  onChange={blogHandle}
+                ></textarea>
+
+                {shortDescriptionErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-base font-semibold">
+                      {t("addUpdateBlogs.Please Enter Short Description")}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-wrap -m-2">
               {hideFileUpload && (
                 <div className="p-2 w-full">
                   <div className="relative">
@@ -338,6 +421,7 @@ const AddBlog = () => {
                   </div>
                 </>
               )}
+
               <div className="p-2 w-full">
                 <div className="relative">
                   <label
@@ -346,16 +430,13 @@ const AddBlog = () => {
                   >
                     {t("addUpdateBlogs.Message")}
                   </label>
-                  <textarea
-                    id={uId}
-                    name="description"
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
-                    data-gramm="false"
-                    wt-ignore-input="true"
-                    placeholder={t("addUpdateBlogs.Please Enter Description")}
-                    value={blog.description}
-                    onChange={blogHandle}
-                  ></textarea>
+                  <MDEditor
+                    className="font-montserrat w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
+                    value={markdown}
+                    height="500px"
+                    onChange={setMarkdown}
+                  />
+
                   {descriptionErr && (
                     <div className="pt-2">
                       <span className="text-red-400 text-base font-semibold">

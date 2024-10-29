@@ -55,13 +55,13 @@ const BookMarkBlog = () => {
           >
             {filteredBlogs?.length !== 0 ? (
               filteredBlogs?.map((blog) => {
-                const { title, category, description, $id, imageUrl, userId,date } =
+                const { title, category, shortDescription, $id, imageUrl, userId,date } =
                   blog;
                 return (
                   <BlogCard
                     title={title}
                     category={category}
-                    description={description}
+                    shortDescription={shortDescription}
                     $id={$id}
                     key={$id}
                     imageUrl={imageUrl}

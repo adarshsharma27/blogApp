@@ -4,7 +4,7 @@ import { Audio } from  'react-loader-spinner'
 const Loader = () => {
   return (
     <>
-    <div className="h-full w-full flex flex-col justify-center items-center">
+    <div className="h-screen w-full flex flex-col justify-center items-center">
     <Audio
         height="100"
         width="100"

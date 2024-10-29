@@ -4,11 +4,14 @@ import { databases, ID, storage } from "../config";
 import conf from "../conf/conf";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { LuX } from "react-icons/lu";
+import { LuLightbulb, LuX } from "react-icons/lu";
 import { NotificationAudio } from "../utils/NotificationAudio";
 import BackButton from "../utils/BackButton";
 import Loader from "./Loader";
 import { useTranslation } from "react-i18next";
+import MDEditor from "@uiw/react-md-editor";
+import { AIChatSession } from "../service/AIModel";
+import { Bars } from "react-loader-spinner";
 const UpdateBlog = () => {
   const uId = useId();
   const navigate = useNavigate();
@@ -24,7 +27,11 @@ const UpdateBlog = () => {
   const [categoryErr, setCategoryErr] = useState(false);
   const [imageErr, setImageErr] = useState(false);
   const [descriptionErr, setDescriptionErr] = useState(false);
+  const [shortDescriptionErr, setShortDescriptionErr] = useState(false);
+  const [shortDescription, setShortDescription] = useState("");
+  const [generateLoader, setGenerateLoader] = useState(false);
   const [loader, setLoader] = useState(true);
+  const [markdown, setMarkdown] = useState();
   const { t } = useTranslation();
   const blogHandle = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value, userId });
@@ -38,8 +45,10 @@ const UpdateBlog = () => {
           id
         );
         setBlog(resp);
+        setMarkdown(resp?.markdown);
         setImageUrl(resp?.imageUrl);
         setUploadFileId(resp?.uploadFileId);
+        setShortDescriptionErr(resp?.shortDescription);
         setCreateDisable(false);
         setLoader(false);
       } catch (error) {
@@ -62,37 +71,46 @@ const UpdateBlog = () => {
       setCategoryErr(false);
       setImageErr(false);
       setDescriptionErr(false);
+      setShortDescriptionErr(false);
       window.scrollTo(0, 0);
     } else if (!blog.category || blog.category === "") {
       setCategoryErr(true);
       setTitleErr(false);
       setImageErr(false);
       setDescriptionErr(false);
+      setShortDescriptionErr(false);
       window.scrollTo(0, 0);
     } else if (!imageUrl || imageUrl.trim() === "") {
       setImageErr(true);
       setTitleErr(false);
       setCategoryErr(false);
       setDescriptionErr(false);
+      setShortDescriptionErr(false);
       window.scrollTo(0, 0);
-    } else if (
-      !blog.description ||
-      blog.description.trim() === "" ||
-      blog.description.length >= 500
-    ) {
+    } else if (!markdown || markdown.trim() === "") {
       setDescriptionErr(true);
       setTitleErr(false);
       setCategoryErr(false);
       setImageErr(false);
+      window.scrollTo(0, 0);
+    } else if (!shortDescription || shortDescription.trim() === "") {
+      setShortDescriptionErr(true);
+      setDescriptionErr(false);
+      setTitleErr(false);
+      setCategoryErr(false);
+      setImageErr(false);
+      setShortDescriptionErr(false);
+      window.scrollTo(0, 0);
     } else {
       try {
         await databases.updateDocument(conf.databaseId, conf.collectionId, id, {
           title: blog.title,
           category: blog.category,
           imageUrl: imageUrl,
-          description: blog.description,
           userId: userId,
           uploadFileId: uploadFileId,
+          markdown: markdown,
+          shortDescription: shortDescription,
         });
         toast.success("Blog Updated Successfully", {
           position: "top-right",
@@ -239,6 +257,14 @@ const UpdateBlog = () => {
       }
     );
   };
+  const generateAIShortDescription = async () => {
+    setGenerateLoader(true);
+    const result = await AIChatSession.sendMessage(
+      `Given the blog title ${blog.title}, provide a concise description of 2-3 lines that summarizes the main theme or content of the blog within 90 characters.`
+    );
+    setShortDescription(result.response.text());
+    setGenerateLoader(false);
+  };
   return (
     <>
       <section className="text-gray-600 font-montserrat relative dark:bg-slate-700">
@@ -255,8 +281,8 @@ const UpdateBlog = () => {
                 {t("addUpdateBlogs.updateBlogHeader")}
               </p>
             </div>
-            <div className="lg:w-50 md:w-2/3 mx-auto card-shadow-custom p-6 rounded-lg">
-              <div className="flex flex-wrap -m-2">
+            <div className="md:w-10/12 mx-auto card-shadow-custom p-6 rounded-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                 <div className="p-2 w-full">
                   <div className="relative">
                     <label
@@ -318,122 +344,173 @@ const UpdateBlog = () => {
                     )}
                   </div>
                 </div>
-                {hideFileUpload && (
-                  <div className="p-2 w-full">
-                    <div className="relative">
-                      <span className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200">
-                        {t("addUpdateBlogs.Upload File")}
-                      </span>
+              </div>
 
-                      <div className="flex items-center justify-center w-full">
-                        <label
-                          htmlFor="file-upload"
-                          className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-100 bg-opacity-50 dark:hover:bg-bray-800 dark:bg-slate-700 hover:bg-gray-100 dark:border-white dark:hover:border-purple-600 dark:hover:bg-slate-600"
-                        >
-                          <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg
-                              className="w-10 h-10 mb-4 leading-7  text-base font-semibold text-purple-500  dark:text-gray-200 "
-                              aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 20 16"
-                            >
-                              <path
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                              />
-                            </svg>
-                            <p className="mb-2  text-sm  text-center md:text-lg text-gray-500 dark:text-gray-400">
-                              <span className="font-semibold">
-                                {t("addUpdateBlogs.Click to upload")}
-                              </span>
-                              or
-                              <span className="text-purple-500 text-md md:text-2xl font-bold">
-                                {t("addUpdateBlogs.Drag")}
-                              </span>
-                              and
-                              <span className="text-purple-500 text-md md:text-2xl font-bold">
-                                {t("addUpdateBlogs.Drop")}
-                              </span>
-                            </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                              {t("addUpdateBlogs.PNG, JPG or GIF (MAX-2MB)")}
-                            </p>
-                          </div>
-                          <input
-                            type="file"
-                            id="file-upload"
-                            name="file"
-                            className="hidden"
-                            onChange={handleImage}
-                          />
-                        </label>
-                      </div>
-                    </div>
-                    {imageErr && (
-                      <div className="pt-2">
-                        <span className="text-red-400 text-base font-semibold">
-                          {t("addUpdateBlogs.Please Upload Image")}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {imageUrl && (
-                  <>
-                    <div className="p-2 w-full">
-                      <div className="relative flex flex-col items-center justify-center p-2 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-100 bg-opacity-50 dark:hover:bg-bray-800 dark:bg-slate-700  dark:border-white">
-                        <img src={imageUrl} className="relative" />
-                        <LuX
-                          size={40}
-                          className=" bg-purple-600 text-white p-1 hover:bg-red-400 transition hover:scale-110  hover:cursor-pointer dark:text-white absolute top-6 right-6"
-                          onClick={() => deleteImage()}
-                        />
-                      </div>
-                    </div>
-                  </>
-                )}
-                <div className="p-2 w-full">
-                  <div className="relative">
+              <div className="p-2 w-full">
+                <div className="relative">
+                  <div className="flex flex-wrap justify-between items-center py-2">
                     <label
                       htmlFor={uId}
                       className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200"
                     >
-                      {t("addUpdateBlogs.Message")}
+                      {t("addUpdateBlogs.Please Enter Short Description")}
                     </label>
-                    <textarea
-                      id={uId}
-                      name="description"
-                      className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
-                      data-gramm="false"
-                      wt-ignore-input="true"
-                      placeholder={t("addUpdateBlogs.Please Enter Description")}
-                      value={blog?.description}
-                      onChange={blogHandle}
-                    ></textarea>
-                    {descriptionErr && (
-                      <div className="pt-2">
-                        <span className="text-red-400 text-base font-semibold">
-                          {t("addUpdateBlogs.Please Enter Description")}
-                        </span>
-                      </div>
-                    )}
+                    <button
+                      className={`flex justify-center items-center  border border-purple-600  py-1 px-4 focus:outline-none hover:bg-purple-600 hover:text-white cursor-pointer rounded text-lg disabled:opacity-80 disabled:cursor-not-allowed disabled:hover:bg-purple-400 ${
+                        generateLoader
+                          ? "text-white bg-purple-600"
+                          : " text-purple-600 bg-white"
+                      }`}
+                      onClick={generateAIShortDescription}
+                      disabled={!blog?.title}
+                    >
+                      {generateLoader ? (
+                        <Bars color="#fff" height="30" width="100" />
+                      ) : (
+                        <>
+                          Generate from AI
+                          <LuLightbulb
+                            size={24}
+                            className="hover:text-indigo-400 hover:cursor-pointer dark:text-white"
+                          />
+                        </>
+                      )}
+                    </button>
                   </div>
-                </div>
 
-                <div className="p-2 w-full">
-                  <button
-                    className="flex mx-auto text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg disabled:opacity-80 disabled:cursor-not-allowed"
-                    onClick={updateBlog}
-                    disabled={createDisable}
-                  >
-                    {t("addUpdateBlogs.Update Blog")}
-                  </button>
+                  <textarea
+                    id={uId}
+                    name="description"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
+                    data-gramm="false"
+                    wt-ignore-input="true"
+                    placeholder={t(
+                      "addUpdateBlogs.Please Enter Short Description"
+                    )}
+                    value={shortDescription}
+                    onChange={blogHandle}
+                  ></textarea>
+
+                  {shortDescriptionErr && (
+                    <div className="pt-2">
+                      <span className="text-red-400 text-base font-semibold">
+                        {t("addUpdateBlogs.Please Enter Short Description")}
+                      </span>
+                    </div>
+                  )}
                 </div>
+              </div>
+              {hideFileUpload && (
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <span className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200">
+                      {t("addUpdateBlogs.Upload File")}
+                    </span>
+
+                    <div className="flex items-center justify-center w-full">
+                      <label
+                        htmlFor="file-upload"
+                        className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-100 bg-opacity-50 dark:hover:bg-bray-800 dark:bg-slate-700 hover:bg-gray-100 dark:border-white dark:hover:border-purple-600 dark:hover:bg-slate-600"
+                      >
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                          <svg
+                            className="w-10 h-10 mb-4 leading-7  text-base font-semibold text-purple-500  dark:text-gray-200 "
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 20 16"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                            />
+                          </svg>
+                          <p className="mb-2  text-sm  text-center md:text-lg text-gray-500 dark:text-gray-400">
+                            <span className="font-semibold">
+                              {t("addUpdateBlogs.Click to upload")}
+                            </span>
+                            or
+                            <span className="text-purple-500 text-md md:text-2xl font-bold">
+                              {t("addUpdateBlogs.Drag")}
+                            </span>
+                            and
+                            <span className="text-purple-500 text-md md:text-2xl font-bold">
+                              {t("addUpdateBlogs.Drop")}
+                            </span>
+                          </p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">
+                            {t("addUpdateBlogs.PNG, JPG or GIF (MAX-2MB)")}
+                          </p>
+                        </div>
+                        <input
+                          type="file"
+                          id="file-upload"
+                          name="file"
+                          className="hidden"
+                          onChange={handleImage}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  {imageErr && (
+                    <div className="pt-2">
+                      <span className="text-red-400 text-base font-semibold">
+                        {t("addUpdateBlogs.Please Upload Image")}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {imageUrl && (
+                <>
+                  <div className="p-2 w-full">
+                    <div className="relative flex flex-col items-center justify-center p-2 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-100 bg-opacity-50 dark:hover:bg-bray-800 dark:bg-slate-700  dark:border-white">
+                      <img src={imageUrl} className="relative" />
+                      <LuX
+                        size={40}
+                        className=" bg-purple-600 text-white p-1 hover:bg-red-400 transition hover:scale-110  hover:cursor-pointer dark:text-white absolute top-6 right-6"
+                        onClick={() => deleteImage()}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              <div className="p-2 w-full">
+                <div className="relative">
+                  <label
+                    htmlFor={uId}
+                    className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200"
+                  >
+                    {t("addUpdateBlogs.Message")}
+                  </label>
+                  <MDEditor
+                    className="font-montserrat w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
+                    value={markdown}
+                    height="500px"
+                    onChange={setMarkdown}
+                  />
+                  {descriptionErr && (
+                    <div className="pt-2">
+                      <span className="text-red-400 text-base font-semibold">
+                        {t("addUpdateBlogs.Please Enter Description")}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="p-2 w-full">
+                <button
+                  className="flex mx-auto text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg disabled:opacity-80 disabled:cursor-not-allowed"
+                  onClick={updateBlog}
+                  disabled={createDisable}
+                >
+                  {t("addUpdateBlogs.Update Blog")}
+                </button>
               </div>
             </div>
           </div>

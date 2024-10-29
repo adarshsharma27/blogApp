@@ -48,7 +48,7 @@ const FeaturedBlog = () => {
                   const {
                     title,
                     category,
-                    description,
+                    shortDescription,
                     $id,
                     imageUrl,
                     userId,
@@ -59,7 +59,7 @@ const FeaturedBlog = () => {
                     <BlogCard
                       title={title}
                       category={category}
-                      description={description}
+                      shortDescription={shortDescription}
                       $id={$id}
                       key={$id}
                       imageUrl={imageUrl}
