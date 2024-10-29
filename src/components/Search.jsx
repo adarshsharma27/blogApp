@@ -3,8 +3,9 @@ import BlogCard from "./BlogCard";
 import { useTranslation } from "react-i18next";
 import { Query, databases } from "../config";
 import conf from "../conf/conf";
-import Skeleton from "./Skeleton";
 import { toast } from "react-toastify";
+import { Bars } from "react-loader-spinner";
+import Loader from "./Loader";
 
 const Search = () => {
   const [blogs, setBlogs] = useState([]);
@@ -12,9 +13,11 @@ const Search = () => {
   const [category, setCategory] = useState("all");
   const [search, setSearch] = useState("");
   const [active, setActive] = useState(false);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     const getBlogs = async () => {
       if (category === "all") {
+        setLoader(true);
         try {
           const resp = await databases.listDocuments(
             conf.databaseId,
@@ -22,9 +25,11 @@ const Search = () => {
           );
 
           setBlogs(resp?.documents);
+          setLoader(false);
         } catch (error) {}
       } else {
         try {
+          setLoader(true);
           const resp = await databases.listDocuments(
             conf.databaseId,
             conf.collectionId,
@@ -32,6 +37,7 @@ const Search = () => {
           );
 
           setBlogs(resp?.documents);
+          setLoader(false);
         } catch (error) {}
       }
     };
@@ -39,6 +45,7 @@ const Search = () => {
   }, [category]);
 
   const SearchBlogs = async () => {
+    setLoader(true);
     if (search === "") {
       try {
         const resp = await databases.listDocuments(
@@ -47,6 +54,7 @@ const Search = () => {
         );
 
         setBlogs(resp?.documents);
+        setLoader(false);
       } catch (error) {}
     } else if (search.length < 3) {
       toast.error("Search with more Characters", {
@@ -79,6 +87,7 @@ const Search = () => {
         } else {
           setBlogs(resp?.documents);
         }
+        setLoader(false);
       } catch (error) {}
     }
   };
@@ -101,6 +110,7 @@ const Search = () => {
                 onClick={(e) => {
                   setCategory("all");
                   setActive(true);
+                  setLoader(true);
                 }}
               >
                 {t("heroSection.All Stories")}
@@ -114,6 +124,7 @@ const Search = () => {
                 onClick={() => {
                   setCategory("featured");
                   setActive(true);
+                  setLoader(true);
                 }}
               >
                 {t("heroSection.Featured Blogs")}
@@ -128,6 +139,7 @@ const Search = () => {
                 onClick={() => {
                   setCategory("trending");
                   setActive(true);
+                  setLoader(true);
                 }}
               >
                 {t("heroSection.Trending Blogs")}
@@ -142,6 +154,7 @@ const Search = () => {
                 onClick={() => {
                   setCategory("all");
                   setActive(true);
+                  setLoader(true);
                 }}
               >
                 {t("commonTitle.All")}
@@ -155,6 +168,7 @@ const Search = () => {
                 onClick={() => {
                   setCategory("featured");
                   setActive(true);
+                  setLoader(true);
                 }}
               >
                 {t("addUpdateBlogs.Featured")}
@@ -169,6 +183,7 @@ const Search = () => {
                 onClick={() => {
                   setCategory("trending");
                   setActive(true);
+                  setLoader(true);
                 }}
               >
                 {t("addUpdateBlogs.Trending")}
@@ -216,35 +231,38 @@ const Search = () => {
               </span>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
-            {blogs?.length === 0
-              ? Array.from({ length: 10 }).map(() => <Skeleton />)
-              : blogs?.map((blog) => {
-                  const {
-                    title,
-                    category,
-                    shortDescription,
-                    $id,
-                    imageUrl,
-                    userId,
-                    id,
-                    date,
-                  } = blog;
-                  return (
-                    <BlogCard
-                      title={title}
-                      category={category}
-                      shortDescription={shortDescription}
-                      $id={$id}
-                      key={$id}
-                      imageUrl={imageUrl}
-                      user_Id={userId}
-                      id={id}
-                      date={date}
-                    />
-                  );
-                })}
-          </div>
+
+          {loader ? (
+            <Loader />
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
+              {blogs?.map((blog) => {
+                const {
+                  title,
+                  category,
+                  shortDescription,
+                  $id,
+                  imageUrl,
+                  userId,
+                  id,
+                  date,
+                } = blog;
+                return (
+                  <BlogCard
+                    title={title}
+                    category={category}
+                    shortDescription={shortDescription}
+                    $id={$id}
+                    key={$id}
+                    imageUrl={imageUrl}
+                    user_Id={userId}
+                    id={id}
+                    date={date}
+                  />
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </>
