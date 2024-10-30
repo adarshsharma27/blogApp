@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 const BookMarkBlog = () => {
   const [blogs, setBlogs] = useState();
-  const {userId} = useParams();
+  const { userId } = useParams();
   const { t } = useTranslation();
   useEffect(() => {
     const getBlogs = async () => {
@@ -23,10 +23,12 @@ const BookMarkBlog = () => {
     getBlogs();
   }, []);
 
-  const filteredBlogs = Array.from(new Set(blogs?.map(a => a.id))).map(id => {
-    return blogs?.find(a => a.id === id);
-});
-// console.log(uniqueData)
+  const filteredBlogs = Array.from(new Set(blogs?.map((a) => a.id))).map(
+    (id) => {
+      return blogs?.find((a) => a.id === id);
+    }
+  );
+  // console.log(uniqueData)
 
   return (
     <>
@@ -55,8 +57,15 @@ const BookMarkBlog = () => {
           >
             {filteredBlogs?.length !== 0 ? (
               filteredBlogs?.map((blog) => {
-                const { title, category, shortDescription, $id, imageUrl, userId,date } =
-                  blog;
+                const {
+                  title,
+                  category,
+                  shortDescription,
+                  $id,
+                  imageUrl,
+                  userId,
+                  date,
+                } = blog;
                 return (
                   <BlogCard
                     title={title}

@@ -380,7 +380,7 @@ const UpdateBlog = () => {
 
                   <textarea
                     id={uId}
-                    name="description"
+                    name="shortDescription"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white"
                     data-gramm="false"
                     wt-ignore-input="true"
@@ -388,7 +388,7 @@ const UpdateBlog = () => {
                       "addUpdateBlogs.Please Enter Short Description"
                     )}
                     value={shortDescription}
-                    onChange={blogHandle}
+                    onChange={(e) => setShortDescription(e.target.value)}
                   ></textarea>
 
                   {shortDescriptionErr && (
