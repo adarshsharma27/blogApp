@@ -48,7 +48,7 @@ const UpdateBlog = () => {
         setMarkdown(resp?.markdown);
         setImageUrl(resp?.imageUrl);
         setUploadFileId(resp?.uploadFileId);
-        setShortDescriptionErr(resp?.shortDescription);
+        setShortDescription(resp?.shortDescription);
         setCreateDisable(false);
         setLoader(false);
       } catch (error) {
