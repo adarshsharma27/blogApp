@@ -41,8 +41,11 @@
     "Drag": "Drag",
     "Drop": "Drop",
     "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG or GIF (MAX-2MB)",
-    "Please Enter Description": "Please Enter Description",
+    "Please Enter Message": "Please Enter Message",
     "Please Enter Short Description": "Please Enter Short Description",
+    "Please Generate  Blog Tags": "Please Generate Blog Tags",
+    "Generate from AI": " Generate from AI",
+    "No Tags present": " No Tags present",
     "Create Blog": "Create Blog",
     "Update Blog": "Update Blog",
     "Please Upload Image": "Please Upload Image"

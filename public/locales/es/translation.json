@@ -41,8 +41,11 @@
     "Drag": "Arrastrar",
     "Drop": "Soltar",
     "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG o GIF (MÁX. 2MB)",
-    "Please Enter Description": "Por favor, ingrese una descripción",
+    "Please Enter Message": "Por favor, ingrese una descripción",
     "Please Enter Short Description": "Por favor, introduzca una breve descripción.",
+    "Please Generate  Blog Tags": "Por favor, genere etiquetas de blog",
+    "Generate from AI": "Generar desde IA",
+    "No Tags present": "No hay etiquetas presentes",
     "Create Blog": "Crear blog",
     "Update Blog": "Actualizar blog",
     "Please Upload Image": "Por favor, sube la imagen"

@@ -21,7 +21,8 @@ const BlogCard = ({
   user_Id,
   date,
   marginTrendingSlider,
-  setReload
+  setReload,
+  tags = [],
 }) => {
   const pageUrl = useLocation();
   const [bookmark, setBookMark] = useState();
@@ -44,7 +45,7 @@ const BlogCard = ({
           shortDescription,
           imageUrl: imageUrl ? imageUrl : "https://dummyimage.com/1203x503",
           userId,
-          date
+          date,
         }
       );
       toast.success("Bookmark Saved", {
@@ -147,9 +148,25 @@ const BlogCard = ({
         <p className="text-lg font-semibold leading-relaxed mt-2 dark:text-gray-300 capitalize">
           {category}
         </p>
+
+        <div className="flex flex-wrap justify-start items-center py-3 gap-1">
+          {tags && tags.length > 0
+            ? tags.slice(0, 5).map((tag, index) => {
+                return (
+                  <span
+                    key={index}
+                    className="inline-flex items-center justify-start rounded-full bg-purple-500 px-1.5 py-1.5 text-white"
+                  >
+                    <p className="whitespace-nowrap text-[12.5px]">{tag}</p>
+                  </span>
+                );
+              })
+            : ""}
+        </div>
         <p className="text-base leading-relaxed mt-2 dark:text-gray-400 capitalize">
-          {shortDescription?.slice(0, 100)}...
+          {shortDescription?.slice(0, 85)}...
         </p>
+
         <p className="text-base text-right leading-relaxed mt-2 dark:text-gray-400 font-bold capitalize">
           {new Date(date).toLocaleString()}
         </p>

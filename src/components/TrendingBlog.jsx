@@ -89,7 +89,8 @@ const TrendingBlog = () => {
                       imageUrl,
                       userId,
                       id,
-                      date
+                      date,
+                      tags
                     } = blog;
                     return (
                       <BlogCard
@@ -104,6 +105,7 @@ const TrendingBlog = () => {
                         date={date}
                         marginTrendingSlider={8}
                         setReload={setReload}
+                        tags={tags}
                       />
                     );
                   })}

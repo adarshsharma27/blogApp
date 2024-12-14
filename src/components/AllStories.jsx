@@ -53,7 +53,8 @@ const AllStories = () => {
                     imageUrl,
                     userId,
                     id,
-                    date
+                    date,
+                    tags
                   } = blog;
                   return (
                     <BlogCard
@@ -67,6 +68,7 @@ const AllStories = () => {
                       id={id}
                       date={date}
                       setReload={setReload}
+                      tags={tags}
                     />
                   );
                 })}

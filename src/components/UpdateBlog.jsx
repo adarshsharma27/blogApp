@@ -10,10 +10,11 @@ import BackButton from "../utils/BackButton";
 import Loader from "./Loader";
 import { useTranslation } from "react-i18next";
 import MDEditor from "@uiw/react-md-editor";
-import { AIChatSession } from "../service/AIModel";
+import { AIChatSession, AIChatSessionTags } from "../service/AIModel";
 import { Bars } from "react-loader-spinner";
 const UpdateBlog = () => {
   const uId = useId();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [blog, setBlog] = useState();
   const { id } = useParams();
@@ -32,7 +33,8 @@ const UpdateBlog = () => {
   const [generateLoader, setGenerateLoader] = useState(false);
   const [loader, setLoader] = useState(true);
   const [markdown, setMarkdown] = useState();
-  const { t } = useTranslation();
+  const [generateLoaderTags, setGenerateLoaderTags] = useState(false);
+  const [tags, setTags] = useState([]);
   const blogHandle = (e) => {
     setBlog({ ...blog, [e.target.name]: e.target.value, userId });
   };
@@ -49,6 +51,7 @@ const UpdateBlog = () => {
         setImageUrl(resp?.imageUrl);
         setUploadFileId(resp?.uploadFileId);
         setShortDescription(resp?.shortDescription);
+        setTags(resp?.tags);
         setCreateDisable(false);
         setLoader(false);
       } catch (error) {
@@ -103,6 +106,7 @@ const UpdateBlog = () => {
       window.scrollTo(0, 0);
     } else {
       try {
+        const tagsArray = tags?.map((tags) => tags);
         await databases.updateDocument(conf.databaseId, conf.collectionId, id, {
           title: blog.title,
           category: blog.category,
@@ -111,6 +115,7 @@ const UpdateBlog = () => {
           uploadFileId: uploadFileId,
           markdown: markdown,
           shortDescription: shortDescription,
+          tags: tagsArray,
         });
         toast.success("Blog Updated Successfully", {
           position: "top-right",
@@ -265,6 +270,38 @@ const UpdateBlog = () => {
     setShortDescription(result.response.text());
     setGenerateLoader(false);
   };
+  const generateAITags = async () => {
+    try {
+      setGenerateLoaderTags(true);
+      const createAIChatSessionTags = AIChatSessionTags(blog?.title?.trim());
+      const result = await createAIChatSessionTags.sendMessage(``);
+      const response = result.response.text();
+      let cleanedString = response.trim();
+      // Replace single quotes with double quotes to make it valid JSON
+      cleanedString = cleanedString.replace(/'/g, '"');
+      // Parse the string into a JavaScript array
+      let array = JSON.parse(cleanedString);
+      array.length ? setTags(array) : [];
+      setGenerateLoaderTags(false);
+    } catch (error) {
+      toast.error(error.message, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }); // Failure
+      setGenerateLoaderTags(false);
+      setBlog({ title: "" });
+    }
+  };
+  const removeTag = async (removeTag) => {
+    setTags((prevData) =>
+      prevData?.filter((tag) => tag.toLowerCase() !== removeTag.toLowerCase())
+    );
+  };
   return (
     <>
       <section className="text-gray-600 font-montserrat relative dark:bg-slate-700">
@@ -368,7 +405,7 @@ const UpdateBlog = () => {
                         <Bars color="#fff" height="30" width="100" />
                       ) : (
                         <>
-                          Generate from AI
+                           {t("addUpdateBlogs.Generate from AI")}
                           <LuLightbulb
                             size={24}
                             className="hover:text-indigo-400 hover:cursor-pointer dark:text-white"
@@ -395,6 +432,76 @@ const UpdateBlog = () => {
                     <div className="pt-2">
                       <span className="text-red-400 text-base font-semibold">
                         {t("addUpdateBlogs.Please Enter Short Description")}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="p-2 w-full">
+                <div className="relative">
+                  <div className="flex flex-wrap justify-between items-center py-2">
+                    <label
+                      htmlFor={uId}
+                      className="leading-7  text-base font-semibold text-gray-600 dark:text-gray-200"
+                    >
+                      {t("addUpdateBlogs.Please Generate  Blog Tags")}
+                    </label>
+                    <button
+                      className={`flex justify-center items-center  border border-purple-600  px-4 py-2 focus:outline-none hover:bg-purple-600 hover:text-white cursor-pointer rounded text-lg disabled:opacity-80 disabled:cursor-not-allowed disabled:hover:bg-purple-400 ${
+                        generateLoaderTags
+                          ? "text-white bg-purple-600"
+                          : " text-purple-600 bg-white"
+                      }`}
+                      onClick={generateAITags}
+                      disabled={!blog?.title}
+                    >
+                      {generateLoaderTags ? (
+                        <Bars color="#fff" height="30" width="100" />
+                      ) : (
+                        <>
+                           {t("addUpdateBlogs.Generate from AI")}
+                          <LuLightbulb
+                            size={24}
+                            className="hover:text-indigo-400 hover:cursor-pointer dark:text-white"
+                          />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <div className="w-full bg-gray-100 bg-opacity-50 rounded  border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out dark:bg-slate-700 dark:text-white">
+                    <div className="flex flex-wrap justify-start items-center py-3 gap-2 ">
+                      {tags?.length > 0 ? (
+                        tags?.map((tag, index) => {
+                          return (
+                            <span
+                              key={index}
+                              className="inline-flex items-center justify-center rounded-full bg-purple-500 px-2.5 py-0.5 text-white"
+                            >
+                              <p className="whitespace-nowrap text-base">
+                                {tag}
+                              </p>
+
+                              <button
+                                onClick={() => removeTag(tag)}
+                                className="-me-1 ms-1.5 inline-block rounded-full bg-white text-purple-500  transition hover:bg-red-400 hover:text-white"
+                              >
+                                <LuX size={19} className="p-0.5" />
+                              </button>
+                            </span>
+                          );
+                        })
+                      ) : (
+                        <span className="leading-7  text-base  text-gray-400 dark:text-gray-200">
+                        {t("addUpdateBlogs.No Tags present")}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {shortDescriptionErr && (
+                    <div className="pt-2">
+                      <span className="text-red-400 text-base font-semibold">
+                        {t("addUpdateBlogs.Please Generate  Blog Tags")}
                       </span>
                     </div>
                   )}
@@ -496,7 +603,7 @@ const UpdateBlog = () => {
                   {descriptionErr && (
                     <div className="pt-2">
                       <span className="text-red-400 text-base font-semibold">
-                        {t("addUpdateBlogs.Please Enter Description")}
+                        {t("addUpdateBlogs.Please Enter Message")}
                       </span>
                     </div>
                   )}

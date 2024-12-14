@@ -41,8 +41,11 @@
     "Drag": "खींचें",
     "Drop": "छोड़ें",
     "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG या GIF (अधिकतम 2MB)",
-    "Please Enter Description": "कृपया विवरण दर्ज करें",
+    "Please Enter Message": "कृपया विवरण दर्ज करें",
     "Please Enter Short Description": "कृपया संक्षिप्त विवरण दर्ज करें।",
+    "Please Generate  Blog Tags": "कृपया ब्लॉग टैग उत्पन्न करें",
+    "Generate from AI": "ए.आई. से उत्पन्न करें",
+    "No Tags present": "कोई टैग नहीं है",
     "Create Blog": "ब्लॉग बनाएं",
     "Update Blog": "ब्लॉग अपडेट करें",
     "Please Upload Image": "कृपया छवि अपलोड करें"

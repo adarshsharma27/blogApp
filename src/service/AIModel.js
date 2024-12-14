@@ -15,11 +15,31 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
+export const AIChatSession = model.startChat({
+  generationConfig,
+  history: [],
+});
 
- export  const AIChatSession = model.startChat({
-    generationConfig,
+// Starting a chat session with an AI model to generate SEO keywords
+export const AIChatSessionTags = (blogTitle) =>
+  model.startChat({
+    generationConfig, // Assuming this contains configuration options like model selection
     history: [
+      {
+        role: "user",
+        parts: [
+          {
+            text: `For the blog titled "${blogTitle}", generate an array of 10 SEO keywords relevant to this topic. The keywords should be a mix of general and long-tail keywords to help boost search visibility. Please return just the array of keywords like ["keyword1", "keyword2", "keyword3"] without any additional text.`,
+          },
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {
+            text: `['']`,
+          },
+        ],
+      },
     ],
   });
-
-  
